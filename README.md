@@ -21,7 +21,26 @@ _Afin de poster un commentaire, il est nécessaire de créer un compte sur GitHu
 ## Saison 1
 
 ### #4 Mars 2026
-- Rendez-vous mi-mars
+
+<!-- Flexbox (fonctionne dans la plupart des renderers Markdown qui acceptent du HTML inline) -->
+<div style="display:flex; align-items:flex-start; gap:16px; max-width:100%;">
+  <!-- Colonne image (fixe / adaptative) -->
+  <div style="flex: 0 0 auto;">
+    <a href="https://heyzine.com/flip-book/1dcdd0cd85.html" target="_blank">
+      <img src="media/Serotine4.jpg" alt="Couverture du #3"
+          style="display:block; max-width:150px; height:auto; border-radius:6px;" />
+    </a>
+  </div>
+
+  <!-- Colonne texte (liste) -->
+  <div style="flex: 1 1 auto;">
+    <ul style="margin:0; padding-left:1.2em;">
+      <li><a href="https://heyzine.com/flip-book/1dcdd0cd85.html#page/4" target="_blank">Des messages (ésotériques) dans les étoiles ?</a><a href="articles/astrologie.html" target="_blank">   [Commentaire]</a></li>
+      <li><a href="https://heyzine.com/flip-book/1dcdd0cd85.html#page/16" target="_blank">7 merveilles du ciel nocturne : La Voie Lactée</a><a href="articles/voie_lactee.html" target="_blank">   [Commentaire]</a></li>
+      <li><a href="https://heyzine.com/flip-book/1dcdd0cd85.html#page/20" target="_blank">Bételgeuse, l'étoile au sommet de la hype</a><a href="articles/betelgeuse.html" target="_blank">   [Commentaire]</a></li>
+    </ul>
+  </div>
+</div>
 
 ### #3 Février 2026
 
