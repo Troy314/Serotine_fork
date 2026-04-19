@@ -1,18 +1,103 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  </head>
-  <body>
-
-    <script src="https://utteranc.es/client.js"
-        repo="Serotine-webzine/Serotine"
-        issue-term="pathname"
-        theme="preferred-color-scheme"
-        crossorigin="anonymous"
-        async>
-    </script>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ode céleste — Sérotine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink: #1a1410; --paper: #f8f4ee; --cream: #f0e9dc;
+      --accent: #2d5a3d; --muted: #7a6f63; --border: rgba(26,20,16,.15);
+    }
+    body { background: var(--paper); color: var(--ink); font-family: 'DM Sans', sans-serif; font-weight: 300; line-height: 1.7; }
+    nav {
+      position: sticky; top: 0; z-index: 100; background: var(--ink);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem; height: 56px; box-shadow: 0 2px 14px rgba(0,0,0,.4);
+    }
+    .nav-brand { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--paper); text-decoration: none; }
+    .nav-brand em { font-style: italic; color: #c8b89a; }
+    .nav-links { display: flex; gap: 1.75rem; list-style: none; }
+    .nav-links a { color: #c8b89a; text-decoration: none; font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; transition: color .2s; }
+    .nav-links a:hover { color: #fff; }
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 6px; flex-direction: column; gap: 5px; }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--paper); }
+    @media (max-width: 720px) {
+      .nav-toggle { display: flex; }
+      .nav-links { display: none; position: fixed; top: 56px; left: 0; right: 0; background: var(--ink); flex-direction: column; gap: 0; padding: 1rem 0; }
+      .nav-links.open { display: flex; }
+      .nav-links li a { display: block; padding: .75rem 2rem; }
+    }
+    .wrap { max-width: 760px; margin: 0 auto; padding: 3rem 2rem 5rem; }
+    .back-link { display: inline-flex; align-items: center; gap: .4rem; color: var(--muted); font-size: .78rem; text-decoration: none; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 2.25rem; transition: color .2s; }
+    .back-link:hover { color: var(--accent); }
+    .article-header { border-bottom: 2px solid var(--ink); padding-bottom: 1.25rem; margin-bottom: 2.5rem; }
+    .article-meta { display: flex; align-items: center; gap: .75rem; flex-wrap: wrap; margin-bottom: .75rem; }
+    .article-issue { font-size: .72rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+    .article-author { font-size: .78rem; color: var(--muted); }
+    .article-title { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem,4vw,2.2rem); font-weight: 400; line-height: 1.25; margin-top: .6rem; }
+    .comments-section { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+    .comments-label { font-size: .7rem; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.5rem; }
+    footer { background: var(--ink); color: #a09080; text-align: center; padding: 2rem; font-size: .8rem; }
+    footer a { color: #c8b89a; }
     
-  </body>
+    .tag { display: inline-block; font-size: .68rem; font-weight: 500; letter-spacing: .07em; text-transform: uppercase; padding: .15rem .55rem; border-radius: 99px; }
+    .tag-astronomie  { background:#1e3a5f14; color:#1e3a5f; border:1px solid #1e3a5f28; }
+    .tag-biologie    { background:#2d5a3d14; color:#2d5a3d; border:1px solid #2d5a3d28; }
+    .tag-physique    { background:#8b3a2a14; color:#8b3a2a; border:1px solid #8b3a2a28; }
+    .tag-psychologie { background:#6b4c8b14; color:#6b4c8b; border:1px solid #6b4c8b28; }
+    .tag-jeu         { background:#b8860b14; color:#8a6008; border:1px solid #b8860b28; }
+    .tag-sante       { background:#8b2a4514; color:#8b2a45; border:1px solid #8b2a4528; }
+    .tag-poesie      { background:#3a5a5a14; color:#3a5a5a; border:1px solid #3a5a5a28; }
+
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="../index.html" class="nav-brand">Sérotine <em>— un souffle de science</em></a>
+    <button class="nav-toggle" id="menuToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html#dernier">Dernier numéro</a></li>
+      <li><a href="../index.html#explorer">Explorer</a></li>
+      <li><a href="../index.html#archives">Archives</a></li>
+      <li><a href="../index.html#podcast">Podcast</a></li>
+      <li><a href="https://www.auroralpes.fr/" target="_blank">AurorAlpes</a></li>
+    </ul>
+  </nav>
+
+  <div class="wrap">
+    <a href="../index.html" class="back-link">← Retour au webzine</a>
+    <header class="article-header">
+      <div class="article-meta">
+        <span class="article-issue">Sérotine #3 · Fév. 2026</span>
+        <span class="tag tag-poesie">poesie</span>
+        <span class="article-author">✍ Inès Dupré</span>
+      </div>
+      <h1 class="article-title">Ode céleste</h1>
+    </header>
+    <div class="comments-section">
+      <div class="comments-label">Commentaires</div>
+      <script src="https://utteranc.es/client.js"
+          repo="Serotine-webzine/Serotine"
+          issue-term="pathname"
+          theme="preferred-color-scheme"
+          crossorigin="anonymous"
+          async>
+      </script>
+    </div>
+  </div>
+
+  <footer>
+    <p>Sérotine, un souffle de science — par <a href="https://www.auroralpes.fr/" target="_blank">AurorAlpes</a></p>
+  </footer>
+
+  <script>
+    const t = document.getElementById('menuToggle'), n = document.getElementById('navLinks');
+    t.addEventListener('click', () => n.classList.toggle('open'));
+    n.querySelectorAll('a').forEach(a => a.addEventListener('click', () => n.classList.remove('open')));
+  </script>
+</body>
 </html>
