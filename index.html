@@ -42,7 +42,7 @@
     .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 120%, #05351622 0%, transparent 70%); pointer-events: none; }
     .hero-logos { display: flex; align-items: center; justify-content: center; gap: 2rem; margin-bottom: 2.5rem; }
     .logo-main { height: clamp(40px,8vw,300px); object-fit: contain; filter: brightness(1.1); }
-    .logo-small { height: clamp(25px,5vw,60px); object-fit: contain; filter: brightness(1.1); }
+    .logo-small { height: clamp(25px,5vw,40px); object-fit: contain; filter: brightness(1.1); }
     .hero-by { color: #c8b89a; font-size: 1rem; }
     .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem,7vw,5rem); font-weight: 400; line-height: 1.1; margin-bottom: .5rem; }
     .hero h1 em { font-style: italic; color: #c8b89a; }
@@ -171,8 +171,14 @@
   <p class="hero-desc">
     Bienvenue sur la page du webzine <strong>Sérotine</strong>, portée par l'association
     <a href="https://www.auroralpes.fr/" target="_blank">AurorAlpes</a>.
-    Retrouvez les numéros du webzine, explorez les articles par thème ou par auteur.ices, et écoutez notre podcast&nbsp;!
-    <small>Pour commenter, créez un compte GitHub (possible depuis un compte Google).</small>
+    Retrouvez les numéros du webzine, explorez les articles par thème ou par auteur.ices, et écoutez notre podcast&nbsp;!<br>
+    <br><a href="https://bsky.app/profile/auroralpes.bsky.social/" target="_blank"><img src="media/bluesky.svg" alt="Logo AurorAlpes" class="logo-small"></a>
+    <span style="display: inline-block; width: 20px;"></span>
+    <a href="https://www.linkedin.com/company/auroralpes" target="_blank"><img src="media/linkedin.svg" alt="Logo AurorAlpes" class="logo-small"></a>
+    <span style="display: inline-block; width: 20px;"></span>
+    <a href="https://www.instagram.com/auroralpes/" target="_blank"><img src="media/square-instagram.svg" alt="Logo AurorAlpes" class="logo-small"></a>
+    <h3><br><a href="https://www.auroralpes.fr/" target="_blank">📬 S'abonner à la Newsletter</a></h3>
+    <p class="hero-tagline">Pour ne rater aucun numéro !</p>
   </p>
 </header>
 
@@ -194,8 +200,8 @@
           <span class="filter-label">Thème&nbsp;:</span>
           <button class="filter-btn active" data-filter="tag" data-value="all">Tous</button>
           <button class="filter-btn" data-filter="tag" data-value="astrophysique">🌌 Astrophysique</button>
-          <button class="filter-btn" data-filter="tag" data-value="biologie">🧬 Biologie</button>
-          <button class="filter-btn" data-filter="tag" data-value="physique">⚗️ Physique</button>
+          <button class="filter-btn" data-filter="tag" data-value="biologie">🦠 Biologie</button>
+          <button class="filter-btn" data-filter="tag" data-value="physique">🧲 Physique</button>
           <button class="filter-btn" data-filter="tag" data-value="psychologie">🧠 Psychologie</button>
           <button class="filter-btn" data-filter="tag" data-value="sociologie">🤝 Sociologie</button>
           <button class="filter-btn" data-filter="tag" data-value="biologie">🦠 Biologie</button>
@@ -302,8 +308,8 @@
 <!-- FOOTER -->
 <footer>
   <p><strong>Sérotine, un souffle de science</strong> — par <a href="https://www.auroralpes.fr/" target="_blank">AurorAlpes</a></p>
-  <p>Site développé à partir du projet <a href="https://github.com/utterance/utterances" target="_blank">utterances</a> par <a href="https://github.com/jdanyow" target="_blank">jdanyow</a></p>
-  <a href="https://www.auroralpes.fr/" target="_blank"><img src="media/logo_Auroralpes.png" alt="Logo AurorAlpes" class="logo-main"></a>
+  <p>Espace commentaire développé à partir du projet <a href="https://github.com/utterance/utterances" target="_blank">utterances</a> par <a href="https://github.com/jdanyow" target="_blank">jdanyow</a></p>
+  <a href="https://www.auroralpes.fr/" target="_blank"><img src="media/auroralpes_logo_fil.png" alt="Logo AurorAlpes" class="logo-main"></a>
 </footer>
 
 <script>
@@ -316,7 +322,7 @@ const ARTICLES = [
   { id:"ode_celeste",         title:"Ode céleste",                                               author:"Amaëline",       tags:["astrophysique","poesie"],                 issue:3, issueLabel:"#3 · Fév. 2026",  href:"https://heyzine.com/flip-book/d5c17bee9a.html#page/12",         flip:"articles/ode_celeste.html" },
   { id:"tca",                 title:"Red flags et nourriture, quand les TCA s'invitent à table", author:"Isaora Bacquet", tags:["psychologie","article"],    issue:3, issueLabel:"#3 · Fév. 2026",  href:"https://heyzine.com/flip-book/d5c17bee9a.html#page/15",                 flip:"articles/tca.html" },
   { id:"hydrocerame",         title:"Les hydrocérames, ces vases qui suent",                     author:"Hector Pillot",  tags:["physique","article"],               issue:2, issueLabel:"#2 · Déc. 2025",  href:"https://heyzine.com/flip-book/5f6791f646.html#page/4",         flip:"articles/hydrocerame.html" },
-  { id:"aphantasie_sudoku_2", title:"Ceci n'est pas un bouquet de fleurs (Sudoku) — vol. 2",     author:"Léo Bosse",      tags:["sociologie","jeu"],                    issue:2, issueLabel:"#2 · Déc. 2025",  href:"https://heyzine.com/flip-book/5f6791f646.html#page/16", flip:"articles/aphantasie_sudoku_2.html" },
+  { id:"aphantasie_sudoku_2", title:"Ceci n'est pas un bouquet de fleurs (Sudoku) — Solution",     author:"Léo Bosse",      tags:["sociologie","jeu"],                    issue:2, issueLabel:"#2 · Déc. 2025",  href:"https://heyzine.com/flip-book/5f6791f646.html#page/16", flip:"articles/aphantasie_sudoku_2.html" },
   { id:"planete_neuf",        title:"Une neuvième planète dans notre système solaire",           author:"Charley Gay",    tags:["astrophysique","article"],          issue:2, issueLabel:"#2 · Déc. 2025",  href:"https://heyzine.com/flip-book/5f6791f646.html#page/18",        flip:"articles/planete_neuf.html" },
   { id:"aphantasie",          title:"L'aphantasie",                                              author:"Isaora Bacquet", tags:["psychologie","article"],            issue:1, issueLabel:"#1 · Nov. 2025",  href:"https://heyzine.com/flip-book/78d38fd9ec.html#page/4",          flip:"articles/aphantasie.html" },
   { id:"aphantasie_sudoku",   title:"Ceci n'est pas un bouquet de fleurs (Sudoku)",              author:"Léo Bosse",      tags:["sociologie","jeu"],                    issue:1, issueLabel:"#1 · Nov. 2025",  href:"https://heyzine.com/flip-book/78d38fd9ec.html#page/16",   flip:"articles/aphantasie_sudoku.html" },
@@ -333,7 +339,7 @@ const sel = document.getElementById('authorFilter');
 });
 
 const TAG_LABELS = {
-  astrophysique:'🌌 Astrophysique', biologie:'🧬 Biologie', physique:'⚗️ Physique',
+  astrophysique:'🌌 Astrophysique', physique:'🧲 Physique',
   psychologie:'🧠 Psychologie', sociologie:'🤝 Sociologie', biologie:'🦠 Biologie',
   jeu:'🎲 Jeu', poesie:'🎶 Poésie', article:'✒️ Article'
 };
