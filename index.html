@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sérotine — Un souffle de science</title>
+  <meta name="description" content="Sérotine, un souffle de science — le webzine de l'association AurorAlpes.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #1a1410;
+      --paper: #f8f4ee;
+      --cream: #f0e9dc;
+      --accent: #2d5a3d;
+      --accent2: #8b3a2a;
+      --gold: #b8860b;
+      --muted: #7a6f63;
+      --border: rgba(26,20,16,0.15);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--ink);
+      color: var(--paper);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      height: 56px;
+      box-shadow: 0 2px 12px rgba(0,0,0,.35);
+    }
+
+    .nav-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      letter-spacing: .04em;
+      color: var(--paper);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .nav-brand em {
+      font-style: italic;
+      color: #c8b89a;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: #c8b89a;
+      text-decoration: none;
+      font-size: .85rem;
+      font-weight: 400;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: #fff; }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--paper);
+      transition: all .3s;
+    }
+
+    /* Mobile nav */
+    @media (max-width: 680px) {
+      .nav-toggle { display: flex; }
+      .nav-links {
+        display: none;
+        position: fixed;
+        top: 56px;
+        left: 0; right: 0;
+        background: var(--ink);
+        flex-direction: column;
+        gap: 0;
+        padding: 1rem 0;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li a {
+        display: block;
+        padding: .75rem 2rem;
+        font-size: .9rem;
+      }
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--ink);
+      color: var(--paper);
+      padding: 5rem 2rem 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 120%, #2d5a3d22 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-logos {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+    }
+    .hero-logos img { filter: brightness(1.1); }
+    .hero-logos .logo-main { height: clamp(40px, 8vw, 90px); object-fit: contain; }
+    .hero-logos .logo-small { height: clamp(25px, 5vw, 60px); object-fit: contain; }
+    .hero-by { color: #c8b89a; font-size: clamp(.9rem, 2vw, 1.1rem); font-weight: 300; }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 7vw, 5rem);
+      font-weight: 400;
+      letter-spacing: -.01em;
+      line-height: 1.1;
+      margin-bottom: .5rem;
+    }
+    .hero h1 em { font-style: italic; color: #c8b89a; }
+    .hero-tagline {
+      font-size: clamp(.9rem, 2vw, 1.1rem);
+      color: #a09080;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+    .hero-desc {
+      max-width: 520px;
+      margin: 0 auto 2.5rem;
+      color: #c8b89a;
+      font-size: .95rem;
+      line-height: 1.8;
+    }
+    .hero-desc a { color: #e8d8c0; }
+
+    /* ── LATEST ISSUE ── */
+    .section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+      padding-bottom: .75rem;
+      border-bottom: 2px solid var(--ink);
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+    }
+    .section-title small {
+      font-family: 'DM Sans', sans-serif;
+      font-size: .75rem;
+      font-weight: 400;
+      color: var(--muted);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .latest-embed {
+      width: 100%;
+      height: min(55vw, 480px);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      background: var(--cream);
+    }
+
+    /* ── ISSUES GRID ── */
+    .issues-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .issue-card {
+      background: var(--paper);
+      padding: 1.5rem;
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+      transition: background .2s;
+    }
+    .issue-card:hover { background: var(--cream); }
+
+    .issue-cover {
+      flex: 0 0 auto;
+      width: 90px;
+    }
+    .issue-cover a { display: block; }
+    .issue-cover img {
+      width: 90px;
+      height: 127px;
+      object-fit: cover;
+      border-radius: 3px;
+      box-shadow: 2px 3px 12px rgba(0,0,0,.2);
+      transition: transform .3s;
+    }
+    .issue-card:hover .issue-cover img { transform: translateY(-2px); }
+
+    .issue-info { flex: 1; }
+    .issue-number {
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: .25rem;
+    }
+    .issue-date {
+      font-size: .8rem;
+      color: var(--muted);
+      margin-bottom: .6rem;
+    }
+    .issue-articles {
+      list-style: none;
+      font-size: .83rem;
+      line-height: 1.5;
+    }
+    .issue-articles li {
+      padding: .25rem 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      gap: .5rem;
+      align-items: baseline;
+    }
+    .issue-articles li:last-child { border-bottom: none; }
+    .issue-articles a {
+      color: var(--ink);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .issue-articles a:hover { color: var(--accent); }
+    .issue-articles .comment-link {
+      font-size: .72rem;
+      color: var(--muted);
+      white-space: nowrap;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: .05rem .35rem;
+      transition: all .2s;
+    }
+    .issue-articles .comment-link:hover {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      color: #a09080;
+      text-align: center;
+      padding: 2.5rem 2rem;
+      font-size: .8rem;
+      line-height: 1.8;
+    }
+    footer a { color: #c8b89a; }
+    footer strong { color: var(--paper); }
+
+    /* ── DIVIDER ── */
+    .ornament {
+      text-align: center;
+      color: var(--muted);
+      font-size: 1.1rem;
+      letter-spacing: .5rem;
+      margin: 2rem 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAVIGATION ── -->
+  <nav>
+    <a href="index.html" class="nav-brand">Sérotine <em>— un souffle de science</em></a>
+    <button class="nav-toggle" id="menuToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#dernier">Dernier numéro</a></li>
+      <li><a href="#archives">Archives</a></li>
+      <li><a href="https://www.auroralpes.fr/" target="_blank">AurorAlpes</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <header class="hero">
+    <div class="hero-logos">
+      <a href="https://www.auroralpes.fr/" target="_blank">
+        <img src="media/logo_serotine.svg" alt="Logo Sérotine" class="logo-main">
+      </a>
+      <span class="hero-by">by</span>
+      <a href="https://www.auroralpes.fr/" target="_blank">
+        <img src="media/logo_Auroralpes.png" alt="Logo AurorAlpes" class="logo-small">
+      </a>
+    </div>
+    <h1>Sérotine<br><em>un souffle de science</em></h1>
+    <p class="hero-tagline">Le webzine de l'association AurorAlpes</p>
+    <p class="hero-desc">
+      Bienvenue sur la page du webzine <strong>Sérotine</strong>, portée par l'association
+      <a href="https://www.auroralpes.fr/" target="_blank">AurorAlpes</a>.
+      Retrouvez ci-dessous les différents numéros du webzine&nbsp;!<br>
+      <small style="font-size:.8rem; color:#7a6f63; margin-top:.5rem; display:block;">
+        Pour commenter, créez un compte GitHub (possible depuis un compte Google).
+      </small>
+    </p>
+  </header>
+
+  <!-- ── LATEST ISSUE ── -->
+  <main>
+    <section class="section" id="dernier">
+      <h2 class="section-title">Dernier numéro <small>Saison 1 · #4</small></h2>
+      <iframe
+        allowfullscreen="allowfullscreen"
+        allow="clipboard-write"
+        scrolling="no"
+        class="latest-embed"
+        src="https://heyzine.com/flip-book/5edd108961.html"
+        title="Sérotine #4 — Mars 2026">
+      </iframe>
+    </section>
+
+    <div class="ornament">· · ·</div>
+
+    <!-- ── ALL ISSUES ── -->
+    <section class="section" id="archives">
+      <h2 class="section-title">Saison 1 <small>Tous les numéros</small></h2>
+
+      <div class="issues-grid">
+
+        <!-- #4 -->
+        <div class="issue-card">
+          <div class="issue-cover">
+            <a href="https://heyzine.com/flip-book/5edd108961.html" target="_blank">
+              <img src="media/Serotine4.jpg" alt="Couverture Sérotine #4">
+            </a>
+          </div>
+          <div class="issue-info">
+            <div class="issue-number">#4</div>
+            <div class="issue-date">Mars 2026</div>
+            <ul class="issue-articles">
+              <li>
+                <a href="https://heyzine.com/flip-book/5edd108961.html#page/4" target="_blank">Des messages (ésotériques) dans les étoiles&nbsp;?</a>
+                <a href="articles/astrologie.html" class="comment-link">💬</a>
+              </li>
+              <li>
+                <a href="https://heyzine.com/flip-book/5edd108961.html#page/16" target="_blank">7 merveilles du ciel nocturne : La Voie Lactée</a>
+                <a href="articles/voie_lactee.html" class="comment-link">💬</a>
+              </li>
+              <li>
+                <a href="https://heyzine.com/flip-book/5edd108961.html#page/20" target="_blank">Bételgeuse, l'étoile au sommet de la hype</a>
+                <a href="articles/betelgeuse.html" class="comment-link">💬</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- #3 -->
+        <div class="issue-card">
+          <div class="issue-cover">
+            <a href="https://heyzine.com/flip-book/d5c17bee9a.html" target="_blank">
+              <img src="media/Serotine3.jpg" alt="Couverture Sérotine #3">
+            </a>
+          </div>
+          <div class="issue-info">
+            <div class="issue-number">#3</div>
+            <div class="issue-date">Février 2026</div>
+            <ul class="issue-articles">
+              <li>
+                <a href="https://heyzine.com/flip-book/d5c17bee9a.html#page/4" target="_blank">Les secrets insoupçonnés du «&nbsp;crush&nbsp;»</a>
+                <a href="articles/crush.html" class="comment-link">💬</a>
+              </li>
+              <li>
+                <a href="https://heyzine.com/flip-book/d5c17bee9a.html#page/12" target="_blank">Ode céleste</a>
+                <a href="articles/ode_celeste.html" class="comment-link">💬</a>
+              </li>
+              <li>
+                <a href="https://heyzine.com/flip-book/d5c17bee9a.html#page/15" target="_blank">Red flags et nourriture, quand les TCA s'invitent à table</a>
+                <a href="articles/tca.html" class="comment-link">💬</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- #2 -->
+        <div class="issue-card">
+          <div class="issue-cover">
+            <a href="https://heyzine.com/flip-book/5f6791f646.html" target="_blank">
+              <img src="media/Serotine2.jpg" alt="Couverture Sérotine #2">
+            </a>
+          </div>
+          <div class="issue-info">
+            <div class="issue-number">#2</div>
+            <div class="issue-date">Décembre 2025</div>
+            <ul class="issue-articles">
+              <li>
+                <a href="https://heyzine.com/flip-book/5f6791f646.html#page/4" target="_blank">Les hydrocérames, ces vases qui suent</a>
+                <a href="articles/hydrocerame.html" class="comment-link">💬</a>
+              </li>
+              <li>
+                <a href="https://heyzine.com/flip-book/5f6791f646.html#page/16" target="_blank">Ceci n'est pas un bouquet de fleurs (Sudoku)</a>
+                <a href="articles/aphantasie_sudoku_2.html" class="comment-link">💬</a>
+              </li>
+              <li>
+                <a href="https://heyzine.com/flip-book/5f6791f646.html#page/18" target="_blank">Une neuvième planète dans notre système solaire</a>
+                <a href="articles/planete_neuf.html" class="comment-link">💬</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- #1 -->
+        <div class="issue-card">
+          <div class="issue-cover">
+            <a href="https://heyzine.com/flip-book/78d38fd9ec.html" target="_blank">
+              <img src="media/Serotine1.jpg" alt="Couverture Sérotine #1">
+            </a>
+          </div>
+          <div class="issue-info">
+            <div class="issue-number">#1</div>
+            <div class="issue-date">Novembre 2025</div>
+            <ul class="issue-articles">
+              <li>
+                <a href="https://heyzine.com/flip-book/78d38fd9ec.html#page/4" target="_blank">L'aphantasie</a>
+                <a href="articles/aphantasie.html" class="comment-link">💬</a>
+              </li>
+              <li>
+                <a href="https://heyzine.com/flip-book/78d38fd9ec.html#page/16" target="_blank">Ceci n'est pas un bouquet de fleurs (Sudoku)</a>
+                <a href="articles/aphantasie_sudoku.html" class="comment-link">💬</a>
+              </li>
+              <li>
+                <a href="https://heyzine.com/flip-book/78d38fd9ec.html#page/18" target="_blank">Peut-on respirer par l'anus&nbsp;?</a>
+                <a href="articles/respirer_par_anus.html" class="comment-link">💬</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div><!-- /issues-grid -->
+    </section>
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <p>
+      <strong>Sérotine, un souffle de science</strong> — par
+      <a href="https://www.auroralpes.fr/" target="_blank">AurorAlpes</a>
+    </p>
+    <p style="margin-top:.5rem;">
+      Site développé à partir du projet
+      <a href="https://github.com/utterance/utterances" target="_blank">utterances</a>
+      par <a href="https://github.com/jdanyow" target="_blank">jdanyow</a>
+    </p>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('menuToggle');
+    const links  = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => links.classList.toggle('open'));
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+  </script>
+
+</body>
+</html>
