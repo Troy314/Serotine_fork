@@ -67,6 +67,23 @@
     /* LATEST */
     .latest-embed { width: 100%; height: min(55vw, 480px); border: 1px solid var(--border); border-radius: 4px; background: var(--cream); }
 
+    /* A PROPOS */
+    .row {
+      display: flex;
+      gap: 2rem;
+    }
+    .column {
+      flex: 1;          /* chaque colonne prend la même largeur */
+      text-align: justify;
+      text-justify: inter-word;
+    }
+    /* Clear floats after the columns */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
     /* EXPLORER */
     #explorer { background: var(--cream); }
     .explorer-inner { max-width: 960px; margin: 0 auto; padding: 4rem 2rem; }
@@ -200,16 +217,25 @@
 
   <div class="ornament">· · ·</div>
 
-  <!-- FINANCEMENT -->
-  <section class="section" id="dons">
-    <h2 class="section-title">Financement <small>Soutenez-nous</small></h2>
-    <iframe
-      allowtransparency="true"
-      scrolling="no"
-      src="https://www.helloasso.com/associations/auroralpes/collectes/documentaire-naturaliste-sur-la-piste-de-l-erese-pharaon/widget-compteur"
-      style="width:350px; height:350px; border:none; display:block;"
-      title="Compteur de dons HelloAsso"
-    ></iframe>
+  <!-- A PROPOS -->
+  <section class="section" id="about">
+    <h2 class="section-title">A Propos <small>Le projet</small></h2>
+    <div class="row">
+     <div class="column">
+      Sérotine est un webzine associatif, abordant des sujets variés et peu partagés. Il encourage une ouverture vers l'esprit critique sur un ton léger ou décalé. Les rédacteurs et rédactrices sont issus de milieux scientifiques, de la médiation ou tout simplement des membres de la société civile.<br>
+      <br> Le magazine est accessible gratuitement, mais son hébergement a un coût. C'est pourquoi nous lançons une campagne de don afin de financer la plateforme.
+    </div>
+     <div class="column">
+      <iframe
+        allowtransparency="true"
+        scrolling="no"
+        src="https://www.helloasso.com/associations/auroralpes/collectes/documentaire-naturaliste-sur-la-piste-de-l-erese-pharaon/widget-compteur"
+        style="width:350px; height:350px; border:none; display:block;"
+        title="Compteur de dons HelloAsso"
+      ></iframe>
+     </div>
+    </div>
+    <br> Une longue réflexion sur l'utilisation d'intelligences artificielles, notamment génératives, a aussi mené à la <a href="media/charte_IA.png" target="_blank">rédaction d'une charte de l'intelligence artificielle</a> afin de réglementer son utilisation au sein du webzine.<br>
   </section>
 
   <div class="ornament">· · ·</div>
