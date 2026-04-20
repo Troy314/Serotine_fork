@@ -44,6 +44,7 @@
     .logo-main { height: clamp(40px,8vw,300px); object-fit: contain; filter: brightness(1.1); }
     .logo-footer { height: clamp(30px,5vw,120px); object-fit: contain; filter: brightness(1.1); }
     .logo-small { height: clamp(25px,5vw,40px); object-fit: contain; filter: brightness(1.1); }
+    .logo-xsmall { height: clamp(25px,5vw,20px); object-fit: contain; filter: brightness(1.1); }
     .hero-by { color: #c8b89a; font-size: 1rem; }
     .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem,7vw,5rem); font-weight: 400; line-height: 1.1; margin-bottom: .5rem; }
     .hero h1 em { font-style: italic; color: #c8b89a; }
@@ -148,7 +149,10 @@
 
 <!-- NAV -->
 <nav>
-  <a href="index.html" class="nav-brand">Sérotine, <em>un souffle de science</em></a>
+  <a href="index.html" class="nav-brand">
+    <img src="media/serotine_logo.png" alt="Logo Sérotine" class="logo-xsmall">
+    érotine, <em>un souffle de science</em>
+  </a>
   <button class="nav-toggle" id="menuToggle" aria-label="Menu"><span></span><span></span><span></span></button>
   <ul class="nav-links" id="navLinks">
     <li><a href="#dernier">Dernier numéro</a></li>
@@ -174,6 +178,7 @@
     Retrouvez les numéros du webzine, explorez les articles par thème ou par auteur.ices, et écoutez notre podcast&nbsp;!
   </p>
   <div class="hero-social">
+    <a href="mailto:webzine@auroralpes.fr" target="_blank"><img src="media/envelope.svg" alt="Email" class="logo-small"></a>
     <a href="https://bsky.app/profile/auroralpes.bsky.social/" target="_blank"><img src="media/bluesky.svg" alt="Bluesky" class="logo-small"></a>
     <a href="https://www.linkedin.com/company/auroralpes" target="_blank"><img src="media/linkedin.svg" alt="LinkedIn" class="logo-small"></a>
     <a href="https://www.instagram.com/auroralpes/" target="_blank"><img src="media/square-instagram.svg" alt="Instagram" class="logo-small"></a>
