@@ -68,20 +68,39 @@
     .latest-embed { width: 100%; height: min(55vw, 480px); border: 1px solid var(--border); border-radius: 4px; background: var(--cream); }
 
     /* A PROPOS */
-    .row {
-      display: flex;
-      gap: 2rem;
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2.5rem;
+      align-items: start;
     }
-    .column {
-      flex: 1;          /* chaque colonne prend la même largeur */
+    .about-text {
       text-align: justify;
       text-justify: inter-word;
+      line-height: 1.85;
+      min-width: 0;
     }
-    /* Clear floats after the columns */
-    .row:after {
-      content: "";
-      display: table;
-      clear: both;
+    .about-text p + p { margin-top: .9rem; }
+    .about-text a { color: var(--accent); }
+    .about-widget {
+      flex-shrink: 0;
+    }
+    .about-widget iframe {
+      display: block;
+      width: 320px;
+      height: 320px;
+      border: none;
+      border-radius: 6px;
+      box-shadow: 0 2px 12px rgba(0,0,0,.1);
+    }
+    @media (max-width: 760px) {
+      .about-layout {
+        grid-template-columns: 1fr;
+      }
+      .about-widget iframe {
+        width: 100%;
+        height: 260px;
+      }
     }
 
     /* EXPLORER */
@@ -219,23 +238,22 @@
 
   <!-- A PROPOS -->
   <section class="section" id="about">
-    <h2 class="section-title">A Propos <small>Le projet</small></h2>
-    <div class="row">
-     <div class="column">
-      Sérotine est un webzine associatif, abordant des sujets variés et peu partagés. Il encourage une ouverture vers l'esprit critique sur un ton léger ou décalé. Les rédacteurs et rédactrices sont issus de milieux scientifiques, de la médiation ou tout simplement des membres de la société civile.<br>
-      <br> Le magazine est accessible gratuitement, mais son hébergement a un coût. C'est pourquoi nous lançons une campagne de don afin de financer la plateforme.
+    <h2 class="section-title">À propos <small>Le projet</small></h2>
+    <div class="about-layout">
+      <div class="about-text">
+        <p>Sérotine est un webzine associatif abordant des sujets variés et peu partagés. Il encourage une ouverture vers l'esprit critique sur un ton léger ou décalé. Les rédacteurs et rédactrices sont issus de milieux scientifiques, de la médiation ou tout simplement des membres de la société civile.</p>
+        <p>Le magazine est accessible gratuitement, mais son hébergement a un coût. C'est pourquoi nous lançons une campagne de don afin de financer la plateforme.</p>
+        <p>Une longue réflexion sur l'utilisation d'intelligences artificielles, notamment génératives, a aussi mené à la <a href="media/charte_IA.png" target="_blank">rédaction d'une charte de l'intelligence artificielle</a> afin de réglementer son utilisation au sein du webzine.</p>
+      </div>
+      <div class="about-widget">
+        <iframe
+          allowtransparency="true"
+          scrolling="no"
+          src="https://www.helloasso.com/associations/auroralpes/collectes/documentaire-naturaliste-sur-la-piste-de-l-erese-pharaon/widget-compteur"
+          title="Compteur de dons HelloAsso"
+        ></iframe>
+      </div>
     </div>
-     <div class="column">
-      <iframe
-        allowtransparency="true"
-        scrolling="no"
-        src="https://www.helloasso.com/associations/auroralpes/collectes/documentaire-naturaliste-sur-la-piste-de-l-erese-pharaon/widget-compteur"
-        style="width:350px; height:350px; border:none; display:block;"
-        title="Compteur de dons HelloAsso"
-      ></iframe>
-     </div>
-    </div>
-    <br> Une longue réflexion sur l'utilisation d'intelligences artificielles, notamment génératives, a aussi mené à la <a href="media/charte_IA.png" target="_blank">rédaction d'une charte de l'intelligence artificielle</a> afin de réglementer son utilisation au sein du webzine.<br>
   </section>
 
   <div class="ornament">· · ·</div>
@@ -275,7 +293,7 @@
 
   <div class="ornament">· · ·</div>
 
-  <!-- ARCHIVES -->
+                  <!-- ARCHIVES -->
   <section class="section" id="archives">
     <h2 class="section-title">Anciens numéros <small>Tous les numéros</small></h2>
     <details open>
@@ -286,7 +304,7 @@
           <div class="issue-info">
             <div class="issue-number">#4</div><div class="issue-date">Mars 2026</div>
             <ul class="issue-articles">
-              <li><a href="https://heyzine.com/flip-book/5edd108961.html#page/4" target="_blank">Des messages (ésotériques) dans les étoiles&nbsp;?</a> <a href="articles/astrologie.html" class="comment-link">💬</a></li>
+              <li><a href="https://heyzine.com/flip-book/5edd108961.html#page/4" target="_blank">Des messages (ésotériques) dans les étoiles ?</a> <a href="articles/astrologie.html" class="comment-link">💬</a></li>
               <li><a href="https://heyzine.com/flip-book/5edd108961.html#page/16" target="_blank">7 merveilles du ciel nocturne : La Voie Lactée</a> <a href="articles/voie_lactee.html" class="comment-link">💬</a></li>
               <li><a href="https://heyzine.com/flip-book/5edd108961.html#page/20" target="_blank">Bételgeuse, l'étoile au sommet de la hype</a> <a href="articles/betelgeuse.html" class="comment-link">💬</a></li>
             </ul>
@@ -297,7 +315,7 @@
           <div class="issue-info">
             <div class="issue-number">#3</div><div class="issue-date">Février 2026</div>
             <ul class="issue-articles">
-              <li><a href="https://heyzine.com/flip-book/d5c17bee9a.html#page/4" target="_blank">Les secrets insoupçonnés du «&nbsp;crush&nbsp;»</a> <a href="articles/crush.html" class="comment-link">💬</a></li>
+              <li><a href="https://heyzine.com/flip-book/d5c17bee9a.html#page/4" target="_blank">Les secrets insoupçonnés du « crush »</a> <a href="articles/crush.html" class="comment-link">💬</a></li>
               <li><a href="https://heyzine.com/flip-book/d5c17bee9a.html#page/12" target="_blank">Ode céleste</a> <a href="articles/ode_celeste.html" class="comment-link">💬</a></li>
               <li><a href="https://heyzine.com/flip-book/d5c17bee9a.html#page/15" target="_blank">Red flags et nourriture, quand les TCA s'invitent à table</a> <a href="articles/tca.html" class="comment-link">💬</a></li>
             </ul>
@@ -309,7 +327,7 @@
             <div class="issue-number">#2</div><div class="issue-date">Décembre 2025</div>
             <ul class="issue-articles">
               <li><a href="https://heyzine.com/flip-book/5f6791f646.html#page/4" target="_blank">Les hydrocérames, ces vases qui suent</a> <a href="articles/hydrocerame.html" class="comment-link">💬</a></li>
-              <li><a href="https://heyzine.com/flip-book/5f6791f646.html#page/16" target="_blank">Ceci n'est pas un bouquet de fleurs (Sudoku)</a> <a href="articles/aphantasie_sudoku_2.html" class="comment-link">💬</a></li>
+              <li><a href="https://heyzine.com/flip-book/5f6791f646.html#page/16" target="_blank">Ceci n'est pas un bouquet de fleurs (Sudoku) — Solution</a> <a href="articles/aphantasie_sudoku_2.html" class="comment-link">💬</a></li>
               <li><a href="https://heyzine.com/flip-book/5f6791f646.html#page/18" target="_blank">Une neuvième planète dans notre système solaire</a> <a href="articles/planete_neuf.html" class="comment-link">💬</a></li>
             </ul>
           </div>
@@ -321,7 +339,7 @@
             <ul class="issue-articles">
               <li><a href="https://heyzine.com/flip-book/78d38fd9ec.html#page/4" target="_blank">L'aphantasie</a> <a href="articles/aphantasie.html" class="comment-link">💬</a></li>
               <li><a href="https://heyzine.com/flip-book/78d38fd9ec.html#page/16" target="_blank">Ceci n'est pas un bouquet de fleurs (Sudoku)</a> <a href="articles/aphantasie_sudoku.html" class="comment-link">💬</a></li>
-              <li><a href="https://heyzine.com/flip-book/78d38fd9ec.html#page/18" target="_blank">Peut-on respirer par l'anus&nbsp;?</a> <a href="articles/respirer_par_anus.html" class="comment-link">💬</a></li>
+              <li><a href="https://heyzine.com/flip-book/78d38fd9ec.html#page/18" target="_blank">Peut-on respirer par l'anus ?</a> <a href="articles/respirer_par_anus.html" class="comment-link">💬</a></li>
             </ul>
           </div>
         </div>
@@ -360,18 +378,18 @@
 <script>
 // ── Article data ─────────────────────────────────────────────────────────
 const ARTICLES = [
-  { id:"astrologie",          title:"Des messages (ésotériques) dans les étoiles ?",             author:"Charley Gay",    tags:["astrophysique","article"], issue:4, issueLabel:"#4 · Mars 2026",  href:"https://heyzine.com/flip-book/5edd108961.html#page/4",   flip:"articles/astrologie.html" },
-  { id:"voie_lactee",         title:"7 merveilles du ciel nocturne : La Voie Lactée",            author:"Léo Duchêne",    tags:["astrophysique","article"], issue:4, issueLabel:"#4 · Mars 2026",  href:"https://heyzine.com/flip-book/5edd108961.html#page/16",  flip:"articles/voie_lactee.html" },
-  { id:"betelgeuse",          title:"Bételgeuse, l'étoile au sommet de la hype",                 author:"Quentin Daveau", tags:["astrophysique","article"], issue:4, issueLabel:"#4 · Mars 2026",  href:"https://heyzine.com/flip-book/5edd108961.html#page/20",  flip:"articles/betelgeuse.html" },
-  { id:"crush",               title:"Les secrets insoupçonnés du « crush »",                     author:"Quentin Daveau", tags:["sociologie","article"],    issue:3, issueLabel:"#3 · Fév. 2026",  href:"https://heyzine.com/flip-book/d5c17bee9a.html#page/4",   flip:"articles/crush.html" },
-  { id:"ode_celeste",         title:"Ode céleste",                                               author:"Amaëline",       tags:["astrophysique","poesie"],  issue:3, issueLabel:"#3 · Fév. 2026",  href:"https://heyzine.com/flip-book/d5c17bee9a.html#page/12",  flip:"articles/ode_celeste.html" },
-  { id:"tca",                 title:"Red flags et nourriture, quand les TCA s'invitent à table", author:"Isaora Bacquet", tags:["psychologie","article"],   issue:3, issueLabel:"#3 · Fév. 2026",  href:"https://heyzine.com/flip-book/d5c17bee9a.html#page/15",  flip:"articles/tca.html" },
-  { id:"hydrocerame",         title:"Les hydrocérames, ces vases qui suent",                     author:"Hector Pillot",  tags:["physique","article"],      issue:2, issueLabel:"#2 · Déc. 2025",  href:"https://heyzine.com/flip-book/5f6791f646.html#page/4",   flip:"articles/hydrocerame.html" },
-  { id:"aphantasie_sudoku_2", title:"Ceci n'est pas un bouquet de fleurs (Sudoku) — Solution",   author:"Léo Bosse",      tags:["sociologie","jeu"],        issue:2, issueLabel:"#2 · Déc. 2025",  href:"https://heyzine.com/flip-book/5f6791f646.html#page/16",  flip:"articles/aphantasie_sudoku_2.html" },
-  { id:"planete_neuf",        title:"Une neuvième planète dans notre système solaire",           author:"Charley Gay",    tags:["astrophysique","article"], issue:2, issueLabel:"#2 · Déc. 2025",  href:"https://heyzine.com/flip-book/5f6791f646.html#page/18",  flip:"articles/planete_neuf.html" },
-  { id:"aphantasie",          title:"L'aphantasie",                                              author:"Isaora Bacquet", tags:["psychologie","article"],   issue:1, issueLabel:"#1 · Nov. 2025",  href:"https://heyzine.com/flip-book/78d38fd9ec.html#page/4",   flip:"articles/aphantasie.html" },
-  { id:"aphantasie_sudoku",   title:"Ceci n'est pas un bouquet de fleurs (Sudoku)",              author:"Léo Bosse",      tags:["sociologie","jeu"],        issue:1, issueLabel:"#1 · Nov. 2025",  href:"https://heyzine.com/flip-book/78d38fd9ec.html#page/16",  flip:"articles/aphantasie_sudoku.html" },
-  { id:"respirer_par_anus",   title:"Peut-on respirer par l'anus ?",                             author:"Pierre Gachod",  tags:["biologie","article"],      issue:1, issueLabel:"#1 · Nov. 2025",  href:"https://heyzine.com/flip-book/78d38fd9ec.html#page/18",  flip:"articles/respirer_par_anus.html" },
+  { id:"astrologie", title:"Des messages (ésotériques) dans les étoiles ?", author:"Charley Gay", tags:["astrophysique","article"], issue:4, issueLabel:"#4 · Mars 2026", href:"https://heyzine.com/flip-book/5edd108961.html#page/4", flip:"articles/astrologie.html" },
+  { id:"voie_lactee", title:"7 merveilles du ciel nocturne : La Voie Lactée", author:"Léo Duchêne", tags:["astrophysique","article"], issue:4, issueLabel:"#4 · Mars 2026", href:"https://heyzine.com/flip-book/5edd108961.html#page/16", flip:"articles/voie_lactee.html" },
+  { id:"betelgeuse", title:"Bételgeuse, l'étoile au sommet de la hype", author:"Quentin Daveau", tags:["astrophysique","article"], issue:4, issueLabel:"#4 · Mars 2026", href:"https://heyzine.com/flip-book/5edd108961.html#page/20", flip:"articles/betelgeuse.html" },
+  { id:"crush", title:"Les secrets insoupçonnés du « crush »", author:"Quentin Daveau", tags:["sociologie","article"], issue:3, issueLabel:"#3 · Fév. 2026", href:"https://heyzine.com/flip-book/d5c17bee9a.html#page/4", flip:"articles/crush.html" },
+  { id:"ode_celeste", title:"Ode céleste", author:"Amaëline", tags:["astrophysique","poesie"], issue:3, issueLabel:"#3 · Fév. 2026", href:"https://heyzine.com/flip-book/d5c17bee9a.html#page/12", flip:"articles/ode_celeste.html" },
+  { id:"tca", title:"Red flags et nourriture, quand les TCA s'invitent à table", author:"Isaora Bacquet", tags:["psychologie","article"], issue:3, issueLabel:"#3 · Fév. 2026", href:"https://heyzine.com/flip-book/d5c17bee9a.html#page/15", flip:"articles/tca.html" },
+  { id:"hydrocerame", title:"Les hydrocérames, ces vases qui suent", author:"Hector Pillot", tags:["physique","article"], issue:2, issueLabel:"#2 · Déc. 2025", href:"https://heyzine.com/flip-book/5f6791f646.html#page/4", flip:"articles/hydrocerame.html" },
+  { id:"aphantasie_sudoku_2", title:"Ceci n'est pas un bouquet de fleurs (Sudoku) — Solution", author:"Léo Bosse", tags:["sociologie","jeu"], issue:2, issueLabel:"#2 · Déc. 2025", href:"https://heyzine.com/flip-book/5f6791f646.html#page/16", flip:"articles/aphantasie_sudoku_2.html" },
+  { id:"planete_neuf", title:"Une neuvième planète dans notre système solaire", author:"Charley Gay", tags:["astrophysique","article"], issue:2, issueLabel:"#2 · Déc. 2025", href:"https://heyzine.com/flip-book/5f6791f646.html#page/18", flip:"articles/planete_neuf.html" },
+  { id:"aphantasie", title:"L'aphantasie", author:"Isaora Bacquet", tags:["psychologie","article"], issue:1, issueLabel:"#1 · Nov. 2025", href:"https://heyzine.com/flip-book/78d38fd9ec.html#page/4", flip:"articles/aphantasie.html" },
+  { id:"aphantasie_sudoku", title:"Ceci n'est pas un bouquet de fleurs (Sudoku)", author:"Léo Bosse", tags:["sociologie","jeu"], issue:1, issueLabel:"#1 · Nov. 2025", href:"https://heyzine.com/flip-book/78d38fd9ec.html#page/16", flip:"articles/aphantasie_sudoku.html" },
+  { id:"respirer_par_anus", title:"Peut-on respirer par l'anus ?", author:"Pierre Gachod", tags:["biologie","article"], issue:1, issueLabel:"#1 · Nov. 2025", href:"https://heyzine.com/flip-book/78d38fd9ec.html#page/18", flip:"articles/respirer_par_anus.html" },
 ];
 
 let activeTag = 'all', activeAuthor = 'all', activeSort = 'issue';
