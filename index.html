@@ -11,7 +11,7 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
       --ink: #1a1410; --paper: #f8f4ee; --cream: #f0e9dc;
-      --accent: #2d5a3d; --muted: #7a6f63; --border: rgba(26,20,16,.15);
+      --accent: #10243e; --muted: #7a6f63; --border: rgba(26,20,16,.15);
       --podcast-bg: #10243e;
     }
     html { scroll-behavior: smooth; }
@@ -108,9 +108,12 @@
     .explorer-inner { max-width: 960px; margin: 0 auto; padding: 4rem 2rem; }
     .filter-bar { display: flex; gap: .6rem; flex-wrap: wrap; align-items: center; margin-bottom: 1rem; }
     .filter-label { font-size: .7rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
-    .filter-btn { border: 1px solid var(--border); background: var(--paper); color: var(--ink); font-family: 'DM Sans', sans-serif; font-size: .78rem; padding: .3rem .8rem; border-radius: 99px; cursor: pointer; transition: all .18s; }
-    .filter-btn:hover { border-color: var(--accent); color: var(--accent); }
-    .filter-btn.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+    .topic-btn, .type-btn { border: 1px solid var(--border); background: var(--paper); color: var(--ink); font-family: 'DM Sans', sans-serif; font-size: .78rem; padding: .3rem .8rem; border-radius: 99px; cursor: pointer; transition: all .18s; }
+    .topic-btn:hover, .type-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .topic-btn.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+    .type-btn.active  { background: var(--accent); color: var(--paper); border-color: var(--accent); }
+    .tag-clickable { cursor: pointer; transition: opacity .15s; }
+    .tag-clickable:hover { opacity: .75; }
     .filter-sep { width: 1px; height: 22px; background: var(--border); margin: 0 .15rem; }
     select.filter-select { border: 1px solid var(--border); background: var(--paper); font-family: 'DM Sans', sans-serif; font-size: .78rem; padding: .3rem .7rem; border-radius: 4px; color: var(--ink); cursor: pointer; }
     .sort-bar { display: flex; gap: .5rem; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; }
@@ -142,7 +145,7 @@
     .tag-jeu           { background:#b8860b14; color:#8a6008; border:1px solid #b8860b28; }
     .tag-sante         { background:#8b2a4514; color:#8b2a45; border:1px solid #8b2a4528; }
     .tag-poesie        { background:#3a5a5a14; color:#3a5a5a; border:1px solid #3a5a5a28; }
-    .tag-article       { background:#3a475a14; color:#3a475a; border:1px solid #3a475a28; }
+    .tag-article       { background:#3a475a14; color:#3a475a; border:1px solid #3a475a28; } */
 
     /* ARCHIVES */
     .issues-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px,1fr)); gap: 2px; background: var(--border); border: 1px solid var(--border); margin-top: 1rem; }
@@ -236,8 +239,6 @@
       src="https://heyzine.com/flip-book/5edd108961.html" title="Sérotine #4 — Mars 2026"></iframe>
   </section>
 
-  <div class="ornament">· · ·</div>
-
   <!-- A PROPOS -->
   <section class="section" id="about">
     <h2 class="section-title">À propos <small>Le projet</small></h2>
@@ -258,29 +259,29 @@
     </div>
   </section>
 
-  <div class="ornament">· · ·</div>
-
   <!-- EXPLORER -->
   <section id="explorer">
     <div class="explorer-inner">
       <h2 class="section-title">Découvrir les articles <small>Filtrer &amp; trier</small></h2>
       <div class="filter-bar">
         <span class="filter-label">Thème&nbsp;:</span>
-        <button class="filter-btn active" data-filter="tag" data-value="all">Tous</button>
-        <button class="filter-btn" data-filter="tag" data-value="astrophysique">Astrophysique</button>
-        <button class="filter-btn" data-filter="tag" data-value="biologie">Biologie</button>
-        <button class="filter-btn" data-filter="tag" data-value="physique">Physique</button>
-        <button class="filter-btn" data-filter="tag" data-value="psychologie">Psychologie</button>
-        <button class="filter-btn" data-filter="tag" data-value="sociologie">Sociologie</button>
-        <span class="filter-sep"></span>
+        <button class="topic-btn active" data-value="all">Tous</button>
+        <button class="topic-btn" data-value="astrophysique">Astrophysique</button>
+        <button class="topic-btn" data-value="biologie">Biologie</button>
+        <button class="topic-btn" data-value="physique">Physique</button>
+        <button class="topic-btn" data-value="psychologie">Psychologie</button>
+        <button class="topic-btn" data-value="sociologie">Sociologie</button>
+      </div>
+      <div class="filter-bar" style="margin-bottom:1.25rem">
         <span class="filter-label">Type&nbsp;:</span>
-        <button class="filter-btn" data-filter="tag" data-value="jeu">Jeu</button>
-        <button class="filter-btn" data-filter="tag" data-value="poesie">Poésie</button>
-        <button class="filter-btn" data-filter="tag" data-value="article">Article</button>
+        <button class="type-btn active" data-value="all">Tous</button>
+        <button class="type-btn" data-value="article">Article</button>
+        <button class="type-btn" data-value="jeu">Jeu</button>
+        <button class="type-btn" data-value="poesie">Poésie</button>
         <span class="filter-sep"></span>
         <span class="filter-label">Auteur.ice&nbsp;:</span>
         <select id="authorFilter" class="filter-select">
-          <option value="all">Toutes les auteur.ices</option>
+          <option value="all">Tous les auteur.ices</option>
         </select>
       </div>
       <div class="sort-bar">
@@ -288,16 +289,15 @@
         <button class="sort-btn active" data-sort="issue">Numéro <span class="arrow">↓</span></button>
         <button class="sort-btn" data-sort="title">Titre <span class="arrow">↕</span></button>
         <button class="sort-btn" data-sort="author">Auteur <span class="arrow">↕</span></button>
-        <button class="sort-btn" data-sort="tag">Thème <span class="arrow">↕</span></button>
+        <button class="sort-btn" data-sort="topic">Thème <span class="arrow">↕</span></button>
       </div>
       <div class="articles-grid" id="articlesGrid"></div>
       <p class="no-results" id="noResults">Aucun article ne correspond à cette sélection.</p>
     </div>
   </section>
 
-  <div class="ornament">· · ·</div>
 
-                      <!-- ARCHIVES -->
+    <!-- ARCHIVES -->
   <section class="section" id="archives">
     <h2 class="section-title">Anciens numéros <small>Tous les numéros</small></h2>
     <details open>
@@ -382,43 +382,56 @@
 <script>
 // ── Article data ─────────────────────────────────────────────────────────
 const ARTICLES = [
-  { id:"astrologie", title:"Des messages (ésotériques) dans les étoiles ?", author:"Charley Gay", tags:["astrophysique","article"], issue:4, issueLabel:"#4 · Mars 2026", href:"https://heyzine.com/flip-book/5edd108961.html#page/4", flip:"articles/astrologie.html" },
-  { id:"voie_lactee", title:"7 merveilles du ciel nocturne : La Voie Lactée", author:"Léo Duchêne", tags:["astrophysique","article"], issue:4, issueLabel:"#4 · Mars 2026", href:"https://heyzine.com/flip-book/5edd108961.html#page/16", flip:"articles/voie_lactee.html" },
-  { id:"betelgeuse", title:"Bételgeuse, l'étoile au sommet de la hype", author:"Quentin Daveau", tags:["astrophysique","article"], issue:4, issueLabel:"#4 · Mars 2026", href:"https://heyzine.com/flip-book/5edd108961.html#page/20", flip:"articles/betelgeuse.html" },
-  { id:"crush", title:"Les secrets insoupçonnés du « crush »", author:"Quentin Daveau", tags:["sociologie","article"], issue:3, issueLabel:"#3 · Fév. 2026", href:"https://heyzine.com/flip-book/d5c17bee9a.html#page/4", flip:"articles/crush.html" },
-  { id:"ode_celeste", title:"Ode céleste", author:"Amaëline", tags:["astrophysique","poesie"], issue:3, issueLabel:"#3 · Fév. 2026", href:"https://heyzine.com/flip-book/d5c17bee9a.html#page/12", flip:"articles/ode_celeste.html" },
-  { id:"tca", title:"Red flags et nourriture, quand les TCA s'invitent à table", author:"Isaora Bacquet", tags:["psychologie","article"], issue:3, issueLabel:"#3 · Fév. 2026", href:"https://heyzine.com/flip-book/d5c17bee9a.html#page/15", flip:"articles/tca.html" },
-  { id:"hydrocerame", title:"Les hydrocérames, ces vases qui suent", author:"Hector Pillot", tags:["physique","article"], issue:2, issueLabel:"#2 · Déc. 2025", href:"https://heyzine.com/flip-book/5f6791f646.html#page/4", flip:"articles/hydrocerame.html" },
-  { id:"aphantasie_sudoku_2", title:"Ceci n'est pas un bouquet de fleurs (Sudoku) — Solution", author:"Léo Bosse", tags:["sociologie","jeu"], issue:2, issueLabel:"#2 · Déc. 2025", href:"https://heyzine.com/flip-book/5f6791f646.html#page/16", flip:"articles/aphantasie_sudoku_2.html" },
-  { id:"planete_neuf", title:"Une neuvième planète dans notre système solaire", author:"Charley Gay", tags:["astrophysique","article"], issue:2, issueLabel:"#2 · Déc. 2025", href:"https://heyzine.com/flip-book/5f6791f646.html#page/18", flip:"articles/planete_neuf.html" },
-  { id:"aphantasie", title:"L'aphantasie", author:"Isaora Bacquet", tags:["psychologie","article"], issue:1, issueLabel:"#1 · Nov. 2025", href:"https://heyzine.com/flip-book/78d38fd9ec.html#page/4", flip:"articles/aphantasie.html" },
-  { id:"aphantasie_sudoku", title:"Ceci n'est pas un bouquet de fleurs (Sudoku)", author:"Léo Bosse", tags:["sociologie","jeu"], issue:1, issueLabel:"#1 · Nov. 2025", href:"https://heyzine.com/flip-book/78d38fd9ec.html#page/16", flip:"articles/aphantasie_sudoku.html" },
-  { id:"respirer_par_anus", title:"Peut-on respirer par l'anus ?", author:"Pierre Gachod", tags:["biologie","article"], issue:1, issueLabel:"#1 · Nov. 2025", href:"https://heyzine.com/flip-book/78d38fd9ec.html#page/18", flip:"articles/respirer_par_anus.html" },
+  { id:"astrologie", title:"Des messages (ésotériques) dans les étoiles ?", author:"Charley Gay", topic:"astrophysique", type:"article", issue:4, issueLabel:"#4 · Mars 2026", href:"https://heyzine.com/flip-book/5edd108961.html#page/4", flip:"articles/astrologie.html" },
+  { id:"voie_lactee", title:"7 merveilles du ciel nocturne : La Voie Lactée", author:"Léo Duchêne", topic:"astrophysique", type:"article", issue:4, issueLabel:"#4 · Mars 2026", href:"https://heyzine.com/flip-book/5edd108961.html#page/16", flip:"articles/voie_lactee.html" },
+  { id:"betelgeuse", title:"Bételgeuse, l'étoile au sommet de la hype", author:"Quentin Daveau", topic:"astrophysique", type:"article", issue:4, issueLabel:"#4 · Mars 2026", href:"https://heyzine.com/flip-book/5edd108961.html#page/20", flip:"articles/betelgeuse.html" },
+  { id:"crush", title:"Les secrets insoupçonnés du « crush »", author:"Quentin Daveau", topic:"sociologie", type:"article", issue:3, issueLabel:"#3 · Fév. 2026", href:"https://heyzine.com/flip-book/d5c17bee9a.html#page/4", flip:"articles/crush.html" },
+  { id:"ode_celeste", title:"Ode céleste", author:"Amaëline", topic:"astrophysique", type:"poesie", issue:3, issueLabel:"#3 · Fév. 2026", href:"https://heyzine.com/flip-book/d5c17bee9a.html#page/12", flip:"articles/ode_celeste.html" },
+  { id:"tca", title:"Red flags et nourriture, quand les TCA s'invitent à table", author:"Isaora Bacquet", topic:"psychologie", type:"article", issue:3, issueLabel:"#3 · Fév. 2026", href:"https://heyzine.com/flip-book/d5c17bee9a.html#page/15", flip:"articles/tca.html" },
+  { id:"hydrocerame", title:"Les hydrocérames, ces vases qui suent", author:"Hector Pillot", topic:"physique", type:"article", issue:2, issueLabel:"#2 · Déc. 2025", href:"https://heyzine.com/flip-book/5f6791f646.html#page/4", flip:"articles/hydrocerame.html" },
+  { id:"aphantasie_sudoku_2", title:"Ceci n'est pas un bouquet de fleurs (Sudoku) — Solution", author:"Léo Bosse", topic:"sociologie", type:"jeu", issue:2, issueLabel:"#2 · Déc. 2025", href:"https://heyzine.com/flip-book/5f6791f646.html#page/16", flip:"articles/aphantasie_sudoku_2.html" },
+  { id:"planete_neuf", title:"Une neuvième planète dans notre système solaire", author:"Charley Gay", topic:"astrophysique", type:"article", issue:2, issueLabel:"#2 · Déc. 2025", href:"https://heyzine.com/flip-book/5f6791f646.html#page/18", flip:"articles/planete_neuf.html" },
+  { id:"aphantasie", title:"L'aphantasie", author:"Isaora Bacquet", topic:"psychologie", type:"article", issue:1, issueLabel:"#1 · Nov. 2025", href:"https://heyzine.com/flip-book/78d38fd9ec.html#page/4", flip:"articles/aphantasie.html" },
+  { id:"aphantasie_sudoku", title:"Ceci n'est pas un bouquet de fleurs (Sudoku)", author:"Léo Bosse", topic:"sociologie", type:"jeu", issue:1, issueLabel:"#1 · Nov. 2025", href:"https://heyzine.com/flip-book/78d38fd9ec.html#page/16", flip:"articles/aphantasie_sudoku.html" },
+  { id:"respirer_par_anus", title:"Peut-on respirer par l'anus ?", author:"Pierre Gachod", topic:"biologie", type:"article", issue:1, issueLabel:"#1 · Nov. 2025", href:"https://heyzine.com/flip-book/78d38fd9ec.html#page/18", flip:"articles/respirer_par_anus.html" },
 ];
 
-let activeTag = 'all', activeAuthor = 'all', activeSort = 'issue';
-let sortDir = { issue:-1, title:1, author:1, tag:1 };
-
-const sel = document.getElementById('authorFilter');
-[...new Set(ARTICLES.map(a => a.author))].sort((a,b) => a.localeCompare(b,'fr')).forEach(au => {
-  const o = document.createElement('option'); o.value = au; o.textContent = au; sel.appendChild(o);
-});
-
-const TAG_LABELS = {
+const TOPIC_LABELS = {
   astrophysique:'Astrophysique', biologie:'Biologie', physique:'Physique',
-  psychologie:'Psychologie', sociologie:'Sociologie',
-  jeu:'Jeu', poesie:'Poésie', article:'Article'
+  psychologie:'Psychologie', sociologie:'Sociologie'
+};
+const TYPE_LABELS = {
+  article:'Article', jeu:'Jeu', poesie:'Poésie'
 };
 
-function renderTags(tags) {
-  return tags.map(t => `<span class="tag tag-${t}">${TAG_LABELS[t] || t}</span>`).join('');
+let activeTopic = 'all', activeType = 'all', activeAuthor = 'all', activeSort = 'issue';
+let sortDir = { issue:-1, title:1, author:1, topic:1 };
+
+// ── Populate author dropdown ──────────────────────────────────────────────
+const authorSel = document.getElementById('authorFilter');
+[...new Set(ARTICLES.map(a => a.author))].sort((a,b) => a.localeCompare(b,'fr')).forEach(au => {
+  const o = document.createElement('option'); o.value = au; o.textContent = au; authorSel.appendChild(o);
+});
+
+// ── Tag click on cards → set filter ──────────────────────────────────────
+function setTopicFilter(value) {
+  activeTopic = value;
+  document.querySelectorAll('.topic-btn').forEach(b => b.classList.toggle('active', b.dataset.value === value));
+  render();
+}
+function setTypeFilter(value) {
+  activeType = value;
+  document.querySelectorAll('.type-btn').forEach(b => b.classList.toggle('active', b.dataset.value === value));
+  render();
 }
 
+// ── Render cards ──────────────────────────────────────────────────────────
 function render() {
   const grid = document.getElementById('articlesGrid');
   grid.innerHTML = '';
   let list = ARTICLES.filter(a =>
-    (activeTag === 'all' || a.tags.includes(activeTag)) &&
+    (activeTopic  === 'all' || a.topic  === activeTopic)  &&
+    (activeType   === 'all' || a.type   === activeType)   &&
     (activeAuthor === 'all' || a.author === activeAuthor)
   );
   const d = sortDir[activeSort];
@@ -426,30 +439,50 @@ function render() {
     if (activeSort === 'issue')  return d * (b.issue - a.issue);
     if (activeSort === 'title')  return d * a.title.localeCompare(b.title, 'fr');
     if (activeSort === 'author') return d * a.author.localeCompare(b.author, 'fr');
-    if (activeSort === 'tag')    return d * a.tags[0].localeCompare(b.tags[0], 'fr');
+    if (activeSort === 'topic')  return d * a.topic.localeCompare(b.topic, 'fr');
     return 0;
   });
   document.getElementById('noResults').classList.toggle('visible', list.length === 0);
   list.forEach(a => {
     const c = document.createElement('div');
     c.className = 'art-card';
+    const topicLabel = TOPIC_LABELS[a.topic] || a.topic;
+    const typeLabel  = TYPE_LABELS[a.type]   || a.type;
     c.innerHTML = `
       <div class="art-card-title"><a href="${a.href}" target="_blank">${a.title}</a></div>
-      <div class="tags">${renderTags(a.tags)}</div>
+      <div class="tags">
+        <span class="tag tag-${a.topic} tag-clickable" data-filter="topic" data-value="${a.topic}" title="Filtrer par thème">${topicLabel}</span>
+        <span class="tag tag-${a.type}  tag-clickable" data-filter="type"  data-value="${a.type}"  title="Filtrer par type">${typeLabel}</span>
+      </div>
       <div class="art-card-author">✍ ${a.author}</div>
       <div class="art-card-issue">Sérotine ${a.issueLabel} &nbsp;·&nbsp; <a href="${a.flip}">💬 Commentaires</a></div>
     `;
+    // Clickable tags inside cards
+    c.querySelectorAll('.tag-clickable').forEach(tag => {
+      tag.addEventListener('click', () => {
+        if (tag.dataset.filter === 'topic') setTopicFilter(tag.dataset.value);
+        else                                setTypeFilter(tag.dataset.value);
+        document.getElementById('explorer').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
     grid.appendChild(c);
   });
 }
 
-document.querySelectorAll('.filter-btn[data-filter="tag"]').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.filter-btn[data-filter="tag"]').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active'); activeTag = btn.dataset.value; render();
-  });
+// ── Topic filter buttons ──────────────────────────────────────────────────
+document.querySelectorAll('.topic-btn').forEach(btn => {
+  btn.addEventListener('click', () => setTopicFilter(btn.dataset.value));
 });
-sel.addEventListener('change', () => { activeAuthor = sel.value; render(); });
+
+// ── Type filter buttons ───────────────────────────────────────────────────
+document.querySelectorAll('.type-btn').forEach(btn => {
+  btn.addEventListener('click', () => setTypeFilter(btn.dataset.value));
+});
+
+// ── Author dropdown ───────────────────────────────────────────────────────
+authorSel.addEventListener('change', () => { activeAuthor = authorSel.value; render(); });
+
+// ── Sort buttons ──────────────────────────────────────────────────────────
 document.querySelectorAll('.sort-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     const key = btn.dataset.sort;
@@ -462,6 +495,7 @@ document.querySelectorAll('.sort-btn').forEach(btn => {
   });
 });
 
+// ── Mobile nav ────────────────────────────────────────────────────────────
 const toggle = document.getElementById('menuToggle');
 const navLinks = document.getElementById('navLinks');
 toggle.addEventListener('click', () => navLinks.classList.toggle('open'));

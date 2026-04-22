@@ -42,30 +42,39 @@ ISSUE_META = {
     1: ("media/Serotine1.jpg", "https://heyzine.com/flip-book/78d38fd9ec.html",  "Novembre 2025"),
 }
 
-TAG_LABELS = {
-    "astrophysique": "Astrophysique",
-    "biologie":      "Biologie",
-    "physique":      "Physique",
-    "psychologie":   "Psychologie",
-    "sociologie":    "Sociologie",
-    "jeu":           "Jeu",
-    "poesie":        "Poésie",
-    "article":       "Article",
+TOPIC_LABELS = {
+    "astrophysique": "🌌 Astrophysique",
+    "biologie":      "🦠 Biologie",
+    "physique":      "🧲 Physique",
+    "psychologie":   "🧠 Psychologie",
+    "sociologie":    "🤝 Sociologie",
 }
 
-TAG_CSS = {
+TYPE_LABELS = {
+    "article": "✒️ Article",
+    "jeu":     "🎲 Jeu",
+    "poesie":  "🎶 Poésie",
+}
+
+TAG_LABELS = {**TOPIC_LABELS, **TYPE_LABELS}  # kept for article page rendering
+
+TOPIC_CSS = {
     "astrophysique": ("1e3a5f", "1e3a5f"),
     "biologie":      ("2d5a3d", "2d5a3d"),
     "physique":      ("8b3a2a", "8b3a2a"),
     "psychologie":   ("6b4c8b", "6b4c8b"),
     "sociologie":    ("4b6b3a", "3a5a28"),
-    "jeu":           ("b8860b", "8a6008"),
-    "sante":         ("8b2a45", "8b2a45"),
-    "poesie":        ("3a5a5a", "3a5a5a"),
-    "article":       ("3a475a", "3a475a"),
 }
 
-FIELDS = ["id", "title", "author", "tags", "issue", "issueLabel", "href"]
+TYPE_CSS = {
+    "article": ("3a475a", "3a475a"),
+    "jeu":     ("b8860b", "8a6008"),
+    "poesie":  ("3a5a5a", "3a5a5a"),
+}
+
+TAG_CSS = {**TOPIC_CSS, **TYPE_CSS}  # kept for CSS generation
+
+FIELDS = ["id", "title", "author", "topic", "type", "issue", "issueLabel", "href"]
 
 
 # ══════════════════════════════════════════════
@@ -87,10 +96,10 @@ def load_articles(csv_path: str) -> list[dict]:
                 row.pop()
 
             # ── Validate column count ─────────────────────────────────────
-            if len(row) < 7:
+            if len(row) < 8:
                 warnings.append(
                     f"  ⚠  Ligne {line_num}: seulement {len(row)} colonnes "
-                    f"(attendu 7) — ligne ignorée.\n     Contenu: {row}"
+                    f"(attendu 8) — ligne ignorée.\n     Contenu: {row}"
                 )
                 continue
 
@@ -114,7 +123,7 @@ def load_articles(csv_path: str) -> list[dict]:
                 continue
 
             # ── Validate required fields ──────────────────────────────────
-            for field in ("title", "author", "href"):
+            for field in ("title", "author", "href", "topic", "type"):
                 if not art[field]:
                     warnings.append(
                         f"  ⚠  Ligne {line_num} (id='{art['id']}'): "
@@ -127,14 +136,21 @@ def load_articles(csv_path: str) -> list[dict]:
                     f"  ⚠  Ligne {line_num} (id='{art['id']}'): "
                     f"href ne ressemble pas à une URL: '{art['href']}'"
                 )
+
+            # ── Validate topic / type values ──────────────────────────────
+            if art["topic"] and art["topic"] not in TOPIC_LABELS:
+                warnings.append(
+                    f"  ⚠  Ligne {line_num} (id='{art['id']}'): "
+                    f"topic inconnu '{art['topic']}' — valeurs attendues: {list(TOPIC_LABELS)}"
+                )
+            if art["type"] and art["type"] not in TYPE_LABELS:
+                warnings.append(
+                    f"  ⚠  Ligne {line_num} (id='{art['id']}'): "
+                    f"type inconnu '{art['type']}' — valeurs attendues: {list(TYPE_LABELS)}"
+                )
+
             # Derive flip from id
             art["flip"] = f"articles/{art['id']}.html"
-
-            art["tags"] = [t.strip() for t in art["tags"].split(",") if t.strip()]
-            if not art["tags"]:
-                warnings.append(
-                    f"  ⚠  Ligne {line_num} (id='{art['id']}'): aucun tag trouvé."
-                )
 
             articles.append(art)
 
@@ -160,12 +176,12 @@ def js_escape(s: str) -> str:
 def generate_js_data(articles: list[dict]) -> str:
     lines = ["const ARTICLES = ["]
     for a in articles:
-        tags_js = "[" + ",".join(f'"{t}"' for t in a["tags"]) + "]"
         lines.append(
             f'  {{ id:"{js_escape(a["id"])}", '
             f'title:"{js_escape(a["title"])}", '
             f'author:"{js_escape(a["author"])}", '
-            f'tags:{tags_js}, '
+            f'topic:"{js_escape(a["topic"])}", '
+            f'type:"{js_escape(a["type"])}", '
             f'issue:{a["issue"]}, '
             f'issueLabel:"{js_escape(a["issueLabel"])}", '
             f'href:"{js_escape(a["href"])}", '
@@ -195,7 +211,6 @@ def generate_archives_html(articles: list[dict]) -> str:
         items = "\n".join(
             f'              <li>'
             f'<a href="{a["href"]}" target="_blank">{a["title"]}</a> '
-            #f'<a href="{a["flip"]}" class="comment-link">💬</a>'
             f'</li>'
             for a in issue_articles
         )
@@ -233,15 +248,13 @@ def tag_css_rule(tag: str) -> str:
     bg, fg = TAG_CSS.get(tag, ("888", "555"))
     return f'.tag-{tag} {{ background:#{bg}14; color:#{fg}; border:1px solid #{bg}28; }}'
 
-def render_tags_html(tags: list[str]) -> str:
-    return "\n        ".join(
-        f'<span class="tag tag-{t}">{TAG_LABELS.get(t, t)}</span>'
-        for t in tags
-    )
+def render_tag_html(key: str, value: str) -> str:
+    label = TAG_LABELS.get(value, value)
+    return f'<span class="tag tag-{value}" data-filter="{key}" data-value="{value}">{label}</span>'
 
 def generate_article_html(article: dict) -> str:
     tag_styles  = "\n    ".join(tag_css_rule(t) for t in TAG_CSS)
-    tags_html   = render_tags_html(article["tags"])
+    tags_html   = render_tag_html("topic", article["topic"]) + "\n        " + render_tag_html("type", article["type"])
     parts       = article["issueLabel"].split("·")
     issue_num   = parts[0].strip()
     issue_date  = parts[1].strip() if len(parts) > 1 else ""
