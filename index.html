@@ -10,9 +10,9 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --ink: #1a1410; --paper: #f8f4ee; --cream: #f0e9dc;
+      --ink: #10243e; --paper: #f8f4ee; --cream: #f0e9dc;
       --accent: #10243e; --muted: #7a6f63; --border: rgba(26,20,16,.15);
-      --podcast-bg: #10243e;
+      --podcast-bg: #1a1410;
     }
     html { scroll-behavior: smooth; }
     body { background: var(--paper); color: var(--ink); font-family: 'DM Sans', sans-serif; font-weight: 300; line-height: 1.7; }
@@ -217,7 +217,7 @@
   <p class="hero-desc">
     Bienvenue sur la page du webzine <strong>Sérotine</strong>, portée par l'association
     <a href="https://www.auroralpes.fr/" target="_blank">AurorAlpes</a>.
-    Retrouvez les numéros du webzine, explorez les articles par thème ou par auteur.ices, et écoutez notre podcast&nbsp;!
+    Retrouvez les numéros du webzine, explorez les articles, et écoutez notre podcast&nbsp;!
   </p>
   <div class="hero-social">
     <a href="mailto:webzine@auroralpes.fr" target="_blank"><img src="media/envelope.svg" alt="Email" class="logo-small"></a>
@@ -279,10 +279,11 @@
         <button class="type-btn" data-value="article">Article</button>
         <button class="type-btn" data-value="jeu">Jeu</button>
         <button class="type-btn" data-value="poesie">Poésie</button>
-        <span class="filter-sep"></span>
-        <span class="filter-label">Auteur.ice&nbsp;:</span>
+      </div>
+      <div class="filter-bar" style="margin-bottom:1.25rem">  
+        <span class="filter-label">Rédacteur et rédactrice&nbsp;:</span>
         <select id="authorFilter" class="filter-select">
-          <option value="all">Toutes les auteur.ices</option>
+          <option value="all">Tous les rédacteur et rédactrices</option>
         </select>
       </div>
       <div class="sort-bar">
@@ -359,7 +360,7 @@
       <div class="podcast-coming">
         <div class="podcast-icon">🎙️</div>
         <h3>Bientôt disponible</h3>
-        <p>L'équipe Sérotine prépare une série de podcasts pour prolonger les articles du webzine. Interviews de chercheurs, décryptages scientifiques et coulisses de la rédaction — à écouter où que vous soyez.</p>
+        <p>L'équipe Sérotine prépare une série de podcasts pour prolonger les articles du webzine, à écouter où que vous soyez.</p>
         <span class="podcast-badge">En préparation</span>
       </div>
     </div>
