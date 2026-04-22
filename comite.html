@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comité de rédaction — Sérotine</title>
+  <meta name="description" content="Découvrez le comité de rédaction de Sérotine, les relecteurs et relectrices bénévoles qui veillent à la qualité scientifique du webzine.">
+
+  <!-- OpenGraph -->
+  <meta property="og:type"        content="website">
+  <meta property="og:title"       content="Comité de rédaction — Sérotine">
+  <meta property="og:description" content="Les relecteurs et relectrices bénévoles qui veillent à la qualité scientifique de Sérotine.">
+  <meta property="og:site_name"   content="Sérotine, un souffle de science">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink: #1a1410; --paper: #f8f4ee; --cream: #f0e9dc;
+      --accent: #10243e; --muted: #7a6f63; --border: rgba(26,20,16,.15);
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--paper); color: var(--ink); font-family: 'DM Sans', sans-serif; font-weight: 300; line-height: 1.7; }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100; background: var(--ink);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem; height: 60px; box-shadow: 0 2px 14px rgba(0,0,0,.4);
+    }
+    .nav-brand { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--paper); text-decoration: none; }
+    .nav-brand em { font-style: italic; color: #c8b89a; }
+    .nav-links { display: flex; gap: 1.75rem; list-style: none; }
+    .nav-links a { color: #c8b89a; text-decoration: none; font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; transition: color .2s; }
+    .nav-links a:hover { color: #fff; }
+    .nav-links a.active { color: #fff; border-bottom: 1px solid #c8b89a; padding-bottom: 2px; }
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 6px; flex-direction: column; gap: 5px; }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--paper); }
+    @media (max-width: 720px) {
+      .nav-toggle { display: flex; }
+      .nav-links { display: none; position: fixed; top: 60px; left: 0; right: 0; background: var(--ink); flex-direction: column; gap: 0; padding: 1rem 0; }
+      .nav-links.open { display: flex; }
+      .nav-links li a { display: block; padding: .75rem 2rem; }
+    }
+
+    /* HERO STRIP */
+    .logo-footer { height: clamp(30px,5vw,120px); object-fit: contain; filter: brightness(1.1); }
+    .logo-xsmall { height: clamp(25px,5vw,20px); object-fit: contain; filter: brightness(1.1); }
+    .page-hero {
+      background: var(--ink); color: var(--paper);
+      padding: 3.5rem 2rem 3rem; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .page-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 120%, #2d5a3d22 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .page-hero-label {
+      font-size: .72rem; font-weight: 500; letter-spacing: .15em;
+      text-transform: uppercase; color: #c8b89a; margin-bottom: .75rem;
+    }
+    .page-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      font-weight: 400; line-height: 1.15; margin-bottom: 1rem;
+    }
+    .page-hero h1 em { font-style: italic; color: #c8b89a; }
+    .page-hero p {
+      color: rgba(255,255,255,.6); max-width: 580px;
+      margin: 0 auto; font-size: .95rem; line-height: 1.9;
+    }
+
+    /* CONTENT WRAPPER */
+    .wrap { max-width: 900px; margin: 0 auto; padding: 4rem 2rem 6rem; }
+
+    /* INTRO BLOCK */
+    .intro-block {
+      border-left: 3px solid var(--accent);
+      padding: 1.25rem 1.5rem;
+      background: rgba(45,90,61,.05);
+      border-radius: 0 6px 6px 0;
+      margin-bottom: 3.5rem;
+    }
+    .intro-block p { color: var(--ink); font-size: .95rem; line-height: 1.85; }
+    .intro-block p + p { margin-top: .75rem; }
+
+    /* SECTION TITLE */
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem; font-weight: 400;
+      border-bottom: 2px solid var(--ink);
+      padding-bottom: .6rem; margin-bottom: 2rem;
+    }
+    .section-title small {
+      font-family: 'DM Sans', sans-serif;
+      font-size: .72rem; font-weight: 400;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--muted); margin-left: .9rem;
+    }
+
+    /* MEMBER GRID */
+    .members-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3.5rem;
+    }
+    .member-card {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.4rem 1.5rem;
+      transition: box-shadow .2s, transform .2s;
+    }
+    .member-card:hover {
+      box-shadow: 0 4px 18px rgba(26,20,16,.12);
+      transform: translateY(-2px);
+    }
+    .member-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem; font-weight: 400;
+      margin-bottom: .3rem;
+    }
+    .member-role {
+      font-size: .72rem; font-weight: 500;
+      letter-spacing: .08em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: .6rem;
+    }
+    .member-bio {
+      font-size: .84rem; color: var(--muted);
+      line-height: 1.75;
+    }
+    .member-domains {
+      display: flex; flex-wrap: wrap; gap: .4rem;
+      margin-top: .85rem;
+    }
+    .domain-tag {
+      font-size: .67rem; font-weight: 500;
+      letter-spacing: .06em; text-transform: uppercase;
+      padding: .18rem .55rem; border-radius: 99px;
+      border: 1px solid var(--border); color: var(--muted);
+      background: rgba(26,20,16,.04);
+    }
+
+    /* PROCESS SECTION */
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 3.5rem;
+    }
+    .step {
+      padding: 1.25rem 1.4rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: white;
+    }
+    .step-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem; font-weight: 400;
+      color: rgba(26,20,16,.12); line-height: 1;
+      margin-bottom: .5rem;
+    }
+    .step-title {
+      font-size: .82rem; font-weight: 500;
+      letter-spacing: .06em; text-transform: uppercase;
+      color: var(--ink); margin-bottom: .4rem;
+    }
+    .step-desc { font-size: .84rem; color: var(--muted); line-height: 1.7; }
+
+    /* JOIN BLOCK */
+    .join-block {
+      background: var(--ink); color: var(--paper);
+      border-radius: 10px; padding: 2.5rem 2rem;
+      text-align: center;
+    }
+    .join-block h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem; font-weight: 400; margin-bottom: .75rem;
+    }
+    .join-block h2 em { font-style: italic; color: #c8b89a; }
+    .join-block p { color: rgba(255,255,255,.6); max-width: 480px; margin: 0 auto 1.75rem; font-size: .9rem; line-height: 1.9; }
+    .join-btn {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--accent); color: #fff;
+      font-size: .85rem; font-weight: 500; letter-spacing: .04em;
+      padding: .7rem 1.75rem; border-radius: 99px;
+      text-decoration: none; transition: opacity .2s;
+    }
+    .join-btn:hover { opacity: .85; }
+
+    footer {
+      background: var(--ink); color: #a09080;
+      text-align: center; padding: 2rem; font-size: .8rem;
+    }
+    footer a { color: #c8b89a; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-brand">Sérotine <em>— un souffle de science</em></a>
+    <button class="nav-toggle" id="menuToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#dernier">Dernier numéro</a></li>
+      <li><a href="index.html#explorer">Explorer</a></li>
+      <li><a href="index.html#archives">Archives</a></li>
+      <li><a href="index.html#podcast">Podcast</a></li>
+      <li><a href="comite.html" class="active">Organisation</a></li>
+      <li><a href="https://www.auroralpes.fr/" target="_blank">AurorAlpes</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-hero">
+    <div class="page-hero-label">La rédaction</div>
+    <h1>Comité de <em>relecture</em></h1>
+    <p>Derrière chaque article de Sérotine, une équipe de relecteurs et relectrices bénévoles veille à la rigueur scientifique, à la clarté du propos et à la qualité de l'écriture.</p>
+  </div>
+
+  <div class="wrap">
+
+    <div class="intro-block">
+      <p>Sérotine est un webzine de vulgarisation scientifique porté par des étudiant·es passionné·es. Avant chaque publication, tous les articles passent par un processus de relecture exigeant et bienveillant, assuré par notre comité de relecture. Le comité intervient à deux niveaux : 
+      <p>> La vérification scientifique des contenus (exactitude des faits, des sources et des raisonnements) par un conseil scientifique et 
+      <p>> La relecture rédactionnelle (clarté, accessibilité et style) par un comité de rédaction.</p>
+    </div>
+
+    <h2 class="section-title">Les membres <small>Comité de rédaction actuel</small></h2>
+
+    <div class="members-grid">
+
+      <div class="member-card">
+        <div class="member-name">Hector PILLOT</div>
+        <div class="member-role">Responsable de publication</div>
+        <div class="member-bio">Ajoutez ici le nom, le rôle et une courte biographie du membre du comité.</div>
+        <div class="hero-social">
+          <a href="https://linktr.ee/hectorpillot" target="_blank"><img src="media/link.svg" alt="Credit" class="logo-xsmall"></a>
+        </div>
+      </div>
+
+      <div class="member-card">
+        <div class="member-name">Alexandra Blin</div>
+        <div class="member-role">Relectrice</div>
+        <div class="member-bio">Ajoutez ici le nom, le rôle et une courte biographie du membre du comité.</div>
+        <div class="hero-social">
+          <a href="" target="_blank"><img src="media/link.svg" alt="Credit" class="logo-xsmall"></a>
+        </div>
+      </div>
+
+      <div class="member-card">
+        <div class="member-name">Amaëline</div>
+        <div class="member-role">Relecture et Podcast</div>
+        <div class="member-bio">Ajoutez ici le nom, le rôle et une courte biographie du membre du comité.</div>
+        <div class="hero-social">
+          <a href="https://linktr.ee/amaeline" target="_blank"><img src="media/link.svg" alt="Credit" class="logo-xsmall"></a>
+        </div>
+      </div>
+
+      <div class="member-card">
+        <div class="member-name">Charley Gay</div>
+        <div class="member-role">Relecture</div>
+        <div class="member-bio">Ajoutez ici le nom, le rôle et une courte biographie du membre du comité.</div>
+        <div class="hero-social">
+          <a href="https://www.linkedin.com/in/charleygay" target="_blank"><img src="media/link.svg" alt="Credit" class="logo-xsmall"></a>
+        </div>
+      </div>
+
+      <div class="member-card">
+        <div class="member-name">Emy Crayonne</div>
+        <div class="member-role">Relecture et Illustratrice</div>
+        <div class="member-bio">Ajoutez ici le nom, le rôle et une courte biographie du membre du comité.</div>
+        <div class="hero-social">
+          <a href="https://www.instagram.com/emy_crayonne" target="_blank"><img src="media/link.svg" alt="Credit" class="logo-xsmall"></a>
+        </div>
+      </div>
+
+      <div class="member-card">
+        <div class="member-name">Léo Duchêne</div>
+        <div class="member-role">Relecture et Mise en page</div>
+        <div class="member-bio">Ajoutez ici le nom, le rôle et une courte biographie du membre du comité.</div>
+        <div class="hero-social">
+          <a href="https://linktr.ee/leo_astro" target="_blank"><img src="media/link.svg" alt="Credit" class="logo-xsmall"></a>
+        </div>
+      </div>
+
+      <div class="member-card">
+        <div class="member-name">Pierre Gachod</div>
+        <div class="member-role">Relecture et Mise en page</div>
+        <div class="member-bio">Ajoutez ici le nom, le rôle et une courte biographie du membre du comité.</div>
+        <div class="hero-social">
+          <a href="" target="_blank"><img src="media/link.svg" alt="Credit" class="logo-xsmall"></a>
+        </div>
+      </div>
+
+    </div>
+
+    <h2 class="section-title">Notre processus <small>De la soumission à la publication</small></h2>
+
+    <div class="process-steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-title">Soumission</div>
+        <div class="step-desc">L'auteur·rice soumet son article à la rédaction.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-title">Relecture rédactionnelle</div>
+        <div class="step-desc">L'article est relu par un minimum de 3 membres du comité de relecture pour s'assurer de la clarté de la rédaction et du respect de la ligne éditoriale du magazine.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-title">Relecture scientifique</div>
+        <div class="step-desc">Dans la mesure du possible, un·e professionnel est contacté afin d'effectuer la relecture scientifique de l'article</div>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-title">Retours</div>
+        <div class="step-desc">Des suggestions et corrections sont transmises à l'auteur·rice pour révision.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">05</div>
+        <div class="step-title">Mise en page</div>
+        <div class="step-desc">Après révision, l'article reçoit le feu vert du comité pour intégration au numéro. Il est alors mis en page par le comité de rédaction pour paraître dans le prochain numéro.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">06</div>
+        <div class="step-title">Enregistrement de version Podcast</div>
+        <div class="step-desc">L'article est enregistré sous forme d'un podcast par la rédacteur·ice ou un·e autre membre du projet.</div>
+      </div>
+    </div>
+
+    <div class="join-block">
+      <h2>Rejoindre le <em>projet</em>&nbsp;?</h2>
+      <p>Vous êtes curieux ou curieuse ? Vous aimer écrire ? Contactez-nous&nbsp;!</p>
+      <a href="mailto:webzine@auroralpes.fr" target="_blank" class="join-btn">✉ Nous contacter</a>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p><strong>Sérotine, un souffle de science</strong> — par <a href="https://www.auroralpes.fr/" target="_blank">AurorAlpes</a></p>
+    <p>Espace commentaire développé à partir du projet <a href="https://github.com/utterance/utterances" target="_blank">utterances</a> par <a href="https://github.com/jdanyow" target="_blank">jdanyow</a></p>
+    <div class="footer-logo">
+      <a href="https://www.auroralpes.fr/" target="_blank">
+        <img src="media/auroralpes_logo_fil.png" alt="Logo AurorAlpes" class="logo-footer">
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    const t = document.getElementById('menuToggle'), n = document.getElementById('navLinks');
+    t.addEventListener('click', () => n.classList.toggle('open'));
+    n.querySelectorAll('a').forEach(a => a.addEventListener('click', () => n.classList.remove('open')));
+  </script>
+
+</body>
+</html>

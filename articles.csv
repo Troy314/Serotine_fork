@@ -1,13 +1,13 @@
-id,title,author,theme,type,issue,issueLabel,href
-astrologie,Des messages (ésotériques) dans les étoiles ?,Gay Charley,astrophysique,article,4,#4 · Mars 2026,https://heyzine.com/flip-book/5edd108961.html#page/4
-voie_lactee,7 merveilles du ciel nocturne : La Voie Lactée,Duchêne Léo,astrophysique,article,4,#4 · Mars 2026,https://heyzine.com/flip-book/5edd108961.html#page/16
-betelgeuse,"Bételgeuse, l'étoile au sommet de la hype",Daveau Quentin,astrophysique,article,4,#4 · Mars 2026,https://heyzine.com/flip-book/5edd108961.html#page/20
-crush,Les secrets insoupçonnés du « crush »,Daveau Quentin,sociologie,article,3,#3 · Fév. 2026,https://heyzine.com/flip-book/d5c17bee9a.html#page/4
-ode_celeste,Ode céleste,Amaëline,astrophysique,poesie,3,#3 · Fév. 2026,https://heyzine.com/flip-book/d5c17bee9a.html#page/12
-tca,"Red flags et nourriture, quand les TCA s'invitent à table",Bacquet Isaora,psychologie,article",3,#3 · Fév. 2026,https://heyzine.com/flip-book/d5c17bee9a.html#page/15
-hydrocerame,"Les hydrocérames, ces vases qui suent",Pillot Hector,physique,article,2,#2 · Déc. 2025,https://heyzine.com/flip-book/5f6791f646.html#page/4
-aphantasie_sudoku_2,Ceci n'est pas un bouquet de fleurs (Sudoku) — Solution,Bosse Léo,sociologie,jeu,2,#2 · Déc. 2025,https://heyzine.com/flip-book/5f6791f646.html#page/16
-planete_neuf,Une neuvième planète dans notre système solaire,Gay Charley,astrophysique,article,2,#2 · Déc. 2025,https://heyzine.com/flip-book/5f6791f646.html#page/18
-aphantasie,L'aphantasie,Bacquet Isaora,"psychologie,article",1,#1 · Nov. 2025,https://heyzine.com/flip-book/78d38fd9ec.html#page/4
-aphantasie_sudoku,Ceci n'est pas un bouquet de fleurs (Sudoku),Bosse Léo,sociologie,jeu,1,#1 · Nov. 2025,https://heyzine.com/flip-book/78d38fd9ec.html#page/16
-respirer_par_anus,Peut-on respirer par l'anus ?,Gachod Pierre,biologie,article,1,#1 · Nov. 2025,https://heyzine.com/flip-book/78d38fd9ec.html#page/18
+id,title,author,theme,type,issue,issueLabel,href,season
+astrologie,Des messages (ésotériques) dans les étoiles ?,Gay Charley,astrophysique,article,4,#4 · Mars 2026,https://heyzine.com/flip-book/5edd108961.html#page/4,1
+voie_lactee,7 merveilles du ciel nocturne : La Voie Lactée,Duchêne Léo,astrophysique,article,4,#4 · Mars 2026,https://heyzine.com/flip-book/5edd108961.html#page/16,1
+betelgeuse,"Bételgeuse, l'étoile au sommet de la hype",Daveau Quentin,astrophysique,article,4,#4 · Mars 2026,https://heyzine.com/flip-book/5edd108961.html#page/20,1
+crush,Les secrets insoupçonnés du « crush »,Daveau Quentin,sociologie,article,3,#3 · Fév. 2026,https://heyzine.com/flip-book/d5c17bee9a.html#page/4,1
+ode_celeste,Ode céleste,Amaëline,astrophysique,poesie,3,#3 · Fév. 2026,https://heyzine.com/flip-book/d5c17bee9a.html#page/12,1
+tca,"Red flags et nourriture, quand les TCA s'invitent à table",Bacquet Isaora,psychologie,article,3,#3 · Fév. 2026,https://heyzine.com/flip-book/d5c17bee9a.html#page/15,1
+hydrocerame,"Les hydrocérames, ces vases qui suent",Pillot Hector,physique,article,2,#2 · Déc. 2025,https://heyzine.com/flip-book/5f6791f646.html#page/4,1
+aphantasie_sudoku_2,Ceci n'est pas un bouquet de fleurs (Sudoku) — Solution,Bosse Léo,sociologie,jeu,2,#2 · Déc. 2025,https://heyzine.com/flip-book/5f6791f646.html#page/16,1
+planete_neuf,Une neuvième planète dans notre système solaire,Gay Charley,astrophysique,article,2,#2 · Déc. 2025,https://heyzine.com/flip-book/5f6791f646.html#page/18,1
+aphantasie,L'aphantasie,Bacquet Isaora,psychologie,article,1,#1 · Nov. 2025,https://heyzine.com/flip-book/78d38fd9ec.html#page/4,1
+aphantasie_sudoku,Ceci n'est pas un bouquet de fleurs (Sudoku),Bosse Léo,sociologie,jeu,1,#1 · Nov. 2025,https://heyzine.com/flip-book/78d38fd9ec.html#page/16,1
+respirer_par_anus,Peut-on respirer par l'anus ?,Gachod Pierre,biologie,article,1,#1 · Nov. 2025,https://heyzine.com/flip-book/78d38fd9ec.html#page/18,1

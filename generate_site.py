@@ -74,7 +74,7 @@ TYPE_CSS = {
 
 TAG_CSS = {**TOPIC_CSS, **TYPE_CSS}  # kept for CSS generation
 
-FIELDS = ["id", "title", "author", "topic", "type", "issue", "issueLabel", "href"]
+FIELDS = ["id", "title", "author", "topic", "type", "issue", "issueLabel", "href", "season"]
 
 
 # ══════════════════════════════════════════════
@@ -99,9 +99,13 @@ def load_articles(csv_path: str) -> list[dict]:
             if len(row) < 8:
                 warnings.append(
                     f"  ⚠  Ligne {line_num}: seulement {len(row)} colonnes "
-                    f"(attendu 8) — ligne ignorée.\n     Contenu: {row}"
+                    f"(attendu au moins 8) — ligne ignorée.\n     Contenu: {row}"
                 )
                 continue
+
+            # Pad to 9 columns if season is missing (backward compat with old CSV)
+            while len(row) < 9:
+                row.append('')
 
             art = dict(zip(FIELDS, [c.strip().strip('"') for c in row]))
 
@@ -121,6 +125,15 @@ def load_articles(csv_path: str) -> list[dict]:
                     f"numéro de numéro invalide '{art['issue']}' — ligne ignorée."
                 )
                 continue
+
+            # ── Auto-compute season (1 saison = 4 numéros) ───────────────
+            if art["season"]:
+                try:
+                    art["season"] = int(art["season"])
+                except ValueError:
+                    art["season"] = (art["issue"] - 1) // 4 + 1
+            else:
+                art["season"] = (art["issue"] - 1) // 4 + 1
 
             # ── Validate required fields ──────────────────────────────────
             for field in ("title", "author", "href", "topic", "type"):
@@ -183,6 +196,7 @@ def generate_js_data(articles: list[dict]) -> str:
             f'topic:"{js_escape(a["topic"])}", '
             f'type:"{js_escape(a["type"])}", '
             f'issue:{a["issue"]}, '
+            f'season:{a["season"]}, '
             f'issueLabel:"{js_escape(a["issueLabel"])}", '
             f'href:"{js_escape(a["href"])}", '
             f'flip:"{js_escape(a["flip"])}" }},'
@@ -196,11 +210,13 @@ def generate_js_data(articles: list[dict]) -> str:
 # ══════════════════════════════════════════════
 
 def generate_archives_html(articles: list[dict]) -> str:
+    # Group articles by issue
     by_issue = defaultdict(list)
     for a in articles:
         by_issue[a["issue"]].append(a)
 
-    cards = []
+    # Build issue cards
+    issue_cards = {}
     for issue_num in sorted(by_issue.keys(), reverse=True):
         issue_articles = by_issue[issue_num]
         meta     = ISSUE_META.get(issue_num, (f"media/Serotine{issue_num}.jpg", "#", ""))
@@ -215,7 +231,7 @@ def generate_archives_html(articles: list[dict]) -> str:
             for a in issue_articles
         )
 
-        cards.append(f"""\
+        issue_cards[issue_num] = f"""\
         <div class="issue-card">
           <div class="issue-cover"><a href="{base_url}" target="_blank"><img src="{cover}" alt="#{issue_num}"></a></div>
           <div class="issue-info">
@@ -224,19 +240,35 @@ def generate_archives_html(articles: list[dict]) -> str:
 {items}
             </ul>
           </div>
-        </div>""")
+        </div>"""
 
-    cards_html = "\n".join(cards)
+    # Group issues by season (auto-computed: season = (issue-1)//4 + 1)
+    by_season = defaultdict(list)
+    for issue_num in sorted(issue_cards.keys(), reverse=True):
+        season_num = (issue_num - 1) // 4 + 1
+        by_season[season_num].append(issue_num)
+
+    # Build season blocks
+    season_blocks = []
+    for season_num in sorted(by_season.keys(), reverse=True):
+        season_issues = by_season[season_num]
+        cards_html = "\n".join(issue_cards[i] for i in season_issues)
+        # First (most recent) season is open by default
+        open_attr = " open" if season_num == max(by_season.keys()) else ""
+        season_blocks.append(f"""\
+    <details{open_attr}>
+      <summary>Saison {season_num}</summary>
+      <div class="issues-grid">
+{cards_html}
+      </div>
+    </details>""")
+
+    seasons_html = "\n".join(season_blocks)
     return f"""\
   <!-- ARCHIVES -->
   <section class="section" id="archives">
     <h2 class="section-title">Anciens numéros <small>Tous les numéros</small></h2>
-    <details open>
-      <summary>Saison 1</summary>
-      <div class="issues-grid">
-{cards_html}
-      </div>
-    </details>
+{seasons_html}
   </section>"""
 
 
@@ -339,6 +371,7 @@ def generate_article_html(article: dict) -> str:
       <li><a href="../index.html#explorer">Explorer</a></li>
       <li><a href="../index.html#archives">Archives</a></li>
       <li><a href="../index.html#podcast">Podcast</a></li>
+      <li><a href="../comite.html">Comité</a></li>
       <li><a href="https://www.auroralpes.fr/" target="_blank">AurorAlpes</a></li>
     </ul>
   </nav>
@@ -451,6 +484,13 @@ def generate_sitemap(articles: list[dict]) -> str:
     <lastmod>{today}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+  </url>""",
+f"""\
+  <url>
+    <loc>{SITE_URL}/comite.html</loc>
+    <lastmod>{today}</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
   </url>"""]
     for a in articles:
         urls.append(f"""\
