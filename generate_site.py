@@ -43,14 +43,14 @@ ISSUE_META = {
 }
 
 TAG_LABELS = {
-    "astrophysique": "🌌 Astrophysique",
-    "biologie":      "🦠 Biologie",
-    "physique":      "🧲 Physique",
-    "psychologie":   "🧠 Psychologie",
-    "sociologie":    "🤝 Sociologie",
-    "jeu":           "🎲 Jeu",
-    "poesie":        "🎶 Poésie",
-    "article":       "✒️ Article",
+    "astrophysique": "Astrophysique",
+    "biologie":      "Biologie",
+    "physique":      "Physique",
+    "psychologie":   "Psychologie",
+    "sociologie":    "Sociologie",
+    "jeu":           "Jeu",
+    "poesie":        "Poésie",
+    "article":       "Article",
 }
 
 TAG_CSS = {
@@ -195,7 +195,7 @@ def generate_archives_html(articles: list[dict]) -> str:
         items = "\n".join(
             f'              <li>'
             f'<a href="{a["href"]}" target="_blank">{a["title"]}</a> '
-            f'<a href="{a["flip"]}" class="comment-link">💬</a>'
+            #f'<a href="{a["flip"]}" class="comment-link">💬</a>'
             f'</li>'
             for a in issue_articles
         )

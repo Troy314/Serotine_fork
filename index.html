@@ -131,8 +131,10 @@
 
     /* TAGS */
     .tags { display: flex; gap: .35rem; flex-wrap: wrap; }
-    .tag { display: inline-block; font-size: .66rem; font-weight: 500; letter-spacing: .07em; text-transform: uppercase; padding: .12rem .5rem; border-radius: 99px; }
-    .tag-astrophysique { background:#1e3a5f14; color:#1e3a5f; border:1px solid #1e3a5f28; }
+    .tag { border: 1px solid var(--border); background: var(--paper); color: var(--ink); display: inline-block; font-size: .50rem; font-weight: 500; letter-spacing: .07em; text-transform: uppercase; padding: .12rem .5rem; border-radius: 99px; }
+    .tag:hover { border-color: var(--accent); color: var(--accent); }
+    .tag.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+    /* .tag-astrophysique { background:#1e3a5f14; color:#1e3a5f; border:1px solid #1e3a5f28; }
     .tag-biologie      { background:#2d5a3d14; color:#2d5a3d; border:1px solid #2d5a3d28; }
     .tag-physique      { background:#8b3a2a14; color:#8b3a2a; border:1px solid #8b3a2a28; }
     .tag-psychologie   { background:#6b4c8b14; color:#6b4c8b; border:1px solid #6b4c8b28; }
@@ -265,18 +267,20 @@
       <div class="filter-bar">
         <span class="filter-label">Thème&nbsp;:</span>
         <button class="filter-btn active" data-filter="tag" data-value="all">Tous</button>
-        <button class="filter-btn" data-filter="tag" data-value="astrophysique">🌌 Astrophysique</button>
-        <button class="filter-btn" data-filter="tag" data-value="biologie">🦠 Biologie</button>
-        <button class="filter-btn" data-filter="tag" data-value="physique">🧲 Physique</button>
-        <button class="filter-btn" data-filter="tag" data-value="psychologie">🧠 Psychologie</button>
-        <button class="filter-btn" data-filter="tag" data-value="sociologie">🤝 Sociologie</button>
-        <button class="filter-btn" data-filter="tag" data-value="jeu">🎲 Jeu</button>
-        <button class="filter-btn" data-filter="tag" data-value="poesie">🎶 Poésie</button>
-        <button class="filter-btn" data-filter="tag" data-value="article">✒️ Article</button>
+        <button class="filter-btn" data-filter="tag" data-value="astrophysique">Astrophysique</button>
+        <button class="filter-btn" data-filter="tag" data-value="biologie">Biologie</button>
+        <button class="filter-btn" data-filter="tag" data-value="physique">Physique</button>
+        <button class="filter-btn" data-filter="tag" data-value="psychologie">Psychologie</button>
+        <button class="filter-btn" data-filter="tag" data-value="sociologie">Sociologie</button>
+        <span class="filter-sep"></span>
+        <span class="filter-label">Type&nbsp;:</span>
+        <button class="filter-btn" data-filter="tag" data-value="jeu">Jeu</button>
+        <button class="filter-btn" data-filter="tag" data-value="poesie">Poésie</button>
+        <button class="filter-btn" data-filter="tag" data-value="article">Article</button>
         <span class="filter-sep"></span>
         <span class="filter-label">Auteur.ice&nbsp;:</span>
         <select id="authorFilter" class="filter-select">
-          <option value="all">Tous les auteur.ices</option>
+          <option value="all">Toutes les auteur.ices</option>
         </select>
       </div>
       <div class="sort-bar">
@@ -293,7 +297,7 @@
 
   <div class="ornament">· · ·</div>
 
-                  <!-- ARCHIVES -->
+                      <!-- ARCHIVES -->
   <section class="section" id="archives">
     <h2 class="section-title">Anciens numéros <small>Tous les numéros</small></h2>
     <details open>
@@ -304,9 +308,9 @@
           <div class="issue-info">
             <div class="issue-number">#4</div><div class="issue-date">Mars 2026</div>
             <ul class="issue-articles">
-              <li><a href="https://heyzine.com/flip-book/5edd108961.html#page/4" target="_blank">Des messages (ésotériques) dans les étoiles ?</a> <a href="articles/astrologie.html" class="comment-link">💬</a></li>
-              <li><a href="https://heyzine.com/flip-book/5edd108961.html#page/16" target="_blank">7 merveilles du ciel nocturne : La Voie Lactée</a> <a href="articles/voie_lactee.html" class="comment-link">💬</a></li>
-              <li><a href="https://heyzine.com/flip-book/5edd108961.html#page/20" target="_blank">Bételgeuse, l'étoile au sommet de la hype</a> <a href="articles/betelgeuse.html" class="comment-link">💬</a></li>
+              <li><a href="https://heyzine.com/flip-book/5edd108961.html#page/4" target="_blank">Des messages (ésotériques) dans les étoiles ?</a> </li>
+              <li><a href="https://heyzine.com/flip-book/5edd108961.html#page/16" target="_blank">7 merveilles du ciel nocturne : La Voie Lactée</a> </li>
+              <li><a href="https://heyzine.com/flip-book/5edd108961.html#page/20" target="_blank">Bételgeuse, l'étoile au sommet de la hype</a> </li>
             </ul>
           </div>
         </div>
@@ -315,9 +319,9 @@
           <div class="issue-info">
             <div class="issue-number">#3</div><div class="issue-date">Février 2026</div>
             <ul class="issue-articles">
-              <li><a href="https://heyzine.com/flip-book/d5c17bee9a.html#page/4" target="_blank">Les secrets insoupçonnés du « crush »</a> <a href="articles/crush.html" class="comment-link">💬</a></li>
-              <li><a href="https://heyzine.com/flip-book/d5c17bee9a.html#page/12" target="_blank">Ode céleste</a> <a href="articles/ode_celeste.html" class="comment-link">💬</a></li>
-              <li><a href="https://heyzine.com/flip-book/d5c17bee9a.html#page/15" target="_blank">Red flags et nourriture, quand les TCA s'invitent à table</a> <a href="articles/tca.html" class="comment-link">💬</a></li>
+              <li><a href="https://heyzine.com/flip-book/d5c17bee9a.html#page/4" target="_blank">Les secrets insoupçonnés du « crush »</a> </li>
+              <li><a href="https://heyzine.com/flip-book/d5c17bee9a.html#page/12" target="_blank">Ode céleste</a> </li>
+              <li><a href="https://heyzine.com/flip-book/d5c17bee9a.html#page/15" target="_blank">Red flags et nourriture, quand les TCA s'invitent à table</a> </li>
             </ul>
           </div>
         </div>
@@ -326,9 +330,9 @@
           <div class="issue-info">
             <div class="issue-number">#2</div><div class="issue-date">Décembre 2025</div>
             <ul class="issue-articles">
-              <li><a href="https://heyzine.com/flip-book/5f6791f646.html#page/4" target="_blank">Les hydrocérames, ces vases qui suent</a> <a href="articles/hydrocerame.html" class="comment-link">💬</a></li>
-              <li><a href="https://heyzine.com/flip-book/5f6791f646.html#page/16" target="_blank">Ceci n'est pas un bouquet de fleurs (Sudoku) — Solution</a> <a href="articles/aphantasie_sudoku_2.html" class="comment-link">💬</a></li>
-              <li><a href="https://heyzine.com/flip-book/5f6791f646.html#page/18" target="_blank">Une neuvième planète dans notre système solaire</a> <a href="articles/planete_neuf.html" class="comment-link">💬</a></li>
+              <li><a href="https://heyzine.com/flip-book/5f6791f646.html#page/4" target="_blank">Les hydrocérames, ces vases qui suent</a> </li>
+              <li><a href="https://heyzine.com/flip-book/5f6791f646.html#page/16" target="_blank">Ceci n'est pas un bouquet de fleurs (Sudoku) — Solution</a> </li>
+              <li><a href="https://heyzine.com/flip-book/5f6791f646.html#page/18" target="_blank">Une neuvième planète dans notre système solaire</a> </li>
             </ul>
           </div>
         </div>
@@ -337,9 +341,9 @@
           <div class="issue-info">
             <div class="issue-number">#1</div><div class="issue-date">Novembre 2025</div>
             <ul class="issue-articles">
-              <li><a href="https://heyzine.com/flip-book/78d38fd9ec.html#page/4" target="_blank">L'aphantasie</a> <a href="articles/aphantasie.html" class="comment-link">💬</a></li>
-              <li><a href="https://heyzine.com/flip-book/78d38fd9ec.html#page/16" target="_blank">Ceci n'est pas un bouquet de fleurs (Sudoku)</a> <a href="articles/aphantasie_sudoku.html" class="comment-link">💬</a></li>
-              <li><a href="https://heyzine.com/flip-book/78d38fd9ec.html#page/18" target="_blank">Peut-on respirer par l'anus ?</a> <a href="articles/respirer_par_anus.html" class="comment-link">💬</a></li>
+              <li><a href="https://heyzine.com/flip-book/78d38fd9ec.html#page/4" target="_blank">L'aphantasie</a> </li>
+              <li><a href="https://heyzine.com/flip-book/78d38fd9ec.html#page/16" target="_blank">Ceci n'est pas un bouquet de fleurs (Sudoku)</a> </li>
+              <li><a href="https://heyzine.com/flip-book/78d38fd9ec.html#page/18" target="_blank">Peut-on respirer par l'anus ?</a> </li>
             </ul>
           </div>
         </div>
@@ -401,9 +405,9 @@ const sel = document.getElementById('authorFilter');
 });
 
 const TAG_LABELS = {
-  astrophysique:'🌌 Astrophysique', biologie:'🦠 Biologie', physique:'🧲 Physique',
-  psychologie:'🧠 Psychologie', sociologie:'🤝 Sociologie',
-  jeu:'🎲 Jeu', poesie:'🎶 Poésie', article:'✒️ Article'
+  astrophysique:'Astrophysique', biologie:'Biologie', physique:'Physique',
+  psychologie:'Psychologie', sociologie:'Sociologie',
+  jeu:'Jeu', poesie:'Poésie', article:'Article'
 };
 
 function renderTags(tags) {
