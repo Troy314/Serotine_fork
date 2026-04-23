@@ -190,6 +190,11 @@
       text-decoration: none; transition: opacity .2s;
     }
     .join-btn:hover { opacity: .85; }
+    .join-badge { font-size: .68rem; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18); color: #c8b89a; padding: .3rem .9rem; border-radius: 99px; }
+    .join-link { margin-top: .75rem; }
+    .join-link a { display: inline-flex; align-items: center; gap: .5rem; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2); color: #e8d8c0; font-size: .85rem; font-weight: 500; letter-spacing: .04em; padding: .6rem 1.4rem; border-radius: 99px; text-decoration: none; transition: background .2s; }
+    .join-link a:hover { background: rgba(255,255,255,.18); }
+    .join-link p { font-size: .72rem; color: #7a6f63; margin-top: .4rem; }
 
     footer {
       background: var(--ink); color: #a09080;
@@ -337,7 +342,10 @@
     <div class="join-block">
       <h2>Rejoindre le <em>projet</em>&nbsp;?</h2>
       <p>Vous êtes curieux ou curieuse ? Vous aimez écrire ? Contactez-nous&nbsp;!</p>
-      <a href="mailto:webzine@auroralpes.fr" target="_blank" class="join-btn">✉ Nous contacter</a>
+      <div class="join-link">
+        <a href="mailto:webzine@auroralpes.fr" target="_blank">✉️ Nous contacter</a>
+        <p>Plus d'informations</p>
+      </div>
     </div>
 
   </div>
