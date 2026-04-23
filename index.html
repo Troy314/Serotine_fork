@@ -191,7 +191,7 @@
 <!-- NAV -->
 <nav>
   <a href="index.html" class="nav-brand">
-    <img src="media/serotine_logo.png" alt="Logo Sérotine" class="logo-xsmall">
+    <img src="media/serotine_logo.svg" alt="Logo Sérotine" class="logo-xsmall">
     érotine, <em>un souffle de science</em>
   </a>
   <button class="nav-toggle" id="menuToggle" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -250,15 +250,25 @@
         <p>Une longue réflexion sur l'utilisation d'intelligences artificielles, notamment génératives, a aussi mené à la <a href="media/charte_IA.png" target="_blank">rédaction d'une charte de l'intelligence artificielle</a> afin de réglementer son utilisation au sein du webzine.</p>
       </div>
       <div class="about-widget">
-        <iframe
+        <!-- <iframe
           allowtransparency="true"
           scrolling="no"
           src="https://www.helloasso.com/associations/auroralpes/collectes/documentaire-naturaliste-sur-la-piste-de-l-erese-pharaon/widget-compteur"
           title="Compteur de dons HelloAsso"
-        ></iframe>
+        ></iframe> -->
+        <iframe 
+          id="haWidgetCounter" 
+          allowtransparency="true" 
+          scrolling="no"
+          src="https://www.helloasso.com/associations/auroralpes/collectes/documentaire-naturaliste-sur-la-piste-de-l-erese-pharaon/widget-compteur" 
+          style="width:20pc;height:21.5pc;border:none;" 
+          >
+        </iframe>
       </div>
     </div>
   </section>
+
+  
 
   <!-- EXPLORER -->
   <section id="explorer">
@@ -299,7 +309,7 @@
   </section>
 
 
-                    <!-- ARCHIVES -->
+  <!-- ARCHIVES -->
   <section class="section" id="archives">
     <h2 class="section-title">Anciens numéros <small>Tous les numéros</small></h2>
     <details open>
