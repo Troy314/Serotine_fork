@@ -17,7 +17,7 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --ink: #1a1410; --paper: #f8f4ee; --cream: #f0e9dc;
+      --ink: #10243e; --paper: #f8f4ee; --cream: #f0e9dc;
       --accent: #10243e; --muted: #7a6f63; --border: rgba(26,20,16,.15);
     }
     html { scroll-behavior: smooth; }
@@ -201,7 +201,10 @@
 <body>
 
   <nav>
-    <a href="index.html" class="nav-brand">Sérotine <em>— un souffle de science</em></a>
+    <a href="index.html" class="nav-brand">
+      <img src="media/serotine_logo.svg" alt="Logo Sérotine" class="logo-xsmall">
+      érotine, <em>un souffle de science</em>
+    </a>
     <button class="nav-toggle" id="menuToggle" aria-label="Menu"><span></span><span></span><span></span></button>
     <ul class="nav-links" id="navLinks">
       <li><a href="index.html#dernier">Dernier numéro</a></li>
