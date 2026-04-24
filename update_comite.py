@@ -181,7 +181,7 @@ def build_comite_section(membres: list[dict]) -> str:
     grid = render_members_grid(membres)
     return f"""\
     <!-- COMITE_START -->
-    <h2 class="section-title">Les membres <small>Comité de rédaction actuel</small></h2>
+    <h2 class="section-title">Comité de rédaction actuel</h2>
 {grid}
     <!-- COMITE_END -->"""
 
@@ -208,7 +208,7 @@ def build_projet_section(membres: list[dict]) -> str:
     grid = render_members_grid(membres)
     return f"""\
     <!-- PROJET_START -->
-    <h2 class="section-title">Le projet <small>Membres et partenaires</small></h2>
+    <h2 class="section-title">L'équipe <small>Membres du projet</small></h2>
 {grid}
     <!-- PROJET_END -->"""
 
