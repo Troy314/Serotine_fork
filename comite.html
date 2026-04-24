@@ -19,6 +19,7 @@
     :root {
       --ink: #10243e; --paper: #f8f4ee; --cream: #f0e9dc;
       --accent: #10243e; --muted: #7a6f63; --border: rgba(26,20,16,.15);
+      --join-bg: #1a1410;
     }
     html { scroll-behavior: smooth; }
     body { background: var(--paper); color: var(--ink); font-family: 'DM Sans', sans-serif; font-weight: 300; line-height: 1.7; }
@@ -171,8 +172,9 @@
     .step-desc { font-size: .84rem; color: var(--muted); line-height: 1.7; }
 
     /* JOIN BLOCK */
+    #join { background: var(--join-bg); }
     .join-block {
-      background: var(--ink); color: var(--paper);
+      background: var(--join-bg); color: var(--paper);
       border-radius: 10px; padding: 2.5rem 2rem;
       text-align: center;
     }
@@ -196,11 +198,43 @@
     .join-link a:hover { background: rgba(255,255,255,.18); }
     .join-link p { font-size: .72rem; color: #7a6f63; margin-top: .4rem; }
 
+                    /* AVATAR */
+    .member-avatar { width: 52px; height: 52px; border-radius: 50%; overflow: hidden; margin-bottom: .75rem; flex-shrink: 0; }
+    .member-photo { width: 100%; height: 100%; object-fit: cover; }
+    .member-initials {
+      display: flex; align-items: center; justify-content: center;
+      background: var(--ink); color: var(--paper);
+      font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 400;
+    }
+
+    /* CARTE COMPACTE (anciens membres) */
+    .member-card.compact { padding: 1rem 1.2rem; }
+    .member-card.compact .member-avatar { width: 36px; height: 36px; font-size: .8rem; }
+
+    /* ANCIENS MEMBRES — section dépliable */
+    .anciens-details { margin-bottom: 3.5rem; }
+    .anciens-details > .members-grid { margin-top: 1.5rem; }
+    .anciens-summary {
+      cursor: pointer; list-style: none; display: flex;
+      align-items: baseline; gap: .75rem;
+      margin-bottom: 0 !important;
+    }
+    .anciens-summary::-webkit-details-marker { display: none; }
+    .anciens-summary .toggle-icon { font-size: .9rem; color: var(--muted); transition: transform .25s; }
+    .anciens-details[open] .toggle-icon { transform: rotate(180deg); }
+
+    /* CSS INJECTED BY update_comite.py — ne pas supprimer cette ligne */
+
+    /* MEMBER GRID */
     footer {
       background: var(--ink); color: #a09080;
       text-align: center; padding: 2rem; font-size: .8rem;
+      line-height: 1.9;
     }
     footer a { color: #c8b89a; }
+    .footer-links { margin-top: .5rem; display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+    .footer-links a { font-size: .75rem; color: #a09080; text-decoration: none; transition: color .2s; }
+    .footer-links a:hover { color: #c8b89a; }
   </style>
 </head>
 <body>
@@ -235,75 +269,119 @@
       <p>> La vérification scientifique des contenus (exactitude des faits, des sources et des raisonnements) par le conseil scientifique 
     </div>
 
+    <!-- COMITE_START -->
     <h2 class="section-title">Les membres <small>Comité de rédaction actuel</small></h2>
-
     <div class="members-grid">
-
       <div class="member-card">
+        <div class="member-avatar"><img src="https://images.ctfassets.net/96vmxa32pfll/4beJdT0bWONuvIHy1remNT/dd1cfe933498335bbff4eb1eb2594d36/1727968040131.jpg" alt="Hector PILLOT" class="member-photo" loading="lazy"></div>
         <div class="member-name">Hector PILLOT</div>
         <div class="member-role">Responsable de publication</div>
-        <div class="member-bio">Ajoutez ici le nom, le rôle et une courte biographie du membre du comité.</div>
-        <div class="hero-social">
-          <a href="https://linktr.ee/hectorpillot" target="_blank"><img src="media/link.svg" alt="Credit" class="logo-xsmall"></a>
-        </div>
+        <div class="member-bio">Membre fondateur du webzine</div>
+        <div class="hero-social"><a href="https://linktr.ee/hectorpillot" target="_blank" rel="noopener" aria-label="Profil de Hector PILLOT"><img src="media/link.svg" alt="Lien" class="logo-xsmall"></a></div>
       </div>
-
       <div class="member-card">
+        <div class="member-avatar member-initials" aria-hidden="true">AB</div>
         <div class="member-name">Alexandra Blin</div>
-        <div class="member-role">Relectrice</div>
-        <div class="member-bio">Ajoutez ici le nom, le rôle et une courte biographie du membre du comité.</div>
-        <div class="hero-social">
-          <a href="" target="_blank"><img src="media/link.svg" alt="Credit" class="logo-xsmall"></a>
-        </div>
+        <div class="member-role">Relecture</div>
+        <div class="member-bio">A rejoint le comité depuis la 2ème saison</div>
+        
       </div>
-
       <div class="member-card">
+        <div class="member-avatar"><img src="https://images.ctfassets.net/96vmxa32pfll/3E82EaAvyUDCKsc1n20O4s/2ecba41cc10942cc109acd39c3273597/er_adamson-aurora-borealis-5312889_1920.jpg" alt="Amaëline" class="member-photo" loading="lazy"></div>
         <div class="member-name">Amaëline</div>
         <div class="member-role">Relecture et Podcast</div>
-        <div class="member-bio">Ajoutez ici le nom, le rôle et une courte biographie du membre du comité.</div>
-        <div class="hero-social">
-          <a href="https://linktr.ee/amaeline" target="_blank"><img src="media/link.svg" alt="Credit" class="logo-xsmall"></a>
-        </div>
+        <div class="member-bio">A rejoint le comité depuis la 2ème saison</div>
+        <div class="hero-social"><a href="https://linktr.ee/amaeline" target="_blank" rel="noopener" aria-label="Profil de Amaëline"><img src="media/link.svg" alt="Lien" class="logo-xsmall"></a></div>
       </div>
-
       <div class="member-card">
+        <div class="member-avatar member-initials" aria-hidden="true">CG</div>
         <div class="member-name">Charley Gay</div>
         <div class="member-role">Relecture</div>
-        <div class="member-bio">Ajoutez ici le nom, le rôle et une courte biographie du membre du comité.</div>
-        <div class="hero-social">
-          <a href="https://www.linkedin.com/in/charleygay" target="_blank"><img src="media/link.svg" alt="Credit" class="logo-xsmall"></a>
-        </div>
+        <div class="member-bio">Membre fondateur du webzine</div>
+        <div class="hero-social"><a href="https://www.linkedin.com/in/charleygay" target="_blank" rel="noopener" aria-label="Profil de Charley Gay"><img src="media/link.svg" alt="Lien" class="logo-xsmall"></a></div>
       </div>
-
       <div class="member-card">
+        <div class="member-avatar"><img src="https://images.ctfassets.net/96vmxa32pfll/2T1Rpzx6GwgsJLqDEpUKGc/6fd1eda0edd9ea28f9b294ce885334bf/06082019-IMG_8716_-_Copie.jpg" alt="Emy Crayonne" class="member-photo" loading="lazy"></div>
         <div class="member-name">Emy Crayonne</div>
         <div class="member-role">Relecture et Illustration</div>
-        <div class="member-bio">Ajoutez ici le nom, le rôle et une courte biographie du membre du comité.</div>
-        <div class="hero-social">
-          <a href="https://www.instagram.com/emy_crayonne" target="_blank"><img src="media/link.svg" alt="Credit" class="logo-xsmall"></a>
-        </div>
+        <div class="member-bio">A rejoint le comité depuis la 2ème saison</div>
+        <div class="hero-social"><a href="https://www.instagram.com/emy_crayonne" target="_blank" rel="noopener" aria-label="Profil de Emy Crayonne"><img src="media/link.svg" alt="Lien" class="logo-xsmall"></a></div>
       </div>
-
       <div class="member-card">
+        <div class="member-avatar member-initials" aria-hidden="true">LD</div>
         <div class="member-name">Léo Duchêne</div>
         <div class="member-role">Relecture et Mise en page</div>
-        <div class="member-bio">Ajoutez ici le nom, le rôle et une courte biographie du membre du comité.</div>
-        <div class="hero-social">
-          <a href="https://linktr.ee/leo_astro" target="_blank"><img src="media/link.svg" alt="Credit" class="logo-xsmall"></a>
-        </div>
+        <div class="member-bio">A rejoint le comité depuis la 2ème saison</div>
+        <div class="hero-social"><a href="https://linktr.ee/leo_astro" target="_blank" rel="noopener" aria-label="Profil de Léo Duchêne"><img src="media/link.svg" alt="Lien" class="logo-xsmall"></a></div>
       </div>
-
       <div class="member-card">
+        <div class="member-avatar member-initials" aria-hidden="true">PG</div>
         <div class="member-name">Pierre Gachod</div>
         <div class="member-role">Relecture et Mise en page</div>
-        <div class="member-bio">Ajoutez ici le nom, le rôle et une courte biographie du membre du comité.</div>
-        <div class="hero-social">
-          <a href="" target="_blank"><img src="media/link.svg" alt="Credit" class="logo-xsmall"></a>
-        </div>
+        <div class="member-bio">Membre fondateur du webzine</div>
+        
       </div>
-
     </div>
+    <!-- COMITE_END -->
 
+    <!-- ANCIENS_START -->
+    <details class="anciens-details">
+      <summary class="section-title anciens-summary">
+        Anciens membres <small>Comité de rédaction — éditions précédentes</small>
+        <span class="toggle-icon" aria-hidden="true">▾</span>
+      </summary>
+    <div class="members-grid">
+      <div class="member-card compact">
+        <div class="member-avatar member-initials" aria-hidden="true">IB</div>
+        <div class="member-name">Isaora Bacquet</div>
+        <div class="member-role">Relecture</div>
+        
+        
+      </div>
+      <div class="member-card compact">
+        <div class="member-avatar"><img src="https://images.ctfassets.net/96vmxa32pfll/5WMM6uzdqxIJ145gWl0Yom/ae08835094eff1620cbc6c7bb169e89a/moi.jpg" alt="Mathis Philippe" class="member-photo" loading="lazy"></div>
+        <div class="member-name">Mathis Philippe</div>
+        <div class="member-role">Relecture</div>
+        
+        
+      </div>
+      <div class="member-card compact">
+        <div class="member-avatar"><img src="https://images.ctfassets.net/96vmxa32pfll/1cEHbqufafBsEuTPKklbd9/fc4fc859a5ec1b391dac8bb3e7e5365d/DSC0103.jpg" alt="Quentin Daveau" class="member-photo" loading="lazy"></div>
+        <div class="member-name">Quentin Daveau</div>
+        <div class="member-role">Relecture et Responsable de la cohérence graphique</div>
+        
+        
+      </div>
+    </div>
+    </details>
+    <!-- ANCIENS_END -->
+
+    <!-- PROJET_START -->
+    <h2 class="section-title">Le projet <small>Membres et partenaires</small></h2>
+    <div class="members-grid">
+      <div class="member-card">
+        <div class="member-avatar"><img src="https://images.ctfassets.net/96vmxa32pfll/1TOF8oxi1kglD1bGimJsU1/0e0e84869477a5212a48ffe8ed9c5a76/IMG_20190130_103021.jpg" alt="Léo Bosse" class="member-photo" loading="lazy"></div>
+        <div class="member-name">Léo Bosse</div>
+        <div class="member-role">Rédacteur de sudoku</div>
+        <div class="member-bio">Bio</div>
+        
+      </div>
+      <div class="member-card">
+        <div class="member-avatar"><img src="https://images.ctfassets.net/96vmxa32pfll/1UumhzW22s3J7iV2DQv24c/2b52b460bc83f949e9dc5de38877b1ff/01.png" alt="Alexengre Gros" class="member-photo" loading="lazy"></div>
+        <div class="member-name">Alexengre Gros</div>
+        <div class="member-role">Photoraphe et rédacteur</div>
+        <div class="member-bio">Bio</div>
+        
+      </div>
+      <div class="member-card">
+        <div class="member-avatar"><img src="https://images.ctfassets.net/96vmxa32pfll/38ED30l7MhTaptRkK70B3Q/37f4a75db398ff33cbdb67bcce9d4349/Ecrins_001_1.jpg" alt="Ninon Stromeyer" class="member-photo" loading="lazy"></div>
+        <div class="member-name">Ninon Stromeyer</div>
+        <div class="member-role">Rédactrice et Illustratrice</div>
+        <div class="member-bio">Bio</div>
+        
+      </div>
+    </div>
+    <!-- PROJET_END -->
     <h2 class="section-title">Notre processus <small>De la soumission à la publication</small></h2>
 
     <div class="process-steps">
@@ -358,6 +436,10 @@
       <a href="https://www.auroralpes.fr/" target="_blank">
         <img src="media/auroralpes_logo_fil.png" alt="Logo AurorAlpes" class="logo-footer">
       </a>
+    </div>
+    <div class="footer-links">
+      <a href="mentions-legales.html">Mentions légales</a>
+      <a href="PRIVACY-POLICY.md">Politique de confidentialité</a>
     </div>
   </footer>
 
