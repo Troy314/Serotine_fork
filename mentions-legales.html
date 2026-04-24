@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mentions légales — Sérotine</title>
+  <meta name="description" content="Mentions légales du webzine Sérotine, publié par l'association AurorAlpes.">
+  <meta name="robots" content="noindex">
+
+  <!-- OpenGraph -->
+  <meta property="og:type"        content="website">
+  <meta property="og:title"       content="Mentions légales — Sérotine">
+  <meta property="og:site_name"   content="Sérotine, un souffle de science">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink: #10243e; --paper: #f8f4ee; --cream: #f0e9dc;
+      --accent: #10243e; --muted: #7a6f63; --border: rgba(26,20,16,.15);
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--paper); color: var(--ink); font-family: 'DM Sans', sans-serif; font-weight: 300; line-height: 1.7; }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100; background: var(--ink);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem; height: 60px; box-shadow: 0 2px 14px rgba(0,0,0,.4);
+    }
+    .logo-xsmall { height: clamp(25px,5vw,20px); object-fit: contain; filter: brightness(1.1); }
+    .logo-footer { height: clamp(30px,5vw,120px); object-fit: contain; filter: brightness(1.1); }
+    .nav-brand { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--paper); text-decoration: none; }
+    .nav-brand em { font-style: italic; color: #c8b89a; }
+    .nav-links { display: flex; gap: 1.75rem; list-style: none; }
+    .nav-links a { color: #c8b89a; text-decoration: none; font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; transition: color .2s; }
+    .nav-links a:hover { color: #fff; }
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 6px; flex-direction: column; gap: 5px; }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--paper); }
+    @media (max-width: 720px) {
+      .nav-toggle { display: flex; }
+      .nav-links { display: none; position: fixed; top: 60px; left: 0; right: 0; background: var(--ink); flex-direction: column; gap: 0; padding: 1rem 0; }
+      .nav-links.open { display: flex; }
+      .nav-links li a { display: block; padding: .75rem 2rem; }
+    }
+
+    /* PAGE HERO */
+    .page-hero {
+      background: var(--ink); color: var(--paper);
+      padding: 3.5rem 2rem 3rem; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .page-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 120%, #1e3a5f22 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .page-hero-label {
+      font-size: .72rem; font-weight: 500; letter-spacing: .15em;
+      text-transform: uppercase; color: #c8b89a; margin-bottom: .75rem;
+    }
+    .page-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 6vw, 3rem);
+      font-weight: 400; line-height: 1.15; margin-bottom: 1rem;
+    }
+    .page-hero h1 em { font-style: italic; color: #c8b89a; }
+    .page-hero p {
+      color: rgba(255,255,255,.55); max-width: 520px;
+      margin: 0 auto; font-size: .9rem; line-height: 1.9;
+    }
+
+    /* CONTENT */
+    .wrap { max-width: 780px; margin: 0 auto; padding: 4rem 2rem 6rem; }
+
+    .back-link {
+      display: inline-flex; align-items: center; gap: .4rem;
+      color: var(--muted); font-size: .78rem; text-decoration: none;
+      letter-spacing: .06em; text-transform: uppercase;
+      margin-bottom: 2.5rem; transition: color .2s;
+    }
+    .back-link:hover { color: var(--accent); }
+
+    /* SECTIONS */
+    .legal-section { margin-bottom: 2.75rem; }
+    .legal-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem; font-weight: 400;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: .5rem; margin-bottom: 1.1rem;
+    }
+    .legal-section p { font-size: .92rem; color: var(--ink); line-height: 1.85; margin-bottom: .75rem; }
+    .legal-section p:last-child { margin-bottom: 0; }
+    .legal-section a { color: var(--accent); }
+    .legal-section ul { padding-left: 1.4rem; font-size: .92rem; line-height: 2; color: var(--ink); }
+
+    /* INFO BOX */
+    .info-box {
+      background: rgba(16,36,62,.05);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 6px 6px 0;
+      padding: 1.1rem 1.4rem;
+      margin-bottom: 2.5rem;
+      font-size: .88rem; color: var(--muted); line-height: 1.8;
+    }
+    .info-box strong { color: var(--ink); }
+
+    /* DL LIST */
+    dl { font-size: .92rem; }
+    dt { font-weight: 500; color: var(--ink); margin-top: .75rem; }
+    dd { color: var(--muted); margin-left: 1rem; line-height: 1.75; }
+
+    /* FOOTER */
+    footer {
+      background: var(--ink); color: #a09080;
+      text-align: center; padding: 2rem; font-size: .8rem; line-height: 1.9;
+    }
+    footer a { color: #c8b89a; }
+    .footer-links { margin-top: .5rem; display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+    .footer-links a { font-size: .75rem; color: #a09080; text-decoration: none; transition: color .2s; }
+    .footer-links a:hover { color: #c8b89a; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-brand">
+      <img src="media/serotine_logo.svg" alt="Logo Sérotine" class="logo-xsmall">
+      érotine, <em>un souffle de science</em>
+    </a>
+    <button class="nav-toggle" id="menuToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#dernier">Dernier numéro</a></li>
+      <li><a href="index.html#explorer">Explorer</a></li>
+      <li><a href="index.html#archives">Archives</a></li>
+      <li><a href="index.html#podcast">Podcast</a></li>
+      <li><a href="comite.html">Organisation</a></li>
+      <li><a href="https://www.auroralpes.fr/" target="_blank">AurorAlpes</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-hero">
+    <div class="page-hero-label">Informations légales</div>
+    <h1>Mentions <em>légales</em></h1>
+    <p>Conformément aux dispositions de la loi n° 2004-575 du 21 juin 2004 pour la confiance en l'économie numérique.</p>
+  </div>
+
+  <div class="wrap">
+
+    <a href="index.html" class="back-link">← Retour à l'accueil</a>
+
+    <div class="info-box">
+      <strong>Dernière mise à jour :</strong> avril 2026 —
+      Ces mentions légales s'appliquent à l'ensemble du site <em>Sérotine, un souffle de science</em>,
+      accessible à l'adresse <strong>serotine-webzine.github.io/Serotine</strong>.
+    </div>
+
+    <!-- 1. ÉDITEUR -->
+    <div class="legal-section">
+      <h2>1. Éditeur du site</h2>
+      <dl>
+        <dt>Nom de la publication</dt>
+        <dd>Sérotine, un souffle de science</dd>
+
+        <dt>Association éditrice</dt>
+        <dd>AurorAlpes — association loi 1901</dd>
+
+        <dt>Siège social</dt>
+        <dd>Grenoble (38), France<br>
+            <em>2 rue Anthoard, 38 000 Grenoble</em>
+        </dd>
+
+        <dt>Courriel de contact</dt>
+        <dd><a href="mailto:webzine@auroralpes.fr">webzine@auroralpes.fr</a></dd>
+
+        <dt>Site de l'association</dt>
+        <dd><a href="https://www.auroralpes.fr/" target="_blank" rel="noopener">www.auroralpes.fr</a></dd>
+
+        <dt>Directeur de la publication</dt>
+        <dd>Hector Pillot, responsable de publication</dd>
+      </dl>
+    </div>
+
+    <!-- 2. HÉBERGEMENT -->
+    <div class="legal-section">
+      <h2>2. Hébergement</h2>
+      <dl>
+        <dt>Hébergeur</dt>
+        <dd>GitHub, Inc.</dd>
+
+        <dt>Service</dt>
+        <dd>GitHub Pages</dd>
+
+        <dt>Adresse</dt>
+        <dd>88 Colin P Kelly Jr St, San Francisco, CA 94107, États-Unis</dd>
+
+        <dt>Site</dt>
+        <dd><a href="https://pages.github.com" target="_blank" rel="noopener">pages.github.com</a></dd>
+      </dl>
+    </div>
+
+    <!-- 3. PROPRIÉTÉ INTELLECTUELLE -->
+    <div class="legal-section">
+      <h2>3. Propriété intellectuelle</h2>
+      <p>
+        Le contenu éditorial de <em>Sérotine</em> — articles, textes, illustrations et enregistrements audio — est produit par des bénévoles membres de l'association AurorAlpes et placé sous
+        licence <strong><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr" target="_blank" rel="noopener">Creative Commons BY-NC-SA 4.0</a></strong>
+        sauf mention contraire explicite dans l'article concerné.
+      </p>
+      <p>
+        Cela signifie que vous êtes libre de partager et d'adapter ces contenus, à condition de citer les auteur·ices, de ne pas en faire un usage commercial et de redistribuer sous la même licence.
+      </p>
+      <p>
+        Le code source du site est dérivé du projet
+        <a href="https://github.com/utterance/utterances" target="_blank" rel="noopener">utterances</a>
+        (MIT License, © jdanyow), modifié et adapté par AurorAlpes.
+        Les logos et éléments graphiques propres à Sérotine et AurorAlpes sont la propriété exclusive de l'association.
+      </p>
+    </div>
+
+    <!-- 4. DONNÉES PERSONNELLES -->
+    <div class="legal-section">
+      <h2>4. Données personnelles et cookies</h2>
+      <p>
+        Le site <em>Sérotine</em> ne collecte pas directement de données personnelles.
+        Aucun formulaire d'inscription, aucun compte utilisateur et aucun cookie de traçage publicitaire ne sont mis en place par l'éditeur.
+      </p>
+      <p>
+        La fonctionnalité de commentaires repose sur le service tiers <strong>utterances</strong>,
+        qui utilise votre compte GitHub pour authentifier les commentaires.
+        En interagissant avec cet espace, vous êtes soumis aux
+        <a href="https://docs.github.com/fr/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">conditions d'utilisation de GitHub</a>.
+      </p>
+      <p>
+        Les polices de caractères sont chargées depuis <strong>Google Fonts</strong>.
+        Ce service peut déposer des cookies et traiter des données de connexion selon la
+        <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">politique de confidentialité de Google</a>.
+      </p>
+      <p>
+        Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez d'un droit d'accès, de rectification et de suppression des données vous concernant.
+        Pour exercer ces droits, contactez-nous à <a href="mailto:webzine@auroralpes.fr">webzine@auroralpes.fr</a>.
+      </p>
+      <p>
+        Pour plus d'informations sur la gestion de vos données, consultez notre
+        <a href="PRIVACY-POLICY.md">politique de confidentialité complète</a>.
+      </p>
+    </div>
+
+    <!-- 5. LIENS HYPERTEXTES -->
+    <div class="legal-section">
+      <h2>5. Liens hypertextes</h2>
+      <p>
+        Le site <em>Sérotine</em> contient des liens vers des sites tiers (AurorAlpes, Heyzine, GitHub, réseaux sociaux des contributeur·ices).
+        Ces liens sont fournis à titre informatif. AurorAlpes n'est pas responsable du contenu de ces sites ni de leur politique de confidentialité.
+      </p>
+      <p>
+        Toute reproduction ou hyperlien pointant vers <em>Sérotine</em> est autorisée dans le respect de la licence Creative Commons mentionnée à l'article 3.
+      </p>
+    </div>
+
+    <!-- 6. LIMITATION DE RESPONSABILITÉ -->
+    <div class="legal-section">
+      <h2>6. Limitation de responsabilité</h2>
+      <p>
+        Les contenus publiés dans <em>Sérotine</em> sont rédigés par des étudiant·es bénévoles passionné·es et relus par un comité de relecture.
+        Bien que nous visions la rigueur scientifique, ces articles ont une vocation de vulgarisation et ne sauraient remplacer une source académique ou un avis de professionnel·le de santé.
+      </p>
+      <p>
+        L'association AurorAlpes ne saurait être tenue responsable des erreurs ou imprécisions qui pourraient subsister malgré la vigilance de l'équipe éditoriale.
+        Toute erreur signalée sera corrigée dans les meilleurs délais — merci de nous écrire à
+        <a href="mailto:webzine@auroralpes.fr">webzine@auroralpes.fr</a>.
+      </p>
+    </div>
+
+    <!-- 7. DROIT APPLICABLE -->
+    <div class="legal-section">
+      <h2>7. Droit applicable et juridiction</h2>
+      <p>
+        Les présentes mentions légales sont régies par le droit français.
+        En cas de litige, et après tentative de résolution amiable, les tribunaux compétents de Grenoble seront seuls compétents.
+      </p>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p><strong>Sérotine, un souffle de science</strong> — par <a href="https://www.auroralpes.fr/" target="_blank">AurorAlpes</a></p>
+    <p>Espace commentaire développé à partir du projet <a href="https://github.com/utterance/utterances" target="_blank">utterances</a> par <a href="https://github.com/jdanyow" target="_blank">jdanyow</a></p>
+    <div class="footer-links">
+      <a href="mentions-legales.html" aria-current="page">Mentions légales</a>
+      <a href="PRIVACY-POLICY.md">Politique de confidentialité</a>
+    </div>
+    <div class="footer-logo">
+      <a href="https://www.auroralpes.fr/" target="_blank">
+        <img src="media/auroralpes_logo_fil.png" alt="Logo AurorAlpes" class="logo-footer">
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    const t = document.getElementById('menuToggle'), n = document.getElementById('navLinks');
+    t.addEventListener('click', () => n.classList.toggle('open'));
+    n.querySelectorAll('a').forEach(a => a.addEventListener('click', () => n.classList.remove('open')));
+  </script>
+
+</body>
+</html>
