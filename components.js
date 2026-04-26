@@ -28,7 +28,7 @@
 <nav>
   <a href="index.html" class="nav-brand">
     <img src="media/serotine_logo.svg" alt="Logo Sérotine" class="logo-xsmall">
-    érotine, <em>un souffle de science</em>
+    érotine
   </a>
   <button class="nav-toggle" id="menuToggle" aria-label="Menu">
     <span></span><span></span><span></span>
