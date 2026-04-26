@@ -120,25 +120,12 @@
     .footer-links { margin-top: .5rem; display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
     .footer-links a { font-size: .75rem; color: #a09080; text-decoration: none; transition: color .2s; }
     .footer-links a:hover { color: #c8b89a; }
+    .footer-copyright { margin-top: .75rem; font-size: .75rem; color: #6a5f55; }
   </style>
 </head>
 <body>
 
-  <nav>
-    <a href="index.html" class="nav-brand">
-      <img src="media/serotine_logo.svg" alt="Logo Sérotine" class="logo-xsmall">
-      érotine, <em>un souffle de science</em>
-    </a>
-    <button class="nav-toggle" id="menuToggle" aria-label="Menu"><span></span><span></span><span></span></button>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="index.html#dernier">Dernier numéro</a></li>
-      <li><a href="index.html#explorer">Explorer</a></li>
-      <li><a href="index.html#archives">Archives</a></li>
-      <li><a href="index.html#podcast">Podcast</a></li>
-      <li><a href="comite.html">Organisation</a></li>
-      <li><a href="https://www.auroralpes.fr/" target="_blank">AurorAlpes</a></li>
-    </ul>
-  </nav>
+  <nav id="nav-placeholder"></nav>
 
   <div class="page-hero">
     <div class="page-hero-label">Informations légales</div>
@@ -285,25 +272,9 @@
   </div>
 
   <!-- FOOTER -->
-  <footer>
-    <p><strong>Sérotine, un souffle de science</strong> — par <a href="https://www.auroralpes.fr/" target="_blank">AurorAlpes</a></p>
-    <p>Espace commentaire développé à partir du projet <a href="https://github.com/utterance/utterances" target="_blank">utterances</a> par <a href="https://github.com/jdanyow" target="_blank">jdanyow</a></p>
-    <div class="footer-links">
-      <a href="mentions-legales.html" aria-current="page">Mentions légales</a>
-      <a href="PRIVACY-POLICY.md">Politique de confidentialité</a>
-    </div>
-    <div class="footer-logo">
-      <a href="https://www.auroralpes.fr/" target="_blank">
-        <img src="media/auroralpes_logo_fil.png" alt="Logo AurorAlpes" class="logo-footer">
-      </a>
-    </div>
-  </footer>
+  <footer id="footer-placeholder"></footer>
 
-  <script>
-    const t = document.getElementById('menuToggle'), n = document.getElementById('navLinks');
-    t.addEventListener('click', () => n.classList.toggle('open'));
-    n.querySelectorAll('a').forEach(a => a.addEventListener('click', () => n.classList.remove('open')));
-  </script>
+  <script src="components.js"></script>
 
 </body>
 </html>
