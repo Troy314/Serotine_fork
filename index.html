@@ -45,6 +45,7 @@
     .logo-footer { height: clamp(30px,5vw,120px); object-fit: contain; filter: brightness(1.1); }
     .logo-small { height: clamp(25px,5vw,40px); object-fit: contain; filter: brightness(1.1); }
     .logo-xsmall { height: clamp(25px,5vw,20px); object-fit: contain; filter: brightness(1.1); }
+    .logo-xxsmall { height: clamp(15px,5vw,15px); object-fit: contain; filter: brightness(1.1); }
     .hero-by { color: #c8b89a; font-size: 1rem; }
     .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem,7vw,5rem); font-weight: 400; line-height: 1.1; margin-bottom: .5rem; }
     .hero h1 em { font-style: italic; color: #c8b89a; }
@@ -358,8 +359,7 @@
     <div class="podcast-inner">
       <h2 class="section-title">Podcast <small>Sérotine en écoute</small></h2>
       <div class="podcast-coming">
-        <div class="podcast-icon">🎙️</div>
-        <h3>Sérotine est aussi disponible en format Podcast !</h3>
+        <h3>🎙️ Sérotine est aussi disponible en format Podcast !</h3>
         <div class="hero-social">
           <a href="https://podcasts.apple.com/us/podcast/s%C3%A9rotine-un-souffle-de-science/id1895565023" target="_blank"><img src="media/Apple_icon.png" alt="Apple Podcast" class="logo-small"></a>
           <a href="" target="_blank"><img src="media/spotify_icon.png" alt="Spotify" class="logo-small"></a>
@@ -449,7 +449,7 @@ function render() {
         <span class="tag tag-${a.topic} tag-clickable" data-filter="topic" data-value="${a.topic}" title="Filtrer par thème">${topicLabel}</span>
         <span class="tag tag-${a.type}  tag-clickable" data-filter="type"  data-value="${a.type}"  title="Filtrer par type">${typeLabel}</span>
       </div>
-      <div class="art-card-author">✍ ${a.author}</div>
+      <div class="art-card-author"><img src="media/user-pen.svg" alt="author" class="logo-xxsmall"></a> ${a.author}</div>
       <div class="art-card-issue">Sérotine ${a.issueLabel} &nbsp;·&nbsp; <a href="${a.flip}">💬 Commentaires</a></div>
     `;
     // Clickable tags inside cards
