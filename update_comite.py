@@ -14,7 +14,7 @@ Colonnes attendues dans le CSV :
 
 Valeurs valides pour la colonne Type :
   comite            → Comité de rédaction actuel
-  ancien_comite     → Anciens membres du comité de rédaction
+  ancien_membre     → Anciens membres du comité de rédaction
   membre_projet     → Membres du projet
 
 Exécutez depuis le dossier racine du site (là où se trouve comite.html).
@@ -31,7 +31,7 @@ from html import escape
 # ══════════════════════════════════════════════
 
 COMITE_FILE   = "comite.html"
-VALID_TYPES   = ("comite", "ancien_comite", "membre_projet")
+VALID_TYPES   = ("comite", "ancien_membre", "membre_projet")
 FIELDS        = ("Nom", "Rôle", "Biographie", "URL", "Type", "Image")
 DEFAULT_IMAGE = ""  # Laisser vide = initiales affichées à la place
 
@@ -99,7 +99,7 @@ def load_membres(csv_path: str) -> dict[str, list[dict]]:
     total = sum(len(v) for v in grouped.values())
     print(f"  ✓ {total} membres chargés  "
           f"({len(grouped['comite'])} actifs, "
-          f"{len(grouped['ancien_comite'])} anciens, "
+          f"{len(grouped['ancien_membre'])} anciens, "
           f"{len(grouped['membre_projet'])} projet)")
     return grouped
 
@@ -301,11 +301,11 @@ def inject_comite(grouped: dict[str, list], comite_path: str) -> None:
             print("     Ajoutez <!-- COMITE_START --> et <!-- COMITE_END --> dans comite.html")
 
     # ── 3. Injecter section anciens ──────────────────────────────────────
-    new_anciens = build_anciens_section(grouped["ancien_comite"])
+    new_anciens = build_anciens_section(grouped["ancien_membre"])
     match = re.search(r'<!-- ANCIENS_START -->.*?<!-- ANCIENS_END -->', html, re.DOTALL)
     if match:
         html = html[:match.start()] + new_anciens.strip() + html[match.end():]
-        print(f"  ✓ Section anciens mise à jour ({len(grouped['ancien_comite'])} membres)")
+        print(f"  ✓ Section anciens mise à jour ({len(grouped['ancien_membre'])} membres)")
         changed = True
     else:
         print("  ⚠  Repère ANCIENS_START introuvable — section anciens non injectée.")
