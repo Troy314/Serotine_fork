@@ -194,7 +194,7 @@ def build_anciens_section(membres: list[dict]) -> str:
     <!-- ANCIENS_START -->
     <details class="anciens-details">
       <summary class="section-title anciens-summary">
-        Anciens membres <small>Comité de rédaction — éditions précédentes</small>
+        Anciens membres
         <span class="toggle-icon" aria-hidden="true">▾</span>
       </summary>
 {grid}
