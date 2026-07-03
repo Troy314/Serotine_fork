@@ -146,6 +146,4 @@ Pour déployer : pousser les modifications sur `master`.
 
 ## Favicon
 
-- `media/favicon.svg` — utilisé sur toutes les pages
-- `media/favicon_black.svg` / `media/favicon_white.svg` — variantes éditeurs graphiques
-- `favicon_black/` et `favicon_white/` — icônes PNG 192×192 et 512×512 + `site.webmanifest`
+- `media/favicon.svg` — utilisé sur toutes les pages (seul fichier favicon du dépôt)
