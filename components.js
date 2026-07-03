@@ -30,7 +30,7 @@
   const navHTML = `
 <nav>
   <a href="/" class="nav-brand">
-    <img src="/media/serotine_logo.svg" alt="Logo Sérotine" class="logo-xsmall">
+    <img src="media/serotine_logo.svg" alt="Logo Sérotine" class="logo-xsmall">
     érotine
   </a>
   <button class="nav-toggle" id="menuToggle" aria-label="Menu">
