@@ -5,16 +5,23 @@
  *
  * Uses absolute paths (/comite/, /mentions-legales/) so the file works
  * regardless of the page depth (root, comite/, articles/id/, …).
+ *
+ * Production lives at serotine.fr (site root), but during GitHub Pages
+ * testing the repo is served under /Serotine_fork/ — BASE_PATH accounts
+ * for that subpath and should be removed once GitHub Pages testing ends.
  */
 
 (function () {
+
+  /* ── Base path (repo subpath on GitHub Pages, empty on serotine.fr) ──── */
+  const BASE_PATH = location.hostname.endsWith('.github.io') ? '/Serotine_fork' : '';
 
   /* ── Détection de la page active ─────────────────────────────────────── */
   const currentPath = location.pathname.replace(/\/$/, '') || '/';
 
   function isActive(href) {
     if (href.startsWith('http')) return false;
-    const target = href.split('#')[0].replace(/\/$/, '') || '/';
+    const target = (BASE_PATH + href).split('#')[0].replace(/\/$/, '') || '/';
     return currentPath === target;
   }
 
@@ -29,7 +36,7 @@
 
   const navHTML = `
 <nav>
-  <a href="/" class="nav-brand">
+  <a href="${BASE_PATH}/" class="nav-brand">
     <img src="media/serotine_logo.svg" alt="Logo Sérotine" class="logo-xsmall">
     érotine
   </a>
@@ -40,7 +47,8 @@
     ${links.map(l => {
     const active = isActive(l.href) ? ' class="active"' : '';
     const ext = l.external ? ' target="_blank"' : '';
-    return `<li><b><a href="${l.href}"${active}${ext}>${l.label}</a></b></li>`;
+    const href = l.external ? l.href : BASE_PATH + l.href;
+    return `<li><b><a href="${href}"${active}${ext}>${l.label}</a></b></li>`;
   }).join('\n    ')}
   </ul>
 </nav>`;
@@ -51,12 +59,12 @@
   <p><strong>Sérotine, un souffle de science</strong> — par <a href="https://www.auroralpes.fr/" target="_blank">AurorAlpes</a></p>
   <div class="footer-logo">
     <a href="https://www.auroralpes.fr/" target="_blank">
-      <img src="/media/auroralpes_logo_fil.png" alt="Logo AurorAlpes" class="logo-footer">
+      <img src="${BASE_PATH}/media/auroralpes_logo_fil.png" alt="Logo AurorAlpes" class="logo-footer">
     </a>
   </div>
   <div class="footer-links">
-    <a href="/mentions-legales/">Mentions légales</a>
-    <a href="/PRIVACY-POLICY.md">Politique de confidentialité</a>
+    <a href="${BASE_PATH}/mentions-legales/">Mentions légales</a>
+    <a href="${BASE_PATH}/PRIVACY-POLICY.md">Politique de confidentialité</a>
   </div>
   <p class="footer-copyright">© AurorAlpes 2026</p>
 </footer>`;

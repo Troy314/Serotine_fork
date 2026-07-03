@@ -362,8 +362,16 @@ def generate_404() -> str:
   <div class="code">404</div>
   <h1>Cette page s'est perdue dans les étoiles…</h1>
   <p>L'article ou la page que vous cherchez n'existe pas ou a été déplacé.</p>
-  <a href="/" class="home-link">← Retour à l'accueil</a>
+  <a href="/" class="home-link" id="home-link">← Retour à l'accueil</a>
   <p class="brand">Sérotine, <em>un souffle de science</em></p>
+  <script>
+    // Testing under GitHub Pages (/Serotine_fork/) needs the repo subpath;
+    // production at serotine.fr serves from the root. Remove once GitHub
+    // Pages testing ends.
+    if (location.hostname.endsWith('.github.io')) {
+      document.getElementById('home-link').href = '/Serotine_fork/';
+    }
+  </script>
 </body>
 </html>"""
 
