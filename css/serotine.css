@@ -1346,6 +1346,33 @@ footer strong {
   color: var(--violet);
 }
 
+.intro-block>p.ia-engagement-cta {
+  display: block;
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+.ia-engagement-cta a {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  background: var(--ink);
+  border: 1px solid rgba(255, 255, 255, .4);
+  color: #fff;
+  font-size: .88rem;
+  font-weight: 700;
+  letter-spacing: .03em;
+  padding: .65rem 1.6rem;
+  border-radius: 99px;
+  text-decoration: none;
+  transition: background .2s;
+}
+
+.ia-engagement-cta a:hover {
+  background: var(--vert);
+  color: var(--vert-fonce);
+}
+
 /* ── Relecture columns ───────────────────────────────────────────────────*/
 .relecture-cols {
   display: grid;
