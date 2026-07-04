@@ -37,7 +37,7 @@
   const navHTML = `
 <nav>
   <a href="${BASE_PATH}/" class="nav-brand">
-    <img src="media/serotine_logo.svg" alt="Logo Sérotine" class="logo-xsmall">
+    <img src="${BASE_PATH}/media/serotine_logo.svg" alt="Logo Sérotine" class="logo-xsmall">
     érotine
   </a>
   <button class="nav-toggle" id="menuToggle" aria-label="Menu">
