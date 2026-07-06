@@ -138,6 +138,24 @@
               financement participatif afin de financer la plateforme.</p>
             </br>
             <p><b>Même 1 euro compte et nous permettra de développer notre média !</b></p>
+            <button id="openHaOverlay">Faire un don</button>
+            <div id="haWidgetModal"
+              style="position: fixed; inset: 0; display: none; align-items: center; justify-content: center; backdrop-filter: blur(15px) brightness(0.5); z-index: 2147483647;">
+              <button id="closeHaWidgetBtn"
+                style="position: absolute; top: .5rem; right: 1.5rem; z-index: 2147483648; background: #EFEFF4; border: none; border-radius: 50%; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </button>
+              <div class="modal-content"
+                style="position: relative; width: 100%; max-width: 950px; height: 100%; overflow: hidden;">
+                <iframe id="haWidget"
+                  src="https://www.helloasso.com/associations/auroralpes/formulaires/3/widget?view=overlay"
+                  style="width: 100%; height: 100%; border: none; border-radius: 8px;"></iframe>
+              </div>
+            </div>
             </p>
           </div>
           <div class="about-widget">
@@ -369,6 +387,37 @@
       }
     }
 
+    // ── Helloasso buttons
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const openBtn = document.getElementById('openHaOverlay');
+      const modal = document.getElementById('haWidgetModal');
+      const closeBtn = document.getElementById('closeHaWidgetBtn');
+      const body = document.body;
+
+      closeBtn.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <line x1="6" y1="6" x2="18" y2="18" stroke="#333" stroke-width="2" stroke-linecap="round" />
+        <line x1="18" y1="6" x2="6" y2="18" stroke="#333" stroke-width="2" stroke-linecap="round" />
+      </svg>`;
+
+      openBtn.addEventListener('click', () => {
+        modal.classList.add('open');
+        modal.style.display = 'flex';
+        body.style.overflow = 'hidden';
+        body.style.overscrollBehaviorY = 'none';
+      });
+
+      closeBtn.addEventListener('click', () => {
+        modal.classList.remove('open');
+        modal.style.display = 'none';
+        body.style.overflow = '';
+        body.style.overscrollBehaviorY = '';
+      });
+
+      closeBtn.addEventListener('mouseenter', () => closeBtn.style.background = '#E0E0E8');
+      closeBtn.addEventListener('mouseleave', () => closeBtn.style.background = '#EFEFF4');
+    })
+
     // ── Topic filter buttons ──────────────────────────────────────────────────
     document.querySelectorAll('.topic-btn').forEach(btn => {
       btn.addEventListener('click', () => setTopicFilter(btn.dataset.value));
@@ -388,7 +437,10 @@
         const key = btn.dataset.sort;
         if (activeSort === key) sortDir[key] *= -1;
         else activeSort = key;
-        document.querySelectorAll('.sort-btn').forEach(b => { b.classList.remove('active'); b.querySelector('.arrow').textContent = '↕'; });
+        document.querySelectorAll('.sort-btn').forEach(b => {
+          b.classList.remove('active');
+          b.querySelector('.arrow').textContent = '↕';
+        });
         btn.classList.add('active');
         btn.querySelector('.arrow').textContent = sortDir[activeSort] === 1 ? '↑' : '↓';
         showAll = false;
