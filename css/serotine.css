@@ -260,11 +260,9 @@ nav {
 }
 
 .hero-display-img {
-  flex: 1;
-  min-height: 0;
   width: 100%;
+  height: auto;
   display: block;
-  object-fit: cover;
   border-radius: 8px;
 }
 
@@ -340,6 +338,16 @@ nav {
 .hero-cta:hover {
   background: var(--vert);
   color: var(--vert-fonce);
+}
+
+button.hero-cta {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.donate-cta {
+  text-align: center;
+  margin: 1rem 0;
 }
 
 /* Preview cards in hero right column */
@@ -557,9 +565,13 @@ nav {
 /* ── À PROPOS ────────────────────────────────────────────────────────────*/
 .about-layout {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr 1fr;
   gap: 2.5rem;
   align-items: start;
+}
+
+.about-cover {
+  max-width: 100%;
 }
 
 .about-text {
@@ -978,7 +990,7 @@ details[open]>summary::before {
 .issue-cover img {
   width: 100%;
   height: auto;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 960 / 1080;
   object-fit: cover;
   border-radius: 0 4px 4px 0;
   display: block;
@@ -1199,6 +1211,21 @@ footer strong {
 .footer-copyright {
   margin-top: .75rem;
   font-size: .75rem;
+  color: var(--vert);
+}
+
+.footer-credit {
+  margin-top: .25rem;
+  font-size: .68rem;
+  color: rgba(255, 255, 255, .55);
+}
+
+.footer-credit a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.footer-credit a:hover {
   color: var(--vert);
 }
 

@@ -138,7 +138,7 @@
               financement participatif afin de financer la plateforme.</p>
             </br>
             <p><b>Même 1 euro compte et nous permettra de développer notre média !</b></p>
-            <button id="openHaOverlay">Faire un don</button>
+            <div class="donate-cta"><button id="openHaOverlay" class="hero-cta">Faire un don</button></div>
             <div id="haWidgetModal"
               style="position: fixed; inset: 0; display: none; align-items: center; justify-content: center; backdrop-filter: blur(15px) brightness(0.5); z-index: 2147483647;">
               <button id="closeHaWidgetBtn"
@@ -152,28 +152,26 @@
               <div class="modal-content"
                 style="position: relative; width: 100%; max-width: 950px; height: 100%; overflow: hidden;">
                 <iframe id="haWidget"
-                  src="https://www.helloasso.com/associations/auroralpes/formulaires/3/widget?view=overlay"
+                  src="https://www.helloasso.com/associations/auroralpes/formulaires/3/widget?view=overlay&lang=fr"
                   style="width: 100%; height: 100%; border: none; border-radius: 8px;"></iframe>
               </div>
             </div>
             </p>
           </div>
-          <div class="about-widget">
-            <iframe id="haWidgetCounter" allowtransparency="true" lang="fr" scrolling="yes"
-              src="https://www.helloasso.com/associations/auroralpes/formulaires/3/widget?view=form">
-            </iframe>
-          </div>
+          <div class="issue-cover about-cover"><a href="https://heyzine.com/flip-book/78d38fd9ec.html" target="_blank"><img
+                src="media/Serotine1.jpg" alt="#1"></a></div>
         </div>
       </div>
     </section>
 
 
-      <!-- ARCHIVES -->
-  <section class="section" id="archives">
-    <h2 class="section-title">Tous les numéros <small>Archives</small></h2>
-    <div class="issues-grid">
+    <!-- ARCHIVES -->
+    <section class="section" id="archives">
+      <h2 class="section-title">Tous les numéros <small>Archives</small></h2>
+      <div class="issues-grid">
         <div class="issue-card">
-          <div class="issue-cover"><a href="https://heyzine.com/flip-book/c5bd9067c1.html" target="_blank"><img src="media/Serotine5.jpg" alt="#5"></a></div>
+          <div class="issue-cover"><a href="https://heyzine.com/flip-book/c5bd9067c1.html" target="_blank"><img
+                src="media/Serotine5.jpg" alt="#5"></a></div>
           <div class="issue-info">
             <div class="issue-season">Saison 2 · #5</div>
             <div class="issue-date">Mai 2026</div>
@@ -182,7 +180,8 @@
           </div>
         </div>
         <div class="issue-card">
-          <div class="issue-cover"><a href="https://heyzine.com/flip-book/5edd108961.html" target="_blank"><img src="media/Serotine4.jpg" alt="#4"></a></div>
+          <div class="issue-cover"><a href="https://heyzine.com/flip-book/5edd108961.html" target="_blank"><img
+                src="media/Serotine4.jpg" alt="#4"></a></div>
           <div class="issue-info">
             <div class="issue-season">Saison 1 · #4</div>
             <div class="issue-date">Mars 2026</div>
@@ -191,7 +190,8 @@
           </div>
         </div>
         <div class="issue-card">
-          <div class="issue-cover"><a href="https://heyzine.com/flip-book/d5c17bee9a.html" target="_blank"><img src="media/Serotine3.jpg" alt="#3"></a></div>
+          <div class="issue-cover"><a href="https://heyzine.com/flip-book/d5c17bee9a.html" target="_blank"><img
+                src="media/Serotine3.jpg" alt="#3"></a></div>
           <div class="issue-info">
             <div class="issue-season">Saison 1 · #3</div>
             <div class="issue-date">Février 2026</div>
@@ -200,7 +200,8 @@
           </div>
         </div>
         <div class="issue-card">
-          <div class="issue-cover"><a href="https://heyzine.com/flip-book/5f6791f646.html" target="_blank"><img src="media/Serotine2.jpg" alt="#2"></a></div>
+          <div class="issue-cover"><a href="https://heyzine.com/flip-book/5f6791f646.html" target="_blank"><img
+                src="media/Serotine2.jpg" alt="#2"></a></div>
           <div class="issue-info">
             <div class="issue-season">Saison 1 · #2</div>
             <div class="issue-date">Décembre 2025</div>
@@ -209,7 +210,8 @@
           </div>
         </div>
         <div class="issue-card">
-          <div class="issue-cover"><a href="https://heyzine.com/flip-book/78d38fd9ec.html" target="_blank"><img src="media/Serotine1.jpg" alt="#1"></a></div>
+          <div class="issue-cover"><a href="https://heyzine.com/flip-book/78d38fd9ec.html" target="_blank"><img
+                src="media/Serotine1.jpg" alt="#1"></a></div>
           <div class="issue-info">
             <div class="issue-season">Saison 1 · #1</div>
             <div class="issue-date">Novembre 2025</div>
@@ -217,8 +219,8 @@
             <a href="https://heyzine.com/flip-book/78d38fd9ec.html" target="_blank" class="issue-read-btn">Lire →</a>
           </div>
         </div>
-    </div>
-  </section>
+      </div>
+    </section>
 
     <!-- PODCAST -->
     <section id="podcast">
@@ -249,22 +251,22 @@
   <script>
     // ── Article data ─────────────────────────────────────────────────────────
     const ARTICLES = [
-  { id:"astrologie", title:"Des messages (ésotériques) dans les étoiles ?", author:"Gay Charley", topic:"astrophysique", type:"article", issue:4, season:1, issueLabel:"#4 · Mars 2026", href:"https://heyzine.com/flip-book/5edd108961.html#page/4", flip:"articles/astrologie/", image:"media/articles/serotine4_1.webp" },
-  { id:"voie_lactee", title:"7 merveilles du ciel nocturne : La Voie Lactée", author:"Duchêne Léo", topic:"astrophysique", type:"merveilles", issue:4, season:1, issueLabel:"#4 · Mars 2026", href:"https://heyzine.com/flip-book/5edd108961.html#page/16", flip:"articles/voie_lactee/", image:"media/articles/serotine4_2.webp" },
-  { id:"betelgeuse", title:"Bételgeuse, l'étoile au sommet de la hype", author:"Daveau Quentin", topic:"astrophysique", type:"article", issue:4, season:1, issueLabel:"#4 · Mars 2026", href:"https://heyzine.com/flip-book/5edd108961.html#page/20", flip:"articles/betelgeuse/", image:"media/articles/serotine4_3.webp" },
-  { id:"crush", title:"Les secrets insoupçonnés du « crush »", author:"Daveau Quentin", topic:"sociologie", type:"article", issue:3, season:1, issueLabel:"#3 · Fév. 2026", href:"https://heyzine.com/flip-book/d5c17bee9a.html#page/4", flip:"articles/crush/", image:"media/articles/serotine3_1.webp" },
-  { id:"ode_celeste", title:"Ode céleste", author:"Amaëline", topic:"astrophysique", type:"poesie", issue:3, season:1, issueLabel:"#3 · Fév. 2026", href:"https://heyzine.com/flip-book/d5c17bee9a.html#page/12", flip:"articles/ode_celeste/", image:"media/articles/serotine3_2.webp" },
-  { id:"tca", title:"Red flags et nourriture, quand les TCA s'invitent à table", author:"Bacquet Isaora", topic:"psychologie", type:"article", issue:3, season:1, issueLabel:"#3 · Fév. 2026", href:"https://heyzine.com/flip-book/d5c17bee9a.html#page/15", flip:"articles/tca/", image:"media/articles/serotine3_3.webp" },
-  { id:"hydrocerame", title:"Les hydrocérames, ces vases qui suent", author:"Pillot Hector", topic:"physique", type:"article", issue:2, season:1, issueLabel:"#2 · Déc. 2025", href:"https://heyzine.com/flip-book/5f6791f646.html#page/4", flip:"articles/hydrocerame/", image:"media/articles/serotine2_1.webp" },
-  { id:"aphantasie_sudoku_2", title:"Ceci n'est pas un bouquet de fleurs (Sudoku) — Solution", author:"Bosse Léo", topic:"", type:"jeu", issue:2, season:1, issueLabel:"#2 · Déc. 2025", href:"https://heyzine.com/flip-book/5f6791f646.html#page/16", flip:"articles/aphantasie_sudoku_2/", image:"media/articles/serotine1_2.webp" },
-  { id:"planete_neuf", title:"Une neuvième planète dans notre système solaire", author:"Gay Charley", topic:"astrophysique", type:"article", issue:2, season:1, issueLabel:"#2 · Déc. 2025", href:"https://heyzine.com/flip-book/5f6791f646.html#page/18", flip:"articles/planete_neuf/", image:"media/articles/serotine2_2.webp" },
-  { id:"aphantasie", title:"L'aphantasie", author:"Bacquet Isaora", topic:"psychologie", type:"article", issue:1, season:1, issueLabel:"#1 · Nov. 2025", href:"https://heyzine.com/flip-book/78d38fd9ec.html#page/4", flip:"articles/aphantasie/", image:"media/articles/serotine1_1.webp" },
-  { id:"aphantasie_sudoku", title:"Ceci n'est pas un bouquet de fleurs (Sudoku)", author:"Bosse Léo", topic:"", type:"jeu", issue:1, season:1, issueLabel:"#1 · Nov. 2025", href:"https://heyzine.com/flip-book/78d38fd9ec.html#page/16", flip:"articles/aphantasie_sudoku/", image:"media/articles/serotine1_2.webp" },
-  { id:"respirer_par_anus", title:"Peut-on respirer par l'anus ?", author:"Gachod Pierre", topic:"biologie", type:"article", issue:1, season:1, issueLabel:"#1 · Nov. 2025", href:"https://heyzine.com/flip-book/78d38fd9ec.html#page/18", flip:"articles/respirer_par_anus/", image:"media/articles/serotine1_3.webp" },
-  { id:"nuages_noctulescents", title:"7 Merveilles du ciel nocturne : les nuages noctulescents", author:"Duchêne Léo", topic:"astrophysique", type:"merveilles", issue:5, season:2, issueLabel:"#5 · Mai 2026", href:"https://heyzine.com/flip-book/c5bd9067c1.html#page/6", flip:"articles/nuages_noctulescents/", image:"media/articles/serotine5_1.webp" },
-  { id:"Sue_doku", title:"Sue-doku", author:"Bosse Léo", topic:"", type:"jeu", issue:5, season:2, issueLabel:"#5 · Mai 2026", href:"https://heyzine.com/flip-book/c5bd9067c1.html#page/16", flip:"articles/Sue_doku/", image:"media/articles/serotine5_2.webp" },
-  { id:"flore_polaire", title:"De la flore dans les régions polaires ?", author:"Strohmeyer Ninon", topic:"biologie", type:"article", issue:5, season:2, issueLabel:"#5 · Mai 2026", href:"https://heyzine.com/flip-book/c5bd9067c1.html#page/18", flip:"articles/flore_polaire/", image:"media/articles/serotine5_3.webp" },
-];
+      { id: "astrologie", title: "Des messages (ésotériques) dans les étoiles ?", author: "Gay Charley", topic: "astrophysique", type: "article", issue: 4, season: 1, issueLabel: "#4 · Mars 2026", href: "https://heyzine.com/flip-book/5edd108961.html#page/4", flip: "articles/astrologie/", image: "media/articles/serotine4_1.webp" },
+      { id: "voie_lactee", title: "7 merveilles du ciel nocturne : La Voie Lactée", author: "Duchêne Léo", topic: "astrophysique", type: "merveilles", issue: 4, season: 1, issueLabel: "#4 · Mars 2026", href: "https://heyzine.com/flip-book/5edd108961.html#page/16", flip: "articles/voie_lactee/", image: "media/articles/serotine4_2.webp" },
+      { id: "betelgeuse", title: "Bételgeuse, l'étoile au sommet de la hype", author: "Daveau Quentin", topic: "astrophysique", type: "article", issue: 4, season: 1, issueLabel: "#4 · Mars 2026", href: "https://heyzine.com/flip-book/5edd108961.html#page/20", flip: "articles/betelgeuse/", image: "media/articles/serotine4_3.webp" },
+      { id: "crush", title: "Les secrets insoupçonnés du « crush »", author: "Daveau Quentin", topic: "sociologie", type: "article", issue: 3, season: 1, issueLabel: "#3 · Fév. 2026", href: "https://heyzine.com/flip-book/d5c17bee9a.html#page/4", flip: "articles/crush/", image: "media/articles/serotine3_1.webp" },
+      { id: "ode_celeste", title: "Ode céleste", author: "Amaëline", topic: "astrophysique", type: "poesie", issue: 3, season: 1, issueLabel: "#3 · Fév. 2026", href: "https://heyzine.com/flip-book/d5c17bee9a.html#page/12", flip: "articles/ode_celeste/", image: "media/articles/serotine3_2.webp" },
+      { id: "tca", title: "Red flags et nourriture, quand les TCA s'invitent à table", author: "Bacquet Isaora", topic: "psychologie", type: "article", issue: 3, season: 1, issueLabel: "#3 · Fév. 2026", href: "https://heyzine.com/flip-book/d5c17bee9a.html#page/15", flip: "articles/tca/", image: "media/articles/serotine3_3.webp" },
+      { id: "hydrocerame", title: "Les hydrocérames, ces vases qui suent", author: "Pillot Hector", topic: "physique", type: "article", issue: 2, season: 1, issueLabel: "#2 · Déc. 2025", href: "https://heyzine.com/flip-book/5f6791f646.html#page/4", flip: "articles/hydrocerame/", image: "media/articles/serotine2_1.webp" },
+      { id: "aphantasie_sudoku_2", title: "Ceci n'est pas un bouquet de fleurs (Sudoku) — Solution", author: "Bosse Léo", topic: "", type: "jeu", issue: 2, season: 1, issueLabel: "#2 · Déc. 2025", href: "https://heyzine.com/flip-book/5f6791f646.html#page/16", flip: "articles/aphantasie_sudoku_2/", image: "media/articles/serotine1_2.webp" },
+      { id: "planete_neuf", title: "Une neuvième planète dans notre système solaire", author: "Gay Charley", topic: "astrophysique", type: "article", issue: 2, season: 1, issueLabel: "#2 · Déc. 2025", href: "https://heyzine.com/flip-book/5f6791f646.html#page/18", flip: "articles/planete_neuf/", image: "media/articles/serotine2_2.webp" },
+      { id: "aphantasie", title: "L'aphantasie", author: "Bacquet Isaora", topic: "psychologie", type: "article", issue: 1, season: 1, issueLabel: "#1 · Nov. 2025", href: "https://heyzine.com/flip-book/78d38fd9ec.html#page/4", flip: "articles/aphantasie/", image: "media/articles/serotine1_1.webp" },
+      { id: "aphantasie_sudoku", title: "Ceci n'est pas un bouquet de fleurs (Sudoku)", author: "Bosse Léo", topic: "", type: "jeu", issue: 1, season: 1, issueLabel: "#1 · Nov. 2025", href: "https://heyzine.com/flip-book/78d38fd9ec.html#page/16", flip: "articles/aphantasie_sudoku/", image: "media/articles/serotine1_2.webp" },
+      { id: "respirer_par_anus", title: "Peut-on respirer par l'anus ?", author: "Gachod Pierre", topic: "biologie", type: "article", issue: 1, season: 1, issueLabel: "#1 · Nov. 2025", href: "https://heyzine.com/flip-book/78d38fd9ec.html#page/18", flip: "articles/respirer_par_anus/", image: "media/articles/serotine1_3.webp" },
+      { id: "nuages_noctulescents", title: "7 Merveilles du ciel nocturne : les nuages noctulescents", author: "Duchêne Léo", topic: "astrophysique", type: "merveilles", issue: 5, season: 2, issueLabel: "#5 · Mai 2026", href: "https://heyzine.com/flip-book/c5bd9067c1.html#page/6", flip: "articles/nuages_noctulescents/", image: "media/articles/serotine5_1.webp" },
+      { id: "Sue_doku", title: "Sue-doku", author: "Bosse Léo", topic: "", type: "jeu", issue: 5, season: 2, issueLabel: "#5 · Mai 2026", href: "https://heyzine.com/flip-book/c5bd9067c1.html#page/16", flip: "articles/Sue_doku/", image: "media/articles/serotine5_2.webp" },
+      { id: "flore_polaire", title: "De la flore dans les régions polaires ?", author: "Strohmeyer Ninon", topic: "biologie", type: "article", issue: 5, season: 2, issueLabel: "#5 · Mai 2026", href: "https://heyzine.com/flip-book/c5bd9067c1.html#page/18", flip: "articles/flore_polaire/", image: "media/articles/serotine5_3.webp" },
+    ];
 
     const TOPIC_LABELS = {
       astrophysique: 'Astrophysique', biologie: 'Biologie', physique: 'Physique',
@@ -446,6 +448,19 @@
     render();
 
     document.getElementById('moreArticlesBtn').addEventListener('click', () => { showAll = true; render(); });
+
+    // ── Couverture aléatoire dans la section "Nous soutenir" ─────────────────
+    (function () {
+      const covers = document.querySelectorAll('#archives .issue-cover a');
+      const aboutLink = document.querySelector('#about .issue-cover a');
+      if (!covers.length || !aboutLink) return;
+      const pick = covers[Math.floor(Math.random() * covers.length)];
+      const pickImg = pick.querySelector('img');
+      const aboutImg = aboutLink.querySelector('img');
+      aboutLink.href = pick.href;
+      aboutImg.src = pickImg.src;
+      aboutImg.alt = pickImg.alt;
+    })();
 
     // ── Titres du dernier numéro dans le hero ────────────────────────────────
     (function () {

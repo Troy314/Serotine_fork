@@ -67,6 +67,7 @@
     <a href="${BASE_PATH}/PRIVACY-POLICY.md">Politique de confidentialité</a>
   </div>
   <p class="footer-copyright">© AurorAlpes 2026</p>
+  <p class="footer-credit">Site développé avec <a href="https://claude.ai" target="_blank" rel="noopener">Claude.ai</a></p>
 </footer>`;
 
   /* ── Injection ───────────────────────────────────────────────────────── */
