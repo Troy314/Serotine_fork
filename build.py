@@ -275,6 +275,7 @@ def generate_article_html(article: dict) -> str:
   <title>{article["title"]} — Sérotine</title>
   <meta name="description" content="{description}">
 
+  <link rel="icon" href="../../media/favicon.svg">
   <link rel="canonical" href="{page_url}">
 
   <meta property="og:type"        content="article">
@@ -356,7 +357,8 @@ def generate_404() -> str:
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Page introuvable — Sérotine</title>
-  <link rel="stylesheet" href="css/serotine.css">
+  <link rel="icon" href="/media/favicon.svg">
+  <link rel="stylesheet" href="/css/serotine.css">
 </head>
 <body class="error-page">
   <div class="code">404</div>

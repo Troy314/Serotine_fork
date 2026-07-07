@@ -1306,19 +1306,21 @@ footer strong {
   align-items: center;
   gap: .5rem;
   margin-top: 1.5rem;
-  background: var(--vert);
-  color: var(--violet--fonce);
-  font-size: .84rem;
+  background: var(--ink);
+  border: 1px solid rgba(255, 255, 255, .4);
+  color: var(--cream);
+  font-size: .88rem;
   font-weight: 700;
   letter-spacing: .03em;
-  padding: .6rem 1.4rem;
+  padding: .65rem 1.6rem;
   border-radius: 99px;
   text-decoration: none;
   transition: background .2s;
 }
 
 .read-original:hover {
-  background: #8d987bff;
+  background: var(--vert);
+  color: var(--vert-fonce);
 }
 
 .comments-section {
