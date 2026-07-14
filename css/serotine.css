@@ -956,13 +956,18 @@ details[open]>summary::before {
 }
 
 .issues-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  display: flex;
   gap: 1.25rem;
   margin-top: 1rem;
+  overflow-x: auto;
+  padding-bottom: .5rem;
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
 }
 
 .issue-card {
+  flex: 0 0 200px;
+  scroll-snap-align: start;
   background: var(--paper);
   border: 1px solid var(--border);
   border-radius: 10px;

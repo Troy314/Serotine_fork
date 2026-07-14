@@ -40,11 +40,12 @@ OG_IMAGE     = f"{SITE_URL}/media/serotine_logo.png"
 
 # Issue metadata: issue number → (cover image, heyzine base URL, date label)
 ISSUE_META = {
-    5: ("media/Serotine5.jpg", "https://heyzine.com/flip-book/c5bd9067c1.html",  "Mai 2026"),
-    4: ("media/Serotine4.jpg", "https://heyzine.com/flip-book/5edd108961.html", "Mars 2026"),
-    3: ("media/Serotine3.jpg", "https://heyzine.com/flip-book/d5c17bee9a.html",  "Février 2026"),
-    2: ("media/Serotine2.jpg", "https://heyzine.com/flip-book/5f6791f646.html",  "Décembre 2025"),
-    1: ("media/Serotine1.jpg", "https://heyzine.com/flip-book/78d38fd9ec.html",  "Novembre 2025"),
+    6: ("media/serotine6.webp", "https://serotine-webzine.aflip.in/907e4e9b03.html",  "Juillet 2026"),
+    5: ("media/serotine5.webp", "https://heyzine.com/flip-book/c5bd9067c1.html",  "Mai 2026"),
+    4: ("media/serotine4.webp", "https://heyzine.com/flip-book/5edd108961.html", "Mars 2026"),
+    3: ("media/serotine3.webp", "https://heyzine.com/flip-book/d5c17bee9a.html",  "Février 2026"),
+    2: ("media/serotine2.webp", "https://heyzine.com/flip-book/5f6791f646.html",  "Décembre 2025"),
+    1: ("media/serotine1.webp", "https://heyzine.com/flip-book/78d38fd9ec.html",  "Novembre 2025"),
 }
 
 TOPIC_LABELS = {
