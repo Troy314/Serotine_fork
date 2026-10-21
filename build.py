@@ -40,6 +40,7 @@ OG_IMAGE     = f"{SITE_URL}/media/serotine_logo.png"
 
 # Issue metadata: issue number → (cover image, heyzine base URL, date label)
 ISSUE_META = {
+    7: ("media/serotine7.webp", "https://serotine-webzine.aflip.in/ddd744c837.html",  "Septembre 2026"),
     6: ("media/serotine6.webp", "https://serotine-webzine.aflip.in/907e4e9b03.html",  "Juillet 2026"),
     5: ("media/serotine5.webp", "https://heyzine.com/flip-book/c5bd9067c1.html",  "Mai 2026"),
     4: ("media/serotine4.webp", "https://heyzine.com/flip-book/5edd108961.html", "Mars 2026"),
@@ -177,95 +178,98 @@ def load_articles(csv_path: str) -> list[dict]:
 
 
 # ══════════════════════════════════════════════
-#  2. JS DATA BLOCK
+#  2. HOME PAGE BLOCKS (hero, cartes, archives)
 # ══════════════════════════════════════════════
 
-def js_escape(s: str) -> str:
-    return s.replace("\\", "\\\\").replace('"', '\\"')
+MONTHS_SHORT = {
+    "Janvier": "Janv.", "Février": "Févr.", "Mars": "Mars", "Avril": "Avr.",
+    "Mai": "Mai", "Juin": "Juin", "Juillet": "Juil.", "Août": "Août",
+    "Septembre": "Sept.", "Octobre": "Oct.", "Novembre": "Nov.", "Décembre": "Déc.",
+}
 
-def generate_js_data(articles: list[dict]) -> str:
-    lines = ["const ARTICLES = ["]
-    for a in articles:
+def short_date(label: str) -> str:
+    """'Septembre 2026' → 'Sept. 2026'."""
+    parts = label.split()
+    if len(parts) == 2:
+        return f"{MONTHS_SHORT.get(parts[0], parts[0])} {parts[1]}"
+    return label
+
+def issue_info(issue_num: int) -> tuple[str, str, str]:
+    return ISSUE_META.get(issue_num, (f"media/serotine{issue_num}.webp", "#", ""))
+
+def generate_hero_html(articles: list[dict]) -> str:
+    latest = max(a["issue"] for a in articles)
+    cover, base_url, date_lbl = issue_info(latest)
+    titles = "".join(
+        '<li style="padding-left:14px;position:relative"><span style="position:absolute;left:0;top:.5em;'
+        'width:7px;height:7px;background:#b1ed4e;border-radius:1px" aria-hidden="true"></span>'
+        f'{escape(a["title"])}</li>'
+        for a in articles if a["issue"] == latest
+    )
+    return f"""\
+<div class="g-panel" style="display:grid;align-items:center;align-content:center;flex:1;width:100%;max-width:760px;margin:0 0 0 auto;gap:28px;background:#ffffff1a;border:1px solid #ffffff40;border-radius:4px;padding:28px">
+            <a class="f-ring" href="{base_url}" target="_blank" rel="noopener" style="display:block"><img src="{cover}" alt="Couverture du numéro {latest} de Sérotine, {date_lbl.lower()}" style="display:block;width:100%;height:auto;border-radius:4px;box-shadow:0 10px 24px #0007"></a>
+            <div><p style="margin:0 0 12px;font-size:14px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:#b1ed4e">À la une · N° {latest}</p><ul style="margin:0;padding:0;list-style:none;display:grid;gap:10px;font-size:18px;line-height:1.4">{titles}</ul><a class="f-ring-w" href="{base_url}" target="_blank" rel="noopener" style="display:inline-block;margin-top:20px;color:#b1ed4e;font-weight:700;font-size:17px">Lire le numéro →</a></div>
+          </div>"""
+
+def generate_cards_html(articles: list[dict]) -> str:
+    cards = []
+    for a in sorted(articles, key=lambda x: -x["issue"]):  # tri stable : ordre du CSV dans un même numéro
         raw_img = a.get("image", "")
         img = raw_img[3:] if raw_img.startswith("../") else raw_img
-        lines.append(
-            f'  {{ id:"{js_escape(a["id"])}", '
-            f'title:"{js_escape(a["title"])}", '
-            f'author:"{js_escape(a["author"])}", '
-            f'topic:"{js_escape(a["topic"])}", '
-            f'type:"{js_escape(a["type"])}", '
-            f'issue:{a["issue"]}, '
-            f'season:{a["season"]}, '
-            f'issueLabel:"{js_escape(a["issueLabel"])}", '
-            f'href:"{js_escape(a["href"])}", '
-            f'flip:"{js_escape(a["flip"])}", '
-            f'image:"{js_escape(img)}" }},'
-        )
-    lines.append("];")
-    return "\n".join(lines)
-
-
-# ══════════════════════════════════════════════
-#  3. ARCHIVES HTML BLOCK
-# ══════════════════════════════════════════════
+        topic_tag = (
+            f'<span style="background:#db9ced;color:#65466e;padding:4px 8px;border-radius:2px;text-shadow:none">'
+            f'{escape(TOPIC_LABELS.get(a["topic"], a["topic"]))}</span>'
+        ) if a["topic"] else ""
+        cards.append(f"""\
+        <a class="art-card" data-topic="{escape(a["topic"])}" href="{escape(a["href"])}" target="_blank" rel="noopener" style="position:relative;display:block;aspect-ratio:16/10;overflow:hidden;border-radius:4px;background:#65466e;color:#fff;text-decoration:none;border:1px solid #65466e33;transition:transform .25s,box-shadow .25s">
+          <img src="{escape(img)}" alt="" loading="lazy" style="position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover">
+          <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:14px 16px;text-shadow:0 1px 3px #000c,0 2px 12px #000a">
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">
+              <span style="background:#b1ed4e;color:#374620;padding:4px 8px;border-radius:2px;text-shadow:none">{escape(TYPE_LABELS.get(a["type"], a["type"]))}</span>
+              {topic_tag}
+              <span style="margin-left:auto;color:#fff;white-space:nowrap">N° {a["issue"]}</span>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:flex-start;gap:6px;text-shadow:none">
+              <p style="margin:0;font-size:13px;font-weight:700;background:#fcf8f8;color:#65466e;padding:4px 10px;border-radius:2px">{escape(a["author"])}</p>
+              <h3 style="margin:0;font-family:Verdana,Geneva,Tahoma,sans-serif;font-weight:700;font-size:16px;line-height:1.3;background:#65466e;color:#fff;padding:6px 10px;border-radius:2px;border:1px solid #ffffff40">{escape(a["title"])}</h3>
+            </div>
+          </div>
+        </a>""")
+    return "\n".join(cards)
 
 def generate_archives_html(articles: list[dict]) -> str:
-    by_issue = defaultdict(list)
-    for a in articles:
-        by_issue[a["issue"]].append(a)
-
-    cards = []
-    for issue_num in sorted(by_issue.keys(), reverse=True):
-        issue_articles = by_issue[issue_num]
-        meta     = ISSUE_META.get(issue_num, (f"media/Serotine{issue_num}.jpg", "#", ""))
-        cover    = meta[0]
-        base_url = meta[1]
-        date_lbl = meta[2]
-        season   = (issue_num - 1) // 4 + 1
-        count    = len(issue_articles)
-        plural   = "s" if count > 1 else ""
-
-        cards.append(f"""\
-        <div class="issue-card">
-          <div class="issue-cover"><a href="{base_url}" target="_blank"><img src="{cover}" alt="#{issue_num}"></a></div>
-          <div class="issue-info">
-            <div class="issue-season">Saison {season} · #{issue_num}</div>
-            <div class="issue-date">{date_lbl}</div>
-            <div class="issue-count">{count} article{plural}</div>
-            <a href="{base_url}" target="_blank" class="issue-read-btn">Lire →</a>
-          </div>
-        </div>""")
-
-    all_cards = "\n".join(cards)
-    return f"""\
-  <!-- ARCHIVES -->
-  <section class="section" id="archives">
-    <h2 class="section-title">Tous les numéros <small>Archives</small></h2>
-    <div class="issues-grid">
-{all_cards}
-    </div>
-  </section>"""
+    issues = sorted({a["issue"] for a in articles}, reverse=True)
+    items = []
+    for n in issues:
+        cover, base_url, date_lbl = issue_info(n)
+        season = (n - 1) // 4 + 1
+        items.append(f"""\
+          <a class="issue-link" href="{base_url}" target="_blank" rel="noopener" style="text-decoration:none;color:#65466e;display:block;flex:1 0 110px;min-width:110px;scroll-snap-align:start">
+            <img src="{cover}" alt="Couverture du numéro {n}" loading="lazy" style="display:block;width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:4px;border:1px solid #65466e">
+            <p style="margin:8px 0 0;font-weight:700;font-size:13px">N° {n} · {short_date(date_lbl)}</p>
+            <p style="margin:0;font-size:12px;color:#65466e">Saison {season}</p>
+          </a>""")
+    return "\n".join(items)
 
 
 # ══════════════════════════════════════════════
 #  4. ARTICLE PAGE GENERATOR
 # ══════════════════════════════════════════════
 
-def tag_css_rule(tag: str) -> str:
-    bg, fg = TAG_CSS.get(tag, ("888", "555"))
-    return f'.tag-{tag} {{ background:#{bg}14; color:#{fg}; border:1px solid #{bg}28; }}'
-
-def render_tag_html(key: str, value: str) -> str:
-    label = TAG_LABELS.get(value, value)
-    return f'<span class="tag tag-{value}" data-filter="{key}" data-value="{value}">{label}</span>'
-
 def generate_article_html(article: dict) -> str:
-    tags_html  = render_tag_html("topic", article["topic"]) + "\n        " + render_tag_html("type", article["type"])
     parts      = article["issueLabel"].split("·")
     issue_num  = parts[0].strip()
-    issue_date = parts[1].strip() if len(parts) > 1 else ""
     page_url   = f"{SITE_URL}/articles/{article['id']}/"
     description = f"Article de {article['author']} dans Sérotine {article['issueLabel']}."
+    title      = escape(article["title"])
+    raw_img    = article.get("image", "")
+    img        = "../" + raw_img if raw_img.startswith("../") else "../../" + raw_img.lstrip("/")
+    topic_html = (
+        f'<span style="background:#f1e3f6;padding:4px 8px;border-radius:2px">'
+        f'{escape(TOPIC_LABELS.get(article["topic"], article["topic"]))}</span>'
+    ) if article["topic"] else ""
+    type_label = escape(TYPE_LABELS.get(article["type"], article["type"]))
 
     return f"""\
 <!DOCTYPE html>
@@ -273,56 +277,45 @@ def generate_article_html(article: dict) -> str:
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{article["title"]} — Sérotine</title>
-  <meta name="description" content="{description}">
+  <title>{title} — Sérotine</title>
+  <meta name="description" content="{escape(description)}">
 
   <link rel="icon" href="../../media/favicon.svg">
   <link rel="canonical" href="{page_url}">
 
   <meta property="og:type"        content="article">
-  <meta property="og:title"       content="{article["title"]} — Sérotine">
-  <meta property="og:description" content="{description}">
+  <meta property="og:title"       content="{title} — Sérotine">
+  <meta property="og:description" content="{escape(description)}">
   <meta property="og:url"         content="{page_url}">
   <meta property="og:image"       content="{OG_IMAGE}">
   <meta property="og:site_name"   content="Sérotine, un souffle de science">
-  <meta property="article:author" content="{article["author"]}">
+  <meta property="article:author" content="{escape(article["author"])}">
 
   <meta name="twitter:card"        content="summary_large_image">
-  <meta name="twitter:title"       content="{article["title"]} — Sérotine">
-  <meta name="twitter:description" content="{description}">
+  <meta name="twitter:title"       content="{title} — Sérotine">
+  <meta name="twitter:description" content="{escape(description)}">
   <meta name="twitter:image"       content="{OG_IMAGE}">
 
   <link rel="stylesheet" href="../../css/serotine.css">
 </head>
 <body>
-  <nav>
-    <a href="../.." class="nav-brand">Sérotine <em>— un souffle de science</em></a>
-    <button class="nav-toggle" id="menuToggle" aria-label="Menu"><span></span><span></span><span></span></button>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="../../#dernier">Dernier numéro</a></li>
-      <li><a href="../../#explorer">Explorer</a></li>
-      <li><a href="../../#archives">Archives</a></li>
-      <li><a href="../../#podcast">Podcast</a></li>
-      <li><a href="../../comite/">Comité</a></li>
-      <li><a href="https://www.auroralpes.fr/" target="_blank">AurorAlpes</a></li>
-    </ul>
-  </nav>
+  <nav id="nav-placeholder"></nav>
 
-  <div class="wrap">
-    <a href="../.." class="back-link">← Retour au webzine</a>
-    <header class="article-header">
-      <div class="article-meta">
-        <span class="article-issue">Sérotine {issue_num} · {issue_date}</span>
-        {tags_html}
-        <span class="article-author">{article["author"]}</span>
+  <main id="contenu" style="max-width:800px;margin:0 auto;padding:32px 20px 72px">
+    <a href="../../#explorer" style="display:inline-block;margin-bottom:28px;font-size:13px;letter-spacing:.06em;text-transform:uppercase">← Retour au webzine</a>
+    <header style="padding-bottom:24px;margin-bottom:32px;border-bottom:3px solid #65466e">
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-bottom:16px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">
+        <span>Sérotine {escape(article["issueLabel"])}</span>
+        {topic_html}
+        <span style="background:#b1ed4e;color:#374620;padding:4px 8px;border-radius:2px">{type_label}</span>
       </div>
-      <h1 class="article-title">{article["title"]}</h1>
-      <a href="{article["href"]}" target="_blank" class="read-original">
-        Lire l'article dans le webzine
-      </a>
+      <h1 style="margin:0 0 12px;font-size:clamp(24px,4.5vw,38px);line-height:1.25;letter-spacing:-.01em">{title}</h1>
+      <p style="margin:0;font-size:15px">Par {escape(article["author"])}</p>
     </header>
-    <div class="comments-section">
-      <div class="comments-label">Commentaires</div>
+    <img src="{img}" alt="" style="display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:4px;border:1px solid #65466e33;margin-bottom:28px">
+    <a class="btn-primary" href="{escape(article["href"])}" target="_blank" rel="noopener" style="display:inline-flex;gap:10px;align-items:center;background:#65466e;color:#fff;padding:16px 24px;border-radius:4px;font-weight:700;font-size:15px;text-decoration:none;transition:transform .2s,box-shadow .2s">Lire l'article dans le webzine <span aria-hidden="true">→</span></a>
+    <section aria-labelledby="coms" style="margin-top:56px;padding-top:28px;border-top:1px solid #65466e33">
+      <h2 id="coms" style="margin:0 0 20px;font-size:12px;letter-spacing:.12em;text-transform:uppercase">Commentaires</h2>
       <script src="https://utteranc.es/client.js"
           repo="Serotine-webzine/Serotine"
           issue-term="pathname"
@@ -330,18 +323,12 @@ def generate_article_html(article: dict) -> str:
           crossorigin="anonymous"
           async>
       </script>
-    </div>
-  </div>
+    </section>
+  </main>
 
-  <footer>
-    <p>Sérotine, un souffle de science — par <a href="https://www.auroralpes.fr/" target="_blank">AurorAlpes</a></p>
-  </footer>
-
-  <script>
-    const t = document.getElementById('menuToggle'), n = document.getElementById('navLinks');
-    t.addEventListener('click', () => n.classList.toggle('open'));
-    n.querySelectorAll('a').forEach(a => a.addEventListener('click', () => n.classList.remove('open')));
-  </script>
+  <footer id="footer-placeholder"></footer>
+  <script src="../../components.js"></script>
+  <script src="../../grain.js"></script>
 </body>
 </html>"""
 
@@ -360,13 +347,17 @@ def generate_404() -> str:
   <title>Page introuvable — Sérotine</title>
   <link rel="icon" href="/media/favicon.svg">
   <link rel="stylesheet" href="/css/serotine.css">
+  <style>body{background:#302135;color:#fff}a{color:#b1ed4e}</style>
 </head>
-<body class="error-page">
-  <div class="code">404</div>
-  <h1>Cette page s'est perdue dans les étoiles…</h1>
-  <p>L'article ou la page que vous cherchez n'existe pas ou a été déplacé.</p>
-  <a href="/" class="home-link" id="home-link">← Retour à l'accueil</a>
-  <p class="brand">Sérotine, <em>un souffle de science</em></p>
+<body>
+  <main class="g" style="min-height:100vh;background:linear-gradient(135deg,#302135e6,#302135b8),url('/media/hero.svg') center/cover no-repeat,#302135;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:32px 20px;overflow-x:hidden">
+    <img src="/media/serotine_logo.svg" alt="" width="56" height="56" style="display:block;margin-bottom:24px">
+    <p style="margin:0;font-weight:700;font-size:clamp(88px,22vw,180px);line-height:1;color:#b1ed4e">404</p>
+    <h1 style="margin:20px 0 12px;font-size:clamp(20px,4vw,30px);line-height:1.3">Cette page s'est perdue dans les étoiles…</h1>
+    <p style="margin:0;max-width:440px;font-size:15px;line-height:1.8">L'article ou la page que vous cherchez n'existe pas ou a été déplacé.</p>
+    <a class="btn-lime" id="home-link" href="/" style="margin-top:36px;display:inline-flex;gap:10px;background:#b1ed4e;color:#374620;padding:15px 24px;border-radius:4px;font-weight:700;font-size:15px;text-decoration:none;transition:transform .2s,box-shadow .2s"><span aria-hidden="true">←</span> Retour à l'accueil</a>
+    <p style="margin:40px 0 0;font-weight:700;font-size:14px">Sérotine, <span style="color:#b1ed4e">un souffle de science</span></p>
+  </main>
   <script>
     // Testing under GitHub Pages (/Serotine_fork/) needs the repo subpath;
     // production at serotine.fr serves from the root. Remove once GitHub
@@ -375,6 +366,7 @@ def generate_404() -> str:
       document.getElementById('home-link').href = '/Serotine_fork/';
     }
   </script>
+  <script src="/grain.js"></script>
 </body>
 </html>"""
 
@@ -438,6 +430,16 @@ def cleanup_flat_articles(articles: list[dict]) -> None:
 #  8. INDEX.HTML INJECTOR
 # ══════════════════════════════════════════════
 
+def replace_block(html: str, name: str, content: str) -> str:
+    """Replace what sits between <!-- NAME_START --> and <!-- NAME_END -->."""
+    pat = re.compile(rf'(<!-- {name}_START -->).*?(<!-- {name}_END -->)', re.DOTALL)
+    if not pat.search(html):
+        print(f"  ⚠  Repère {name}_START introuvable dans {INDEX_FILE}")
+        return html
+    print(f"  ✓ Bloc {name} injecté dans {INDEX_FILE}")
+    return pat.sub(lambda m: f"{m.group(1)}\n{content}\n        {m.group(2)}", html, count=1)
+
+
 def inject_index(articles: list[dict]) -> None:
     if not os.path.exists(INDEX_FILE):
         print(f"  ⚠  {INDEX_FILE} introuvable — injection ignorée.")
@@ -446,21 +448,9 @@ def inject_index(articles: list[dict]) -> None:
     with open(INDEX_FILE, "r", encoding="utf-8") as f:
         html = f.read()
 
-    js_new   = generate_js_data(articles)
-    js_match = re.search(r'const ARTICLES = \[.*?^\s*];', html, re.DOTALL | re.MULTILINE)
-    if js_match:
-        html = html[:js_match.start()] + js_new + html[js_match.end():]
-        print("  ✓ Bloc ARTICLES injecté dans index.html")
-    else:
-        print("  ⚠  Bloc 'const ARTICLES = [' introuvable dans index.html")
-
-    archives_new   = generate_archives_html(articles)
-    archives_match = re.search(r'<!-- ARCHIVES -->.*?</section>', html, re.DOTALL)
-    if archives_match:
-        html = html[:archives_match.start()] + archives_new + html[archives_match.end():]
-        print("  ✓ Section Archives injectée dans index.html")
-    else:
-        print("  ⚠  Section '<!-- ARCHIVES -->' introuvable dans index.html")
+    html = replace_block(html, "HERO", "          " + generate_hero_html(articles))
+    html = replace_block(html, "CARDS", generate_cards_html(articles))
+    html = replace_block(html, "ARCHIVES", generate_archives_html(articles))
 
     with open(INDEX_FILE, "w", encoding="utf-8") as f:
         f.write(html)
@@ -534,61 +524,54 @@ def load_membres(csv_path: str) -> dict[str, list[dict]]:
 #  10. COMITÉ — HTML CARD GENERATOR
 # ══════════════════════════════════════════════
 
-def render_avatar(membre: dict) -> str:
-    img_src = membre["image"] if membre["image"] else "../media/icon_rond.png"
-    img_tag = (
-        f'<img src="{escape(img_src)}" alt="{escape(membre["nom"])}" '
-        f'class="member-photo" loading="lazy">'
-    )
-    if membre["url"]:
-        return (
-            f'<div class="member-avatar">'
-            f'<a href="{escape(membre["url"])}" target="_blank" rel="noopener" '
-            f'aria-label="Profil de {escape(membre["nom"])}">{img_tag}</a>'
-            f'</div>'
-        )
-    return f'<div class="member-avatar">{img_tag}</div>'
+def initials(nom: str) -> str:
+    return "".join(w[0] for w in nom.split()[:2]).upper()
 
 
-def render_card(membre: dict, compact: bool = False, show_badge: bool = False) -> str:
-    avatar_html = render_avatar(membre)
-
-    badge_html = (
-        '<span class="badge-comite">Comité de rédaction</span>'
-        if show_badge else ""
-    )
-
-    def _speciality_tags(raw: str) -> str:
-        parts = [p.strip() for p in raw.split(",") if p.strip()]
-        spans = "".join(f'<span class="badge-speciality">{escape(p)}</span>' for p in parts)
-        return f'<div class="speciality-tags">{spans}</div>'
-
-    speciality_html = _speciality_tags(membre["speciality"]) if membre.get("speciality") else ""
-
-    bio_html = (
-        f'<div class="member-bio">{escape(membre["bio"])}</div>'
-        if membre["bio"] and not compact else ""
-    )
-
-    compact_cls = " compact" if compact else ""
+def render_card(membre: dict, show_badge: bool = False) -> str:
+    nom = escape(membre["nom"])
+    if membre["image"]:
+        avatar = (f'<img src="{escape(membre["image"])}" alt="" loading="lazy" width="88" height="88" '
+                  'style="display:block;width:88px;height:88px;object-fit:cover;border-radius:4px;border:3px solid #b1ed4e">')
+    else:
+        avatar = ('<div aria-hidden="true" style="width:88px;height:88px;border-radius:4px;border:3px solid #b1ed4e;'
+                  'background:#65466e;color:#b1ed4e;font-weight:700;font-size:28px;display:flex;align-items:center;'
+                  f'justify-content:center">{escape(initials(membre["nom"]))}</div>')
+    badge = (
+        '<span style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;'
+        'background:#b1ed4e;color:#374620;padding:3px 8px;border-radius:2px">Comité de rédaction</span>'
+    ) if show_badge else ""
+    parts = [p.strip() for p in membre.get("speciality", "").split(",") if p.strip()]
+    spec = (
+        '<p style="margin:auto 0 0;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;'
+        'background:#f1e3f6;padding:4px 8px;border-radius:2px;color:#65466e">'
+        f'{escape(" · ".join(parts))}</p>'
+    ) if parts else ""
+    link = (
+        f'<a class="f-ring" href="{escape(membre["url"])}" target="_blank" rel="noopener" '
+        f'aria-label="Profil de {nom}" style="font-size:13px;font-weight:700">Profil →</a>'
+    ) if membre["url"] else ""
     return f"""\
-      <div class="member-card{compact_cls}">
-        {avatar_html}
-        <div class="member-name">{escape(membre["nom"])}</div>
-        {badge_html}
-        <div class="member-role">{escape(membre["role"])}</div>
-        {bio_html}
-        {speciality_html}
-      </div>"""
+        <li class="member-card" style="background:#fff;border:1px solid #65466e33;border-radius:4px;padding:22px 18px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;transition:transform .25s,border-color .25s,box-shadow .25s">
+          {avatar}
+          <h3 style="margin:6px 0 0;font-size:16px">{nom}</h3>
+          {badge}
+          <p style="margin:0;font-size:13px;line-height:1.5">{escape(membre["role"])}</p>
+          {spec}
+          {link}
+        </li>"""
 
 
-def render_members_grid(membres: list[dict], compact: bool = False,
-                        badge_types: tuple = ()) -> str:
-    cards = "\n".join(
-        render_card(m, compact, show_badge=(m["type"] in badge_types))
-        for m in membres
-    )
-    return f'    <div class="members-grid">\n{cards}\n    </div>'
+def render_alumnus(membre: dict) -> str:
+    return f"""\
+        <li style="display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid #65466e33;border-radius:4px">
+          <div aria-hidden="true" style="flex:none;width:44px;height:44px;border-radius:4px;background:#65466e;color:#b1ed4e;font-weight:700;display:flex;align-items:center;justify-content:center">{escape(initials(membre["nom"]))}</div>
+          <div style="font-size:14px;line-height:1.4"><strong>{escape(membre["nom"])}</strong><br>{escape(membre["role"])}</div>
+        </li>"""
+
+
+GRID_STYLE = ("list-style:none;margin:0;padding:0;display:grid;"
+              "grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr));gap:16px")
 
 
 # ══════════════════════════════════════════════
@@ -597,75 +580,34 @@ def render_members_grid(membres: list[dict], compact: bool = False,
 
 def build_anciens_section(membres: list[dict]) -> str:
     if not membres:
-        return "    <!-- ANCIENS_START -->\n    <!-- ANCIENS_END -->"
-    grid = render_members_grid(membres, compact=True)
+        return "<!-- ANCIENS_START -->\n      <!-- ANCIENS_END -->"
+    items = "\n".join(render_alumnus(m) for m in membres)
     return f"""\
-    <!-- ANCIENS_START -->
-    <details class="anciens-details">
-      <summary class="section-title anciens-summary">
-        Anciens membres
-      </summary>
-{grid}
-    </details>
-    <!-- ANCIENS_END -->"""
+<!-- ANCIENS_START -->
+      <details style="margin-top:40px">
+        <summary style="cursor:pointer;font-weight:700;font-size:18px;padding:12px 0;border-bottom:1px solid #65466e33">Anciens membres</summary>
+        <ul style="list-style:none;margin:20px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr));gap:12px">
+{items}
+        </ul>
+      </details>
+      <!-- ANCIENS_END -->"""
 
 
 def build_projet_section(membres_comite: list[dict], membres_projet: list[dict]) -> str:
     tous = membres_comite + membres_projet
     if not tous:
-        return "    <!-- PROJET_START -->\n    <!-- PROJET_END -->"
-    grid = render_members_grid(tous, badge_types=("comite",))
+        return "<!-- PROJET_START -->\n      <!-- PROJET_END -->"
+    cards = "\n".join(render_card(m, show_badge=(m["type"] == "comite")) for m in tous)
     return f"""\
-    <!-- PROJET_START -->
-    <h2 class="section-title">L'équipe <small>Membres du projet</small></h2>
-{grid}
-    <!-- PROJET_END -->"""
-
-
-# ══════════════════════════════════════════════
-#  12. COMITÉ — CSS INJECTION
-# ══════════════════════════════════════════════
-
-EXTRA_CSS = """\
-    /* AVATAR */
-    .member-avatar { width: 52px; height: 52px; border-radius: 50%; overflow: hidden; margin-bottom: .75rem; flex-shrink: 0; }
-    .member-photo { width: 100%; height: 100%; object-fit: cover; }
-    .member-initials {
-      display: flex; align-items: center; justify-content: center;
-      background: var(--ink); color: var(--paper);
-      font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 400;
-    }
-
-    /* PASTILLE COMITÉ DE RÉDACTION */
-    .badge-comite {
-      display: inline-block;
-      font-size: .65rem; font-weight: 200; letter-spacing: .04em; text-transform: uppercase;
-      border: 1px solid var(--ink);
-      border-radius: 3px; padding: .15em .5em;
-      margin-bottom: .35rem;
-      vertical-align: middle;
-    }
-
-    /* CARTE COMPACTE (anciens membres) */
-    .member-card.compact { padding: 1rem 1.2rem; }
-    .member-card.compact .member-avatar { width: 36px; height: 36px; font-size: .8rem; }
-
-    /* ANCIENS MEMBRES — section dépliable */
-    .anciens-details { margin-bottom: 3.5rem; }
-    .anciens-details > .members-grid { margin-top: 1.5rem; }
-    .anciens-summary {
-      cursor: pointer; list-style: none; display: flex;
-      align-items: baseline; gap: .75rem;
-      margin-bottom: 0 !important;
-    }
-    .anciens-summary::-webkit-details-marker { display: none; }
-    .anciens-summary .toggle-icon { font-size: .9rem; color: var(--muted); transition: transform .25s; }
-    .anciens-details[open] .toggle-icon { transform: rotate(180deg); }
-
-    /* CSS INJECTED BY generate.py — ne pas supprimer cette ligne */"""
-
-CSS_MARKER = "/* CSS INJECTED BY generate.py — ne pas supprimer cette ligne */"
-CSS_MARKER_LEGACY = "/* CSS INJECTED BY update_comite.py — ne pas supprimer cette ligne */"
+<!-- PROJET_START -->
+      <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px;margin-bottom:24px;padding-bottom:12px;border-bottom:1px solid #65466e33">
+        <h2 style="margin:0;font-size:clamp(22px,3vw,30px)">L'équipe</h2>
+        <span style="font-size:12px;letter-spacing:.12em;text-transform:uppercase">Membres du projet</span>
+      </div>
+      <ul style="{GRID_STYLE}">
+{cards}
+      </ul>
+      <!-- PROJET_END -->"""
 
 
 # ══════════════════════════════════════════════
@@ -681,25 +623,6 @@ def inject_comite(grouped: dict[str, list], comite_path: str) -> None:
         html = f.read()
 
     changed = False
-
-    # Migrate legacy CSS marker
-    if CSS_MARKER_LEGACY in html:
-        html = html.replace(CSS_MARKER_LEGACY, CSS_MARKER)
-        changed = True
-
-    # Inject / update CSS block
-    if CSS_MARKER not in html:
-        html = html.replace("    /* MEMBER GRID */", EXTRA_CSS + "\n\n    /* MEMBER GRID */", 1)
-        if CSS_MARKER not in html:
-            html = html.replace("  </style>", EXTRA_CSS + "\n  </style>", 1)
-        print("  ✓ Styles CSS injectés")
-        changed = True
-    else:
-        old_css = re.search(r'/\* AVATAR \*/.*?/\* CSS INJECTED BY (?:generate|update_comite)\.py[^\*]*\*/', html, re.DOTALL)
-        if old_css:
-            html = html[:old_css.start()] + EXTRA_CSS + html[old_css.end():]
-            print("  ✓ Styles CSS mis à jour")
-            changed = True
 
     # Remove legacy COMITE_START/END block if present
     match_comite = re.search(r'<!-- COMITE_START -->.*?<!-- COMITE_END -->', html, re.DOTALL)

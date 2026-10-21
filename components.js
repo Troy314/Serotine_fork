@@ -20,54 +20,67 @@
   const currentPath = location.pathname.replace(/\/$/, '') || '/';
 
   function isActive(href) {
-    if (href.startsWith('http')) return false;
-    const target = (BASE_PATH + href).split('#')[0].replace(/\/$/, '') || '/';
+    if (href.startsWith('http') || href.includes('#')) return false;
+    const target = (BASE_PATH + href).replace(/\/$/, '') || '/';
     return currentPath === target;
   }
 
   /* ── Navigation ──────────────────────────────────────────────────────── */
+  const NEWSLETTER_URL = 'https://framaforms.org/newsletter-serotine-1777624449';
   const links = [
     { href: '/#explorer', label: 'Articles' },
-    { href: '/#archives', label: 'Archives' },
     { href: '/#podcast', label: 'Podcast' },
-    { href: '/comite/', label: 'À Propos' },
-    { href: 'https://www.auroralpes.fr/', label: 'AurorAlpes', external: true },
+    { href: '/#archives', label: 'Archives' },
+    { href: '/#soutenir', label: 'Nous soutenir' },
+    { href: '/comite/', label: 'À propos' },
   ];
 
+  const desktopLinks = links.map(l => {
+    const active = isActive(l.href) ? ' active' : '';
+    const current = active ? ' aria-current="page"' : '';
+    return `<li><a class="nav-link${active}" href="${BASE_PATH}${l.href}"${current}>${l.label}</a></li>`;
+  }).join('\n      ');
+
+  const mobileLinks = links.map(l =>
+    `<li><a href="${BASE_PATH}${l.href}">${l.label}</a></li>`
+  ).join('\n      ');
+
   const navHTML = `
-<nav>
-  <a href="${BASE_PATH}/" class="nav-brand">
-    <img src="${BASE_PATH}/media/serotine_logo.svg" alt="Logo Sérotine" class="logo-xsmall">
-    érotine
-  </a>
-  <button class="nav-toggle" id="menuToggle" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
-  <ul class="nav-links" id="navLinks">
-    ${links.map(l => {
-    const active = isActive(l.href) ? ' class="active"' : '';
-    const ext = l.external ? ' target="_blank"' : '';
-    const href = l.external ? l.href : BASE_PATH + l.href;
-    return `<li><b><a href="${href}"${active}${ext}>${l.label}</a></b></li>`;
-  }).join('\n    ')}
+<a class="skip-link" href="#contenu">Aller au contenu</a>
+<header class="site-header">
+  <div class="site-progress" id="siteProgress"></div>
+  <nav class="site-nav" aria-label="Navigation principale">
+    <a class="brand" href="${BASE_PATH}/">
+      <img src="${BASE_PATH}/media/serotine_logo.svg" alt=""><span>érotine</span><span class="sr-only">Sérotine, accueil</span>
+    </a>
+    <ul class="nav-list">
+      ${desktopLinks}
+      <li><a class="nav-cta" href="${NEWSLETTER_URL}" target="_blank" rel="noopener">Newsletter</a></li>
+    </ul>
+    <button class="nav-burger" id="menuToggle" type="button" aria-expanded="false" aria-controls="menu-mobile" aria-label="Menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </nav>
+  <ul class="menu-mobile" id="menu-mobile">
+      ${mobileLinks}
+      <li class="cta"><a href="${NEWSLETTER_URL}" target="_blank" rel="noopener">S'abonner à la newsletter</a></li>
   </ul>
-</nav>`;
+</header>`;
 
   /* ── Footer ──────────────────────────────────────────────────────────── */
   const footerHTML = `
-<footer>
-  <p><strong>Sérotine, un souffle de science</strong> — par <a href="https://www.auroralpes.fr/" target="_blank">AurorAlpes</a></p>
-  <div class="footer-logo">
-    <a href="https://www.auroralpes.fr/" target="_blank">
-      <img src="${BASE_PATH}/media/auroralpes_logo_fil.png" alt="Logo AurorAlpes" class="logo-footer">
-    </a>
+<footer class="site-footer">
+  <div class="site-footer-in">
+    <div class="site-footer-brand">
+      <a href="https://www.auroralpes.fr/" target="_blank" rel="noopener"><img src="${BASE_PATH}/media/auroralpes_logo_fil.png" alt="AurorAlpes" height="40"></a>
+      <p><strong>Sérotine, un souffle de science</strong><br>par AurorAlpes · © 2026</p>
+    </div>
+    <nav class="site-footer-links" aria-label="Liens légaux">
+      <a href="${BASE_PATH}/mentions-legales/">Mentions légales</a>
+      <a href="${BASE_PATH}/confidentialite/">Politique de confidentialité</a>
+      <a href="${BASE_PATH}/comite/">À propos</a>
+    </nav>
   </div>
-  <div class="footer-links">
-    <a href="${BASE_PATH}/mentions-legales/">Mentions légales</a>
-    <a href="${BASE_PATH}/PRIVACY-POLICY.md">Politique de confidentialité</a>
-  </div>
-  <p class="footer-copyright">© AurorAlpes 2026</p>
-  <p class="footer-credit">Site développé avec <a href="https://claude.ai" target="_blank" rel="noopener">Claude.ai</a></p>
 </footer>`;
 
   /* ── Injection ───────────────────────────────────────────────────────── */
@@ -77,21 +90,37 @@
   const footerPlaceholder = document.getElementById('footer-placeholder');
   if (footerPlaceholder) footerPlaceholder.outerHTML = footerHTML;
 
-  /* ── Mobile nav ──────────────────────────────────────────────────────── */
-  function initMobileNav() {
+  /* ── Menu mobile + barre de progression ──────────────────────────────── */
+  function initNav() {
     const toggle = document.getElementById('menuToggle');
-    const navLinks = document.getElementById('navLinks');
-    if (!toggle || !navLinks) return;
-    toggle.addEventListener('click', () => navLinks.classList.toggle('open'));
-    navLinks.querySelectorAll('a').forEach(a =>
-      a.addEventListener('click', () => navLinks.classList.remove('open'))
-    );
+    const menu = document.getElementById('menu-mobile');
+    if (toggle && menu) {
+      toggle.addEventListener('click', () => {
+        const open = menu.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', open);
+      });
+      menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        menu.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }));
+    }
+
+    const bar = document.getElementById('siteProgress');
+    if (bar) {
+      const update = () => {
+        const h = document.documentElement, max = h.scrollHeight - h.clientHeight;
+        bar.style.width = (max > 0 ? Math.min(100, h.scrollTop / max * 100) : 0) + '%';
+      };
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update);
+      update();
+    }
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initMobileNav);
+    document.addEventListener('DOMContentLoaded', initNav);
   } else {
-    initMobileNav();
+    initNav();
   }
 
 })();

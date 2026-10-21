@@ -6,8 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-site-verification" content="ToO2Xp3njj4-Z4Kfo0_wTTDKPtDOIPK_B89PqwQ0Tuo" />
 
-  <script src="https://kit.fontawesome.com/591d1118fb.js" crossorigin="anonymous"></script>
-
   <!-- ═══ TITLE ═══════════════════════════════════════════════════════════ -->
   <title>Sérotine · Un souffle de science</title>
 
@@ -39,470 +37,542 @@
 
 <body>
 
-  <!-- STRIPE TOP -->
-  <div class="amber-top-stripe"></div>
-
-  <!-- NAV -->
   <nav id="nav-placeholder"></nav>
 
-  <!-- HERO -->
-  <header class="hero">
-    <div class="hero-left">
-      <img src="media/logo_serotine_site.svg" alt="Serotine_logo" class="logo-main">
-      <h2><em>un souffle de science</em></h2>
-      <div class="hero-social">
-        <a href="mailto:webzine@auroralpes.fr" target="_blank"><img src="media/envelope.svg" alt="Email"
-            class="logo-social"></a>
-        <a href="https://bsky.app/profile/serotine-media.bsky.social/" target="_blank"><img src="media/bluesky.svg"
-            alt="Bluesky" class="logo-social"></a>
-        <a href="https://www.linkedin.com/showcase/s%C3%A9rotine-un-souffle-de-science" target="_blank"><img
-            src="media/linkedin.svg" alt="LinkedIn" class="logo-social"></a>
-        <a href="https://www.instagram.com/serotine_media/" target="_blank"><img src="media/square-instagram.svg"
-            alt="Instagram" class="logo-social"></a>
-      </div>
-      <a href="https://framaforms.org/newsletter-serotine-1777624449" target="_blank" class="hero-newsletter-cta">📬
-        S'abonner à la Newsletter</a>
-    </div>
-    <div class="hero-right">
-      <img src="media/display.webp" alt="Sérotine" class="hero-display-img">
-      <ul class="hero-toc" id="heroToc"></ul>
-      <!-- HERO_CTA --><a href="https://serotine-webzine.aflip.in/ddd744c837.html" target="_blank" class="hero-cta">Lire
-        le
-        dernier numéro →</a><!-- /HERO_CTA -->
-    </div>
-  </header>
-
-  <main>
-
-    <!-- EXPLORER -->
-    <section id="explorer">
-      <div class="explorer-inner">
-        <h2 class="section-title">
-          Découvrir les articles<small>Tous nos sujets</small>
-          <button class="filter-toggle" id="filterToggle" aria-expanded="false" aria-controls="filterPanel">Filtrer ·
-            Trier</button>
-        </h2>
-
-        <div class="filter-panel" id="filterPanel" aria-hidden="true">
-          <div class="filter-bar">
-            <span class="filter-label">Thème&nbsp;:</span>
-            <button class="topic-btn active" data-value="all">Tous</button>
-            <button class="topic-btn" data-value="astrophysique">Astrophysique</button>
-            <button class="topic-btn" data-value="biologie">Biologie</button>
-            <button class="topic-btn" data-value="physique">Physique</button>
-            <button class="topic-btn" data-value="psychologie">Psychologie</button>
-            <button class="topic-btn" data-value="sociologie">Sociologie</button>
+  <main id="contenu">
+    <section id="top" style="background:linear-gradient(135deg,#302135e6 0%,#302135b8 55%,#302135c7 100%),url('media/hero.svg') center/cover no-repeat,#65466e;color:#fff;overflow:hidden">
+      <div  class="g-hero" style="max-width:1240px;margin:0 auto;padding:clamp(20px,2.6vw,36px) 20px clamp(24px,3vw,40px);display:grid;gap:clamp(24px,4vw,56px);align-items:stretch">
+        <div>
+          <div style="display:flex;flex-direction:column;align-items:flex-start;width:fit-content;max-width:100%"><h1 id="wordmark" class="wordmark" style="margin:0;display:flex;align-items:flex-end;gap:4px;font-family:Verdana,Geneva,Tahoma,sans-serif;font-weight:700;line-height:1;letter-spacing:-.02em;color:#fff"><img src="media/serotine_logo.svg" alt="S" style="display:block;height:1.35em;width:auto"><span style="display:block;padding-bottom:0;line-height:.8">érotine</span></h1>
+          <p id="tagline" style="margin:10px 0 0;white-space:nowrap;font-weight:700;font-size:clamp(18px,2.4vw,28px);line-height:1.2;color:#fff">Un souffle de <span style="color:#b1ed4e">science</span></p></div>
+          <p style="margin:14px 0 0;max-width:480px;font-size:15px;line-height:1.65;color:#fff">Articles, jeux et poésie, publiés chaque numéro par des bénévoles. Libre d'accès, porté par AurorAlpes.</p>
+          <div style="margin-top:18px;display:flex;flex-wrap:wrap;gap:10px">
+            <a class="h3 f5" href="https://serotine-webzine.aflip.in/ddd744c837.html" target="_blank" rel="noopener" style="background:#b1ed4e;color:#374620;padding:13px 20px;border-radius:4px;font-weight:700;font-size:14px;white-space:nowrap;text-decoration:none;display:inline-flex;gap:10px;align-items:center;transition:transform .2s,box-shadow .2s">Lire le dernier numéro <span aria-hidden="true">→</span></a>
+            <a class="h4 f6" href="#explorer" style="background:#4d3556;border:2px solid #fff;color:#fff;padding:11px 20px;border-radius:4px;font-weight:700;font-size:14px;white-space:nowrap;text-decoration:none;transition:background .2s,color .2s">Parcourir les articles</a>
           </div>
-          <div class="filter-bar">
-            <span class="filter-label">Type&nbsp;:</span>
-            <button class="type-btn active" data-value="all">Tous</button>
-            <button class="type-btn" data-value="article">Article</button>
-            <button class="type-btn" data-value="merveilles">7 Merveilles</button>
-            <button class="type-btn" data-value="jeu">Jeu</button>
-            <button class="type-btn" data-value="poesie">Poésie</button>
-          </div>
-          <div class="filter-bar">
-            <span class="filter-label">Rédacteur et rédactrice&nbsp;:</span>
-            <select id="authorFilter" class="filter-select">
-              <option value="all">Tous les rédacteur et rédactrices</option>
-            </select>
-          </div>
-          <div class="sort-bar" style="margin-bottom:.5rem">
-            <span class="sort-label">Trier par&nbsp;:</span>
-            <button class="sort-btn active" data-sort="issue">Numéro <span class="arrow">↓</span></button>
-            <button class="sort-btn" data-sort="title">Titre <span class="arrow">↕</span></button>
-            <button class="sort-btn" data-sort="author">Auteur <span class="arrow">↕</span></button>
-            <button class="sort-btn" data-sort="topic">Thème <span class="arrow">↕</span></button>
-          </div>
+          <ul style="list-style:none;margin:18px 0 0;padding:0;display:flex;gap:6px;flex-wrap:wrap" aria-label="Réseaux sociaux">
+            <li><a class="h5 f7" href="mailto:webzine@auroralpes.fr" target="_blank" rel="noopener" aria-label="Email" style="display:flex;width:48px;height:48px;align-items:center;justify-content:center;border-radius:4px;border:1px solid #ffffff59;transition:background .2s,border-color .2s,transform .2s"><img src="media/envelope.svg" alt="" width="24" height="24" style="display:block"></a></li>
+            <li><a class="h5 f7" href="https://bsky.app/profile/serotine-media.bsky.social/" target="_blank" rel="noopener" aria-label="Bluesky" style="display:flex;width:48px;height:48px;align-items:center;justify-content:center;border-radius:4px;border:1px solid #ffffff59;transition:background .2s,border-color .2s,transform .2s"><img src="media/bluesky.svg" alt="" width="24" height="24" style="display:block"></a></li>
+            <li><a class="h5 f7" href="https://www.linkedin.com/showcase/s%C3%A9rotine-un-souffle-de-science" target="_blank" rel="noopener" aria-label="LinkedIn" style="display:flex;width:48px;height:48px;align-items:center;justify-content:center;border-radius:4px;border:1px solid #ffffff59;transition:background .2s,border-color .2s,transform .2s"><img src="media/linkedin.svg" alt="" width="24" height="24" style="display:block"></a></li>
+            <li><a class="h5 f7" href="https://www.instagram.com/serotine_media/" target="_blank" rel="noopener" aria-label="Instagram" style="display:flex;width:48px;height:48px;align-items:center;justify-content:center;border-radius:4px;border:1px solid #ffffff59;transition:background .2s,border-color .2s,transform .2s"><img src="media/square-instagram.svg" alt="" width="24" height="24" style="display:block"></a></li>
+          </ul>
         </div>
-
-        <div class="articles-grid" id="articlesGrid"></div>
-        <p class="no-results" id="noResults">Aucun article ne correspond à cette sélection.</p>
-        <div class="more-articles-wrap">
-          <button id="moreArticlesBtn" style="display:none">Plus d'articles</button>
+        <div style="display:flex;flex-direction:column">
+          <!-- HERO_START -->
+          <div class="g-panel" style="display:grid;align-items:center;align-content:center;flex:1;width:100%;max-width:760px;margin:0 0 0 auto;gap:28px;background:#ffffff1a;border:1px solid #ffffff40;border-radius:4px;padding:28px">
+            <a class="f-ring" href="https://serotine-webzine.aflip.in/ddd744c837.html" target="_blank" rel="noopener" style="display:block"><img src="media/serotine7.webp" alt="Couverture du numéro 7 de Sérotine, septembre 2026" style="display:block;width:100%;height:auto;border-radius:4px;box-shadow:0 10px 24px #0007"></a>
+            <div><p style="margin:0 0 12px;font-size:14px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:#b1ed4e">À la une · N° 7</p><ul style="margin:0;padding:0;list-style:none;display:grid;gap:10px;font-size:18px;line-height:1.4"><li style="padding-left:14px;position:relative"><span style="position:absolute;left:0;top:.5em;width:7px;height:7px;background:#b1ed4e;border-radius:1px" aria-hidden="true"></span>La Lune, la plus grande influenceuse</li><li style="padding-left:14px;position:relative"><span style="position:absolute;left:0;top:.5em;width:7px;height:7px;background:#b1ed4e;border-radius:1px" aria-hidden="true"></span>Sudoku Physique Interne</li><li style="padding-left:14px;position:relative"><span style="position:absolute;left:0;top:.5em;width:7px;height:7px;background:#b1ed4e;border-radius:1px" aria-hidden="true"></span>Vieille Tortue</li><li style="padding-left:14px;position:relative"><span style="position:absolute;left:0;top:.5em;width:7px;height:7px;background:#b1ed4e;border-radius:1px" aria-hidden="true"></span>Vieille Tortue à l&#x27;âge inconnu</li></ul><a class="f-ring-w" href="https://serotine-webzine.aflip.in/ddd744c837.html" target="_blank" rel="noopener" style="display:inline-block;margin-top:20px;color:#b1ed4e;font-weight:700;font-size:17px">Lire le numéro →</a></div>
+          </div>
+        <!-- HERO_END -->
         </div>
       </div>
     </section>
 
-    <!-- NOUS SOUTENIR -->
-    <section id="about">
-      <div class="section">
-        <h2 class="section-title">Nous soutenir <small>Le projet</small></h2>
-        <div class="about-layout">
-          <div class="about-text">
-            <p></p>
-            <p>Sérotine, un souffle de sciences est un média indépendant, en accès libre et réalisé de manière bénévole.
-            </p>
-            </br>
-            <p>Nous rédigeons ce webzine par passion de partager les sciences, et nous pensons que l'information est un
-              droit. Cependant, l'hébergement des magazines a un coût. C'est pourquoi nous lançons une campagne de
-              financement participatif afin de financer la plateforme.</p>
-            </br>
-            <p><b>Même 1 euro compte et nous permettra de développer notre média !</b></p>
-            <div class="donate-cta"><button id="openHaOverlay" class="hero-cta">Faire un don</button></div>
-            <div id="haWidgetModal"
-              style="position: fixed; inset: 0; display: none; align-items: center; justify-content: center; backdrop-filter: blur(15px) brightness(0.5); z-index: 2147483647;">
-              <button id="closeHaWidgetBtn"
-                style="position: absolute; top: .5rem; right: 1.5rem; z-index: 2147483648; background: #EFEFF4; border: none; border-radius: 50%; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="18" y1="6" x2="6" y2="18"></line>
-                  <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
-              </button>
-              <div class="modal-content"
-                style="position: relative; width: 100%; max-width: 950px; height: 100%; overflow: hidden;">
-                <iframe id="haWidget"
-                  src="https://www.helloasso.com/associations/auroralpes/formulaires/3/widget?view=overlay&lang=fr"
-                  style="width: 100%; height: 100%; border: none; border-radius: 8px;"></iframe>
-              </div>
+    <section aria-label="Ce qui nous distingue" style="background:#65466e;color:#fcf8f8">
+      <div style="max-width:1240px;margin:0 auto;padding:clamp(20px,2.6vw,32px) 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:20px 40px">
+        <div data-reveal="1" style="border-top:3px solid #b1ed4e;padding-top:12px;display:flex;gap:14px;align-items:center"><span aria-hidden="true" style="flex:none;display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:4px;background:#715479;border:1px solid #b1ed4e66"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#b1ed4e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9"/><path d="M8 11V8a4 4 0 0 1 7.5-2"/></svg></span><div><h2 style="margin:0 0 6px;font-family:Verdana,Geneva,Tahoma,sans-serif;font-weight:700;font-size:16px;line-height:1.25">Libre d’accès</h2><p style="margin:0;line-height:1.55;font-size:13px">Un média indépendant, gratuit pour tous : nous pensons que l’information est un droit.</p></div></div><div data-reveal="1" style="border-top:3px solid #b1ed4e;padding-top:12px;display:flex;gap:14px;align-items:center"><span aria-hidden="true" style="flex:none;display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:4px;background:#715479;border:1px solid #b1ed4e66"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#b1ed4e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/></svg></span><div><h2 style="margin:0 0 6px;font-family:Verdana,Geneva,Tahoma,sans-serif;font-weight:700;font-size:16px;line-height:1.25">Fait par des bénévoles</h2><p style="margin:0;line-height:1.55;font-size:13px">Nous rédigeons ce webzine par passion de partager les sciences.</p></div></div><div data-reveal="1" style="border-top:3px solid #b1ed4e;padding-top:12px;display:flex;gap:14px;align-items:center"><span aria-hidden="true" style="flex:none;display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:4px;background:#715479;border:1px solid #b1ed4e66"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#b1ed4e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18"/><path d="M8.5 8h7M8.5 12h7M8.5 16h4"/></svg></span><div><h2 style="margin:0 0 6px;font-family:Verdana,Geneva,Tahoma,sans-serif;font-weight:700;font-size:16px;line-height:1.25">Articles, jeux, poésie</h2><p style="margin:0;line-height:1.55;font-size:13px">Astrophysique, biologie, physique, psychologie, sociologie, et aussi des sudokus et des poèmes.</p></div></div>
+      </div>
+    </section>
+
+    <section id="explorer" style="max-width:1240px;margin:0 auto;padding:clamp(48px,7vw,96px) 20px clamp(16px,2vw,24px);scroll-margin-top:70px">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:20px;margin-bottom:28px">
+        <div>
+          <p style="margin:0 0 8px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#65466e">Tous nos sujets</p>
+          <h2 style="margin:0;font-family:Verdana,Geneva,Tahoma,sans-serif;font-weight:700;font-size:clamp(26px,4vw,44px);line-height:1.2">Découvrir les articles</h2>
+        </div>
+        <div role="group" aria-label="Filtrer par thème" style="display:flex;flex-wrap:wrap;gap:8px">
+          <button type="button" class="topic-btn h-btn" data-value="all" aria-pressed="true">Tous</button>
+          <button type="button" class="topic-btn h-btn" data-value="astrophysique" aria-pressed="false">Astrophysique</button>
+          <button type="button" class="topic-btn h-btn" data-value="biologie" aria-pressed="false">Biologie</button>
+          <button type="button" class="topic-btn h-btn" data-value="physique" aria-pressed="false">Physique</button>
+          <button type="button" class="topic-btn h-btn" data-value="psychologie" aria-pressed="false">Psychologie</button>
+          <button type="button" class="topic-btn h-btn" data-value="sociologie" aria-pressed="false">Sociologie</button>
+        </div>
+      </div>
+      <div id="cardsGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:20px">
+        <!-- CARDS_START -->
+        <a class="art-card" data-topic="astrophysique" href="https://serotine-webzine.aflip.in/ddd744c837.html#page/6" target="_blank" rel="noopener" style="position:relative;display:block;aspect-ratio:16/10;overflow:hidden;border-radius:4px;background:#65466e;color:#fff;text-decoration:none;border:1px solid #65466e33;transition:transform .25s,box-shadow .25s">
+          <img src="media/articles/serotine7_1.webp" alt="" loading="lazy" style="position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover">
+          <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:14px 16px;text-shadow:0 1px 3px #000c,0 2px 12px #000a">
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">
+              <span style="background:#b1ed4e;color:#374620;padding:4px 8px;border-radius:2px;text-shadow:none">Article</span>
+              <span style="background:#db9ced;color:#65466e;padding:4px 8px;border-radius:2px;text-shadow:none">Astrophysique</span>
+              <span style="margin-left:auto;color:#fff;white-space:nowrap">N° 7</span>
             </div>
-            </p>
+            <div style="display:flex;flex-direction:column;align-items:flex-start;gap:6px;text-shadow:none">
+              <p style="margin:0;font-size:13px;font-weight:700;background:#fcf8f8;color:#65466e;padding:4px 10px;border-radius:2px">Gay Charley</p>
+              <h3 style="margin:0;font-family:Verdana,Geneva,Tahoma,sans-serif;font-weight:700;font-size:16px;line-height:1.3;background:#65466e;color:#fff;padding:6px 10px;border-radius:2px;border:1px solid #ffffff40">La Lune, la plus grande influenceuse</h3>
+            </div>
           </div>
-          <div class="issue-cover about-cover"><a href="https://heyzine.com/flip-book/78d38fd9ec.html"
-              target="_blank"><img src="media/Serotine1.jpg" alt="#1"></a></div>
+        </a>
+        <a class="art-card" data-topic="" href="https://serotine-webzine.aflip.in/ddd744c837.html#page/20" target="_blank" rel="noopener" style="position:relative;display:block;aspect-ratio:16/10;overflow:hidden;border-radius:4px;background:#65466e;color:#fff;text-decoration:none;border:1px solid #65466e33;transition:transform .25s,box-shadow .25s">
+          <img src="media/articles/serotine7_2.webp" alt="" loading="lazy" style="position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover">
+          <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:14px 16px;text-shadow:0 1px 3px #000c,0 2px 12px #000a">
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">
+              <span style="background:#b1ed4e;color:#374620;padding:4px 8px;border-radius:2px;text-shadow:none">Jeu</span>
+              
+              <span style="margin-left:auto;color:#fff;white-space:nowrap">N° 7</span>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:flex-start;gap:6px;text-shadow:none">
+              <p style="margin:0;font-size:13px;font-weight:700;background:#fcf8f8;color:#65466e;padding:4px 10px;border-radius:2px">Bosse Léo</p>
+              <h3 style="margin:0;font-family:Verdana,Geneva,Tahoma,sans-serif;font-weight:700;font-size:16px;line-height:1.3;background:#65466e;color:#fff;padding:6px 10px;border-radius:2px;border:1px solid #ffffff40">Sudoku Physique Interne</h3>
+            </div>
+          </div>
+        </a>
+        <a class="art-card" data-topic="" href="https://serotine-webzine.aflip.in/ddd744c837.html#page/22" target="_blank" rel="noopener" style="position:relative;display:block;aspect-ratio:16/10;overflow:hidden;border-radius:4px;background:#65466e;color:#fff;text-decoration:none;border:1px solid #65466e33;transition:transform .25s,box-shadow .25s">
+          <img src="media/articles/serotine7_3.webp" alt="" loading="lazy" style="position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover">
+          <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:14px 16px;text-shadow:0 1px 3px #000c,0 2px 12px #000a">
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">
+              <span style="background:#b1ed4e;color:#374620;padding:4px 8px;border-radius:2px;text-shadow:none">Poésie</span>
+              
+              <span style="margin-left:auto;color:#fff;white-space:nowrap">N° 7</span>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:flex-start;gap:6px;text-shadow:none">
+              <p style="margin:0;font-size:13px;font-weight:700;background:#fcf8f8;color:#65466e;padding:4px 10px;border-radius:2px">Emy crayonne</p>
+              <h3 style="margin:0;font-family:Verdana,Geneva,Tahoma,sans-serif;font-weight:700;font-size:16px;line-height:1.3;background:#65466e;color:#fff;padding:6px 10px;border-radius:2px;border:1px solid #ffffff40">Vieille Tortue</h3>
+            </div>
+          </div>
+        </a>
+        <a class="art-card" data-topic="biologie" href="https://serotine-webzine.aflip.in/ddd744c837.html#page/24" target="_blank" rel="noopener" style="position:relative;display:block;aspect-ratio:16/10;overflow:hidden;border-radius:4px;background:#65466e;color:#fff;text-decoration:none;border:1px solid #65466e33;transition:transform .25s,box-shadow .25s">
+          <img src="media/articles/serotine7_4.webp" alt="" loading="lazy" style="position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover">
+          <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:14px 16px;text-shadow:0 1px 3px #000c,0 2px 12px #000a">
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">
+              <span style="background:#b1ed4e;color:#374620;padding:4px 8px;border-radius:2px;text-shadow:none">Article</span>
+              <span style="background:#db9ced;color:#65466e;padding:4px 8px;border-radius:2px;text-shadow:none">Biologie</span>
+              <span style="margin-left:auto;color:#fff;white-space:nowrap">N° 7</span>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:flex-start;gap:6px;text-shadow:none">
+              <p style="margin:0;font-size:13px;font-weight:700;background:#fcf8f8;color:#65466e;padding:4px 10px;border-radius:2px">Emy crayonne</p>
+              <h3 style="margin:0;font-family:Verdana,Geneva,Tahoma,sans-serif;font-weight:700;font-size:16px;line-height:1.3;background:#65466e;color:#fff;padding:6px 10px;border-radius:2px;border:1px solid #ffffff40">Vieille Tortue à l&#x27;âge inconnu</h3>
+            </div>
+          </div>
+        </a>
+        <a class="art-card" data-topic="physique" href="https://serotine-webzine.aflip.in/907e4e9b03.html#page/6" target="_blank" rel="noopener" style="position:relative;display:block;aspect-ratio:16/10;overflow:hidden;border-radius:4px;background:#65466e;color:#fff;text-decoration:none;border:1px solid #65466e33;transition:transform .25s,box-shadow .25s">
+          <img src="media/articles/serotine6_1.webp" alt="" loading="lazy" style="position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover">
+          <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:14px 16px;text-shadow:0 1px 3px #000c,0 2px 12px #000a">
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">
+              <span style="background:#b1ed4e;color:#374620;padding:4px 8px;border-radius:2px;text-shadow:none">Article</span>
+              <span style="background:#db9ced;color:#65466e;padding:4px 8px;border-radius:2px;text-shadow:none">Physique</span>
+              <span style="margin-left:auto;color:#fff;white-space:nowrap">N° 6</span>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:flex-start;gap:6px;text-shadow:none">
+              <p style="margin:0;font-size:13px;font-weight:700;background:#fcf8f8;color:#65466e;padding:4px 10px;border-radius:2px">Pillot Hector</p>
+              <h3 style="margin:0;font-family:Verdana,Geneva,Tahoma,sans-serif;font-weight:700;font-size:16px;line-height:1.3;background:#65466e;color:#fff;padding:6px 10px;border-radius:2px;border:1px solid #ffffff40">D&#x27;où vient le champ magnétique de la Terre primitive ?</h3>
+            </div>
+          </div>
+        </a>
+        <a class="art-card" data-topic="" href="https://serotine-webzine.aflip.in/907e4e9b03.html#page/18" target="_blank" rel="noopener" style="position:relative;display:block;aspect-ratio:16/10;overflow:hidden;border-radius:4px;background:#65466e;color:#fff;text-decoration:none;border:1px solid #65466e33;transition:transform .25s,box-shadow .25s">
+          <img src="media/articles/serotine6_2.webp" alt="" loading="lazy" style="position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover">
+          <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:14px 16px;text-shadow:0 1px 3px #000c,0 2px 12px #000a">
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">
+              <span style="background:#b1ed4e;color:#374620;padding:4px 8px;border-radius:2px;text-shadow:none">Jeu</span>
+              
+              <span style="margin-left:auto;color:#fff;white-space:nowrap">N° 6</span>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:flex-start;gap:6px;text-shadow:none">
+              <p style="margin:0;font-size:13px;font-weight:700;background:#fcf8f8;color:#65466e;padding:4px 10px;border-radius:2px">Bosse Léo</p>
+              <h3 style="margin:0;font-family:Verdana,Geneva,Tahoma,sans-serif;font-weight:700;font-size:16px;line-height:1.3;background:#65466e;color:#fff;padding:6px 10px;border-radius:2px;border:1px solid #ffffff40">SudoNova</h3>
+            </div>
+          </div>
+        </a>
+        <a class="art-card" data-topic="" href="https://serotine-webzine.aflip.in/907e4e9b03.html#page/20" target="_blank" rel="noopener" style="position:relative;display:block;aspect-ratio:16/10;overflow:hidden;border-radius:4px;background:#65466e;color:#fff;text-decoration:none;border:1px solid #65466e33;transition:transform .25s,box-shadow .25s">
+          <img src="media/articles/serotine6_3.webp" alt="" loading="lazy" style="position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover">
+          <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:14px 16px;text-shadow:0 1px 3px #000c,0 2px 12px #000a">
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">
+              <span style="background:#b1ed4e;color:#374620;padding:4px 8px;border-radius:2px;text-shadow:none">Poésie</span>
+              
+              <span style="margin-left:auto;color:#fff;white-space:nowrap">N° 6</span>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:flex-start;gap:6px;text-shadow:none">
+              <p style="margin:0;font-size:13px;font-weight:700;background:#fcf8f8;color:#65466e;padding:4px 10px;border-radius:2px">Emy crayonne</p>
+              <h3 style="margin:0;font-family:Verdana,Geneva,Tahoma,sans-serif;font-weight:700;font-size:16px;line-height:1.3;background:#65466e;color:#fff;padding:6px 10px;border-radius:2px;border:1px solid #ffffff40">Fusées parallèles</h3>
+            </div>
+          </div>
+        </a>
+        <a class="art-card" data-topic="astrophysique" href="https://heyzine.com/flip-book/c5bd9067c1.html#page/6" target="_blank" rel="noopener" style="position:relative;display:block;aspect-ratio:16/10;overflow:hidden;border-radius:4px;background:#65466e;color:#fff;text-decoration:none;border:1px solid #65466e33;transition:transform .25s,box-shadow .25s">
+          <img src="media/articles/serotine5_1.webp" alt="" loading="lazy" style="position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover">
+          <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:14px 16px;text-shadow:0 1px 3px #000c,0 2px 12px #000a">
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">
+              <span style="background:#b1ed4e;color:#374620;padding:4px 8px;border-radius:2px;text-shadow:none">7 Merveilles</span>
+              <span style="background:#db9ced;color:#65466e;padding:4px 8px;border-radius:2px;text-shadow:none">Astrophysique</span>
+              <span style="margin-left:auto;color:#fff;white-space:nowrap">N° 5</span>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:flex-start;gap:6px;text-shadow:none">
+              <p style="margin:0;font-size:13px;font-weight:700;background:#fcf8f8;color:#65466e;padding:4px 10px;border-radius:2px">Duchêne Léo</p>
+              <h3 style="margin:0;font-family:Verdana,Geneva,Tahoma,sans-serif;font-weight:700;font-size:16px;line-height:1.3;background:#65466e;color:#fff;padding:6px 10px;border-radius:2px;border:1px solid #ffffff40">7 Merveilles du ciel nocturne : les nuages noctulescents</h3>
+            </div>
+          </div>
+        </a>
+        <a class="art-card" data-topic="" href="https://heyzine.com/flip-book/c5bd9067c1.html#page/16" target="_blank" rel="noopener" style="position:relative;display:block;aspect-ratio:16/10;overflow:hidden;border-radius:4px;background:#65466e;color:#fff;text-decoration:none;border:1px solid #65466e33;transition:transform .25s,box-shadow .25s">
+          <img src="media/articles/serotine5_2.webp" alt="" loading="lazy" style="position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover">
+          <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:14px 16px;text-shadow:0 1px 3px #000c,0 2px 12px #000a">
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">
+              <span style="background:#b1ed4e;color:#374620;padding:4px 8px;border-radius:2px;text-shadow:none">Jeu</span>
+              
+              <span style="margin-left:auto;color:#fff;white-space:nowrap">N° 5</span>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:flex-start;gap:6px;text-shadow:none">
+              <p style="margin:0;font-size:13px;font-weight:700;background:#fcf8f8;color:#65466e;padding:4px 10px;border-radius:2px">Bosse Léo</p>
+              <h3 style="margin:0;font-family:Verdana,Geneva,Tahoma,sans-serif;font-weight:700;font-size:16px;line-height:1.3;background:#65466e;color:#fff;padding:6px 10px;border-radius:2px;border:1px solid #ffffff40">Sue-doku</h3>
+            </div>
+          </div>
+        </a>
+        <a class="art-card" data-topic="biologie" href="https://heyzine.com/flip-book/c5bd9067c1.html#page/18" target="_blank" rel="noopener" style="position:relative;display:block;aspect-ratio:16/10;overflow:hidden;border-radius:4px;background:#65466e;color:#fff;text-decoration:none;border:1px solid #65466e33;transition:transform .25s,box-shadow .25s">
+          <img src="media/articles/serotine5_3.webp" alt="" loading="lazy" style="position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover">
+          <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:14px 16px;text-shadow:0 1px 3px #000c,0 2px 12px #000a">
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">
+              <span style="background:#b1ed4e;color:#374620;padding:4px 8px;border-radius:2px;text-shadow:none">Article</span>
+              <span style="background:#db9ced;color:#65466e;padding:4px 8px;border-radius:2px;text-shadow:none">Biologie</span>
+              <span style="margin-left:auto;color:#fff;white-space:nowrap">N° 5</span>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:flex-start;gap:6px;text-shadow:none">
+              <p style="margin:0;font-size:13px;font-weight:700;background:#fcf8f8;color:#65466e;padding:4px 10px;border-radius:2px">Strohmeyer Ninon</p>
+              <h3 style="margin:0;font-family:Verdana,Geneva,Tahoma,sans-serif;font-weight:700;font-size:16px;line-height:1.3;background:#65466e;color:#fff;padding:6px 10px;border-radius:2px;border:1px solid #ffffff40">De la flore dans les régions polaires ?</h3>
+            </div>
+          </div>
+        </a>
+        <a class="art-card" data-topic="astrophysique" href="https://heyzine.com/flip-book/5edd108961.html#page/4" target="_blank" rel="noopener" style="position:relative;display:block;aspect-ratio:16/10;overflow:hidden;border-radius:4px;background:#65466e;color:#fff;text-decoration:none;border:1px solid #65466e33;transition:transform .25s,box-shadow .25s">
+          <img src="media/articles/serotine4_1.webp" alt="" loading="lazy" style="position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover">
+          <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:14px 16px;text-shadow:0 1px 3px #000c,0 2px 12px #000a">
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">
+              <span style="background:#b1ed4e;color:#374620;padding:4px 8px;border-radius:2px;text-shadow:none">Article</span>
+              <span style="background:#db9ced;color:#65466e;padding:4px 8px;border-radius:2px;text-shadow:none">Astrophysique</span>
+              <span style="margin-left:auto;color:#fff;white-space:nowrap">N° 4</span>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:flex-start;gap:6px;text-shadow:none">
+              <p style="margin:0;font-size:13px;font-weight:700;background:#fcf8f8;color:#65466e;padding:4px 10px;border-radius:2px">Gay Charley</p>
+              <h3 style="margin:0;font-family:Verdana,Geneva,Tahoma,sans-serif;font-weight:700;font-size:16px;line-height:1.3;background:#65466e;color:#fff;padding:6px 10px;border-radius:2px;border:1px solid #ffffff40">Des messages (ésotériques) dans les étoiles ?</h3>
+            </div>
+          </div>
+        </a>
+        <a class="art-card" data-topic="astrophysique" href="https://heyzine.com/flip-book/5edd108961.html#page/16" target="_blank" rel="noopener" style="position:relative;display:block;aspect-ratio:16/10;overflow:hidden;border-radius:4px;background:#65466e;color:#fff;text-decoration:none;border:1px solid #65466e33;transition:transform .25s,box-shadow .25s">
+          <img src="media/articles/serotine4_2.webp" alt="" loading="lazy" style="position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover">
+          <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:14px 16px;text-shadow:0 1px 3px #000c,0 2px 12px #000a">
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">
+              <span style="background:#b1ed4e;color:#374620;padding:4px 8px;border-radius:2px;text-shadow:none">7 Merveilles</span>
+              <span style="background:#db9ced;color:#65466e;padding:4px 8px;border-radius:2px;text-shadow:none">Astrophysique</span>
+              <span style="margin-left:auto;color:#fff;white-space:nowrap">N° 4</span>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:flex-start;gap:6px;text-shadow:none">
+              <p style="margin:0;font-size:13px;font-weight:700;background:#fcf8f8;color:#65466e;padding:4px 10px;border-radius:2px">Duchêne Léo</p>
+              <h3 style="margin:0;font-family:Verdana,Geneva,Tahoma,sans-serif;font-weight:700;font-size:16px;line-height:1.3;background:#65466e;color:#fff;padding:6px 10px;border-radius:2px;border:1px solid #ffffff40">7 merveilles du ciel nocturne : La Voie Lactée</h3>
+            </div>
+          </div>
+        </a>
+        <a class="art-card" data-topic="astrophysique" href="https://heyzine.com/flip-book/5edd108961.html#page/20" target="_blank" rel="noopener" style="position:relative;display:block;aspect-ratio:16/10;overflow:hidden;border-radius:4px;background:#65466e;color:#fff;text-decoration:none;border:1px solid #65466e33;transition:transform .25s,box-shadow .25s">
+          <img src="media/articles/serotine4_3.webp" alt="" loading="lazy" style="position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover">
+          <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:14px 16px;text-shadow:0 1px 3px #000c,0 2px 12px #000a">
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">
+              <span style="background:#b1ed4e;color:#374620;padding:4px 8px;border-radius:2px;text-shadow:none">Article</span>
+              <span style="background:#db9ced;color:#65466e;padding:4px 8px;border-radius:2px;text-shadow:none">Astrophysique</span>
+              <span style="margin-left:auto;color:#fff;white-space:nowrap">N° 4</span>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:flex-start;gap:6px;text-shadow:none">
+              <p style="margin:0;font-size:13px;font-weight:700;background:#fcf8f8;color:#65466e;padding:4px 10px;border-radius:2px">Daveau Quentin</p>
+              <h3 style="margin:0;font-family:Verdana,Geneva,Tahoma,sans-serif;font-weight:700;font-size:16px;line-height:1.3;background:#65466e;color:#fff;padding:6px 10px;border-radius:2px;border:1px solid #ffffff40">Bételgeuse, l&#x27;étoile au sommet de la hype</h3>
+            </div>
+          </div>
+        </a>
+        <a class="art-card" data-topic="sociologie" href="https://heyzine.com/flip-book/d5c17bee9a.html#page/4" target="_blank" rel="noopener" style="position:relative;display:block;aspect-ratio:16/10;overflow:hidden;border-radius:4px;background:#65466e;color:#fff;text-decoration:none;border:1px solid #65466e33;transition:transform .25s,box-shadow .25s">
+          <img src="media/articles/serotine3_1.webp" alt="" loading="lazy" style="position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover">
+          <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:14px 16px;text-shadow:0 1px 3px #000c,0 2px 12px #000a">
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">
+              <span style="background:#b1ed4e;color:#374620;padding:4px 8px;border-radius:2px;text-shadow:none">Article</span>
+              <span style="background:#db9ced;color:#65466e;padding:4px 8px;border-radius:2px;text-shadow:none">Sociologie</span>
+              <span style="margin-left:auto;color:#fff;white-space:nowrap">N° 3</span>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:flex-start;gap:6px;text-shadow:none">
+              <p style="margin:0;font-size:13px;font-weight:700;background:#fcf8f8;color:#65466e;padding:4px 10px;border-radius:2px">Daveau Quentin</p>
+              <h3 style="margin:0;font-family:Verdana,Geneva,Tahoma,sans-serif;font-weight:700;font-size:16px;line-height:1.3;background:#65466e;color:#fff;padding:6px 10px;border-radius:2px;border:1px solid #ffffff40">Les secrets insoupçonnés du « crush »</h3>
+            </div>
+          </div>
+        </a>
+        <a class="art-card" data-topic="astrophysique" href="https://heyzine.com/flip-book/d5c17bee9a.html#page/12" target="_blank" rel="noopener" style="position:relative;display:block;aspect-ratio:16/10;overflow:hidden;border-radius:4px;background:#65466e;color:#fff;text-decoration:none;border:1px solid #65466e33;transition:transform .25s,box-shadow .25s">
+          <img src="media/articles/serotine3_2.webp" alt="" loading="lazy" style="position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover">
+          <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:14px 16px;text-shadow:0 1px 3px #000c,0 2px 12px #000a">
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">
+              <span style="background:#b1ed4e;color:#374620;padding:4px 8px;border-radius:2px;text-shadow:none">Poésie</span>
+              <span style="background:#db9ced;color:#65466e;padding:4px 8px;border-radius:2px;text-shadow:none">Astrophysique</span>
+              <span style="margin-left:auto;color:#fff;white-space:nowrap">N° 3</span>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:flex-start;gap:6px;text-shadow:none">
+              <p style="margin:0;font-size:13px;font-weight:700;background:#fcf8f8;color:#65466e;padding:4px 10px;border-radius:2px">Amaëline</p>
+              <h3 style="margin:0;font-family:Verdana,Geneva,Tahoma,sans-serif;font-weight:700;font-size:16px;line-height:1.3;background:#65466e;color:#fff;padding:6px 10px;border-radius:2px;border:1px solid #ffffff40">Ode céleste</h3>
+            </div>
+          </div>
+        </a>
+        <a class="art-card" data-topic="psychologie" href="https://heyzine.com/flip-book/d5c17bee9a.html#page/15" target="_blank" rel="noopener" style="position:relative;display:block;aspect-ratio:16/10;overflow:hidden;border-radius:4px;background:#65466e;color:#fff;text-decoration:none;border:1px solid #65466e33;transition:transform .25s,box-shadow .25s">
+          <img src="media/articles/serotine3_3.webp" alt="" loading="lazy" style="position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover">
+          <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:14px 16px;text-shadow:0 1px 3px #000c,0 2px 12px #000a">
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">
+              <span style="background:#b1ed4e;color:#374620;padding:4px 8px;border-radius:2px;text-shadow:none">Article</span>
+              <span style="background:#db9ced;color:#65466e;padding:4px 8px;border-radius:2px;text-shadow:none">Psychologie</span>
+              <span style="margin-left:auto;color:#fff;white-space:nowrap">N° 3</span>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:flex-start;gap:6px;text-shadow:none">
+              <p style="margin:0;font-size:13px;font-weight:700;background:#fcf8f8;color:#65466e;padding:4px 10px;border-radius:2px">Bacquet Isaora</p>
+              <h3 style="margin:0;font-family:Verdana,Geneva,Tahoma,sans-serif;font-weight:700;font-size:16px;line-height:1.3;background:#65466e;color:#fff;padding:6px 10px;border-radius:2px;border:1px solid #ffffff40">Red flags et nourriture, quand les TCA s&#x27;invitent à table</h3>
+            </div>
+          </div>
+        </a>
+        <a class="art-card" data-topic="physique" href="https://heyzine.com/flip-book/5f6791f646.html#page/4" target="_blank" rel="noopener" style="position:relative;display:block;aspect-ratio:16/10;overflow:hidden;border-radius:4px;background:#65466e;color:#fff;text-decoration:none;border:1px solid #65466e33;transition:transform .25s,box-shadow .25s">
+          <img src="media/articles/serotine2_1.webp" alt="" loading="lazy" style="position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover">
+          <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:14px 16px;text-shadow:0 1px 3px #000c,0 2px 12px #000a">
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">
+              <span style="background:#b1ed4e;color:#374620;padding:4px 8px;border-radius:2px;text-shadow:none">Article</span>
+              <span style="background:#db9ced;color:#65466e;padding:4px 8px;border-radius:2px;text-shadow:none">Physique</span>
+              <span style="margin-left:auto;color:#fff;white-space:nowrap">N° 2</span>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:flex-start;gap:6px;text-shadow:none">
+              <p style="margin:0;font-size:13px;font-weight:700;background:#fcf8f8;color:#65466e;padding:4px 10px;border-radius:2px">Pillot Hector</p>
+              <h3 style="margin:0;font-family:Verdana,Geneva,Tahoma,sans-serif;font-weight:700;font-size:16px;line-height:1.3;background:#65466e;color:#fff;padding:6px 10px;border-radius:2px;border:1px solid #ffffff40">Les hydrocérames, ces vases qui suent</h3>
+            </div>
+          </div>
+        </a>
+        <a class="art-card" data-topic="" href="https://heyzine.com/flip-book/5f6791f646.html#page/16" target="_blank" rel="noopener" style="position:relative;display:block;aspect-ratio:16/10;overflow:hidden;border-radius:4px;background:#65466e;color:#fff;text-decoration:none;border:1px solid #65466e33;transition:transform .25s,box-shadow .25s">
+          <img src="media/articles/serotine1_2.webp" alt="" loading="lazy" style="position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover">
+          <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:14px 16px;text-shadow:0 1px 3px #000c,0 2px 12px #000a">
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">
+              <span style="background:#b1ed4e;color:#374620;padding:4px 8px;border-radius:2px;text-shadow:none">Jeu</span>
+              
+              <span style="margin-left:auto;color:#fff;white-space:nowrap">N° 2</span>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:flex-start;gap:6px;text-shadow:none">
+              <p style="margin:0;font-size:13px;font-weight:700;background:#fcf8f8;color:#65466e;padding:4px 10px;border-radius:2px">Bosse Léo</p>
+              <h3 style="margin:0;font-family:Verdana,Geneva,Tahoma,sans-serif;font-weight:700;font-size:16px;line-height:1.3;background:#65466e;color:#fff;padding:6px 10px;border-radius:2px;border:1px solid #ffffff40">Ceci n&#x27;est pas un bouquet de fleurs (Sudoku) — Solution</h3>
+            </div>
+          </div>
+        </a>
+        <a class="art-card" data-topic="astrophysique" href="https://heyzine.com/flip-book/5f6791f646.html#page/18" target="_blank" rel="noopener" style="position:relative;display:block;aspect-ratio:16/10;overflow:hidden;border-radius:4px;background:#65466e;color:#fff;text-decoration:none;border:1px solid #65466e33;transition:transform .25s,box-shadow .25s">
+          <img src="media/articles/serotine2_2.webp" alt="" loading="lazy" style="position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover">
+          <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:14px 16px;text-shadow:0 1px 3px #000c,0 2px 12px #000a">
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">
+              <span style="background:#b1ed4e;color:#374620;padding:4px 8px;border-radius:2px;text-shadow:none">Article</span>
+              <span style="background:#db9ced;color:#65466e;padding:4px 8px;border-radius:2px;text-shadow:none">Astrophysique</span>
+              <span style="margin-left:auto;color:#fff;white-space:nowrap">N° 2</span>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:flex-start;gap:6px;text-shadow:none">
+              <p style="margin:0;font-size:13px;font-weight:700;background:#fcf8f8;color:#65466e;padding:4px 10px;border-radius:2px">Gay Charley</p>
+              <h3 style="margin:0;font-family:Verdana,Geneva,Tahoma,sans-serif;font-weight:700;font-size:16px;line-height:1.3;background:#65466e;color:#fff;padding:6px 10px;border-radius:2px;border:1px solid #ffffff40">Une neuvième planète dans notre système solaire</h3>
+            </div>
+          </div>
+        </a>
+        <a class="art-card" data-topic="psychologie" href="https://heyzine.com/flip-book/78d38fd9ec.html#page/4" target="_blank" rel="noopener" style="position:relative;display:block;aspect-ratio:16/10;overflow:hidden;border-radius:4px;background:#65466e;color:#fff;text-decoration:none;border:1px solid #65466e33;transition:transform .25s,box-shadow .25s">
+          <img src="media/articles/serotine1_1.webp" alt="" loading="lazy" style="position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover">
+          <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:14px 16px;text-shadow:0 1px 3px #000c,0 2px 12px #000a">
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">
+              <span style="background:#b1ed4e;color:#374620;padding:4px 8px;border-radius:2px;text-shadow:none">Article</span>
+              <span style="background:#db9ced;color:#65466e;padding:4px 8px;border-radius:2px;text-shadow:none">Psychologie</span>
+              <span style="margin-left:auto;color:#fff;white-space:nowrap">N° 1</span>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:flex-start;gap:6px;text-shadow:none">
+              <p style="margin:0;font-size:13px;font-weight:700;background:#fcf8f8;color:#65466e;padding:4px 10px;border-radius:2px">Bacquet Isaora</p>
+              <h3 style="margin:0;font-family:Verdana,Geneva,Tahoma,sans-serif;font-weight:700;font-size:16px;line-height:1.3;background:#65466e;color:#fff;padding:6px 10px;border-radius:2px;border:1px solid #ffffff40">L&#x27;aphantasie</h3>
+            </div>
+          </div>
+        </a>
+        <a class="art-card" data-topic="" href="https://heyzine.com/flip-book/78d38fd9ec.html#page/16" target="_blank" rel="noopener" style="position:relative;display:block;aspect-ratio:16/10;overflow:hidden;border-radius:4px;background:#65466e;color:#fff;text-decoration:none;border:1px solid #65466e33;transition:transform .25s,box-shadow .25s">
+          <img src="media/articles/serotine1_2.webp" alt="" loading="lazy" style="position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover">
+          <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:14px 16px;text-shadow:0 1px 3px #000c,0 2px 12px #000a">
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">
+              <span style="background:#b1ed4e;color:#374620;padding:4px 8px;border-radius:2px;text-shadow:none">Jeu</span>
+              
+              <span style="margin-left:auto;color:#fff;white-space:nowrap">N° 1</span>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:flex-start;gap:6px;text-shadow:none">
+              <p style="margin:0;font-size:13px;font-weight:700;background:#fcf8f8;color:#65466e;padding:4px 10px;border-radius:2px">Bosse Léo</p>
+              <h3 style="margin:0;font-family:Verdana,Geneva,Tahoma,sans-serif;font-weight:700;font-size:16px;line-height:1.3;background:#65466e;color:#fff;padding:6px 10px;border-radius:2px;border:1px solid #ffffff40">Ceci n&#x27;est pas un bouquet de fleurs (Sudoku)</h3>
+            </div>
+          </div>
+        </a>
+        <a class="art-card" data-topic="biologie" href="https://heyzine.com/flip-book/78d38fd9ec.html#page/18" target="_blank" rel="noopener" style="position:relative;display:block;aspect-ratio:16/10;overflow:hidden;border-radius:4px;background:#65466e;color:#fff;text-decoration:none;border:1px solid #65466e33;transition:transform .25s,box-shadow .25s">
+          <img src="media/articles/serotine1_3.webp" alt="" loading="lazy" style="position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover">
+          <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:14px 16px;text-shadow:0 1px 3px #000c,0 2px 12px #000a">
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">
+              <span style="background:#b1ed4e;color:#374620;padding:4px 8px;border-radius:2px;text-shadow:none">Article</span>
+              <span style="background:#db9ced;color:#65466e;padding:4px 8px;border-radius:2px;text-shadow:none">Biologie</span>
+              <span style="margin-left:auto;color:#fff;white-space:nowrap">N° 1</span>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:flex-start;gap:6px;text-shadow:none">
+              <p style="margin:0;font-size:13px;font-weight:700;background:#fcf8f8;color:#65466e;padding:4px 10px;border-radius:2px">Gachod Pierre</p>
+              <h3 style="margin:0;font-family:Verdana,Geneva,Tahoma,sans-serif;font-weight:700;font-size:16px;line-height:1.3;background:#65466e;color:#fff;padding:6px 10px;border-radius:2px;border:1px solid #ffffff40">Peut-on respirer par l&#x27;anus ?</h3>
+            </div>
+          </div>
+        </a>
+        <!-- CARDS_END -->
+      </div>
+      <div style="margin-top:32px;display:flex;justify-content:center"><button type="button" id="moreArticlesBtn" class="more-btn" hidden></button></div>
+    </section>
+
+    <section id="newsletter" aria-labelledby="newsletter-titre" style="scroll-margin-top:70px">
+      <div style="max-width:1240px;margin:0 auto;padding:clamp(24px,3.5vw,40px) 20px">
+        <div  class="g-two" style="border:2px solid #65466e;border-radius:8px;background:#fff;padding:clamp(18px,2.4vw,28px) clamp(18px,3vw,36px);display:grid;gap:16px 40px;align-items:center;box-shadow:8px 8px 0 #b1ed4e">
+          <div>
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px"><span aria-hidden="true" style="flex:none;display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:4px;background:#f1e3f6;border:1px solid #65466e33"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#65466e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12"/><path d="M3 7l9 6 9-6"/></svg></span><p style="margin:0;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#65466e">Newsletter</p></div>
+            <h2 id="newsletter-titre" style="margin:0 0 8px;font-family:Verdana,Geneva,Tahoma,sans-serif;font-weight:700;font-size:clamp(20px,2.6vw,28px);line-height:1.2">Recevez Sérotine dans votre boîte mail</h2>
+            <p style="margin:0;font-size:14px;line-height:1.6;max-width:520px">Inscrivez-vous à la newsletter pour suivre les nouveaux numéros du webzine.</p>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:14px;align-items:flex-start">
+            <a class="h10 f6" href="https://framaforms.org/newsletter-serotine-1777624449" target="_blank" rel="noopener" style="display:inline-flex;gap:12px;align-items:center;background:#65466e;color:#fff;padding:18px 28px;border-radius:4px;font-weight:700;font-size:16px;text-decoration:none;transition:transform .2s,box-shadow .2s,background .2s"><img src="media/envelope.svg" alt="" width="22" height="22" style="display:block">S'abonner à la newsletter</a>
+            <p style="margin:0;font-size:13px;line-height:1.6">Le formulaire s'ouvre sur Framaforms.</p>
+          </div>
         </div>
       </div>
     </section>
 
+    <section id="podcast" style="background:#efe6f2;scroll-margin-top:70px"><div  class="g-two" style="max-width:1240px;margin:0 auto;padding:clamp(48px,7vw,96px) 20px;display:grid;gap:32px 56px;align-items:center">
+      <div>
+        <p style="margin:0 0 8px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#65466e">Sur toutes les plateformes</p>
+        <h2 style="margin:0;font-family:Verdana,Geneva,Tahoma,sans-serif;font-weight:700;font-size:clamp(26px,4vw,44px);line-height:1.2">Sérotine est aussi disponible en <em style="font-style:normal;box-shadow:inset 0 -.2em #b1ed4e">podcast</em></h2>
+      </div>
+      <ul style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;width:100%;max-width:440px;justify-self:end">
+        <li style="display:flex"><a class="h11 f9" href="https://podcasts.apple.com/us/podcast/s%C3%A9rotine-un-souffle-de-science/id1895565023" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;width:100%;padding:14px;background:#fff;border:1px solid #65466e33;border-radius:4px;text-decoration:none;font-weight:700;font-size:15px;transition:border-color .2s,transform .2s"><img src="media/apple_icon.svg" alt="" width="40" height="40" style="display:block;flex:none;background:#65466e;border-radius:4px;padding:6px">Apple Podcasts</a></li>
+        <li style="display:flex"><a class="h11 f9" href="https://open.spotify.com/show/6OZqwozSlnA20dJIpdqlPr" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;width:100%;padding:14px;background:#fff;border:1px solid #65466e33;border-radius:4px;text-decoration:none;font-weight:700;font-size:15px;transition:border-color .2s,transform .2s"><img src="media/spotify_icon.svg" alt="" width="40" height="40" style="display:block;flex:none;background:#65466e;border-radius:4px;padding:6px">Spotify</a></li>
+        <li style="display:flex"><a class="h11 f9" href="https://www.deezer.com/us/show/1002990991" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;width:100%;padding:14px;background:#fff;border:1px solid #65466e33;border-radius:4px;text-decoration:none;font-weight:700;font-size:15px;transition:border-color .2s,transform .2s"><img src="media/deezer_icon.svg" alt="" width="40" height="40" style="display:block;flex:none;background:#65466e;border-radius:4px;padding:6px">Deezer</a></li>
+        <li style="display:flex"><a class="h11 f9" href="https://media.rss.com/serotine-un-souffle-de-science/feed.xml" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;width:100%;padding:14px;background:#fff;border:1px solid #65466e33;border-radius:4px;text-decoration:none;font-weight:700;font-size:15px;transition:border-color .2s,transform .2s"><img src="media/rss_icon.svg" alt="" width="40" height="40" style="display:block;flex:none;background:#65466e;border-radius:4px;padding:6px">RSS</a></li>
+      </ul>
+    </div></section>
 
-    <!-- ARCHIVES -->
-    <section class="section" id="archives">
-      <h2 class="section-title">Tous les numéros <small>Archives</small></h2>
-      <div class="issues-grid">
-        <div class="issue-card">
-          <div class="issue-cover"><a href="https://serotine-webzine.aflip.in/ddd744c837.html" target="_blank"><img src="media/serotine7.webp" alt="#7"></a></div>
-          <div class="issue-info">
-            <div class="issue-season">Saison 2 · #7</div>
-            <div class="issue-date">Septembre 2026</div>
-            <div class="issue-count">4 articles</div>
-            <a href="#" target="_blank" class="issue-read-btn">Lire →</a>
-          </div>
-        </div>
-        <div class="issue-card">
-          <div class="issue-cover"><a href="https://serotine-webzine.aflip.in/907e4e9b03.html" target="_blank"><img
-                src="media/serotine6.webp" alt="#6"></a></div>
-          <div class="issue-info">
-            <div class="issue-season">Saison 2 · #6</div>
-            <div class="issue-date">Juillet 2026</div>
-            <div class="issue-count">3 articles</div>
-            <a href="https://serotine-webzine.aflip.in/907e4e9b03.html" target="_blank" class="issue-read-btn">Lire
-              →</a>
-          </div>
-        </div>
-        <div class="issue-card">
-          <div class="issue-cover"><a href="https://heyzine.com/flip-book/c5bd9067c1.html" target="_blank"><img
-                src="media/serotine5.webp" alt="#5"></a></div>
-          <div class="issue-info">
-            <div class="issue-season">Saison 2 · #5</div>
-            <div class="issue-date">Mai 2026</div>
-            <div class="issue-count">3 articles</div>
-            <a href="https://heyzine.com/flip-book/c5bd9067c1.html" target="_blank" class="issue-read-btn">Lire →</a>
-          </div>
-        </div>
-        <div class="issue-card">
-          <div class="issue-cover"><a href="https://heyzine.com/flip-book/5edd108961.html" target="_blank"><img
-                src="media/serotine4.webp" alt="#4"></a></div>
-          <div class="issue-info">
-            <div class="issue-season">Saison 1 · #4</div>
-            <div class="issue-date">Mars 2026</div>
-            <div class="issue-count">3 articles</div>
-            <a href="https://heyzine.com/flip-book/5edd108961.html" target="_blank" class="issue-read-btn">Lire →</a>
-          </div>
-        </div>
-        <div class="issue-card">
-          <div class="issue-cover"><a href="https://heyzine.com/flip-book/d5c17bee9a.html" target="_blank"><img
-                src="media/serotine3.webp" alt="#3"></a></div>
-          <div class="issue-info">
-            <div class="issue-season">Saison 1 · #3</div>
-            <div class="issue-date">Février 2026</div>
-            <div class="issue-count">3 articles</div>
-            <a href="https://heyzine.com/flip-book/d5c17bee9a.html" target="_blank" class="issue-read-btn">Lire →</a>
-          </div>
-        </div>
-        <div class="issue-card">
-          <div class="issue-cover"><a href="https://heyzine.com/flip-book/5f6791f646.html" target="_blank"><img
-                src="media/serotine2.webp" alt="#2"></a></div>
-          <div class="issue-info">
-            <div class="issue-season">Saison 1 · #2</div>
-            <div class="issue-date">Décembre 2025</div>
-            <div class="issue-count">3 articles</div>
-            <a href="https://heyzine.com/flip-book/5f6791f646.html" target="_blank" class="issue-read-btn">Lire →</a>
-          </div>
-        </div>
-        <div class="issue-card">
-          <div class="issue-cover"><a href="https://heyzine.com/flip-book/78d38fd9ec.html" target="_blank"><img
-                src="media/serotine1.webp" alt="#1"></a></div>
-          <div class="issue-info">
-            <div class="issue-season">Saison 1 · #1</div>
-            <div class="issue-date">Novembre 2025</div>
-            <div class="issue-count">3 articles</div>
-            <a href="https://heyzine.com/flip-book/78d38fd9ec.html" target="_blank" class="issue-read-btn">Lire →</a>
-          </div>
+    <section id="archives" style="scroll-margin-top:70px">
+      <div style="max-width:1240px;margin:0 auto;padding:clamp(24px,3.5vw,40px) 20px">
+        <p style="margin:0 0 4px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#65466e">Archives</p>
+        <h2 style="margin:0 0 16px;font-family:Verdana,Geneva,Tahoma,sans-serif;font-weight:700;font-size:clamp(20px,2.6vw,28px);line-height:1.2">Tous les numéros</h2>
+        <div id="issuesRow" style="display:flex;flex-wrap:nowrap;gap:16px;overflow-x:auto;scroll-snap-type:x proximity;padding:4px 4px 10px;cursor:grab">
+          <!-- ARCHIVES_START -->
+          <a class="issue-link" href="https://serotine-webzine.aflip.in/ddd744c837.html" target="_blank" rel="noopener" style="text-decoration:none;color:#65466e;display:block;flex:1 0 110px;min-width:110px;scroll-snap-align:start">
+            <img src="media/serotine7.webp" alt="Couverture du numéro 7" loading="lazy" style="display:block;width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:4px;border:1px solid #65466e">
+            <p style="margin:8px 0 0;font-weight:700;font-size:13px">N° 7 · Sept. 2026</p>
+            <p style="margin:0;font-size:12px;color:#65466e">Saison 2</p>
+          </a>
+          <a class="issue-link" href="https://serotine-webzine.aflip.in/907e4e9b03.html" target="_blank" rel="noopener" style="text-decoration:none;color:#65466e;display:block;flex:1 0 110px;min-width:110px;scroll-snap-align:start">
+            <img src="media/serotine6.webp" alt="Couverture du numéro 6" loading="lazy" style="display:block;width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:4px;border:1px solid #65466e">
+            <p style="margin:8px 0 0;font-weight:700;font-size:13px">N° 6 · Juil. 2026</p>
+            <p style="margin:0;font-size:12px;color:#65466e">Saison 2</p>
+          </a>
+          <a class="issue-link" href="https://heyzine.com/flip-book/c5bd9067c1.html" target="_blank" rel="noopener" style="text-decoration:none;color:#65466e;display:block;flex:1 0 110px;min-width:110px;scroll-snap-align:start">
+            <img src="media/serotine5.webp" alt="Couverture du numéro 5" loading="lazy" style="display:block;width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:4px;border:1px solid #65466e">
+            <p style="margin:8px 0 0;font-weight:700;font-size:13px">N° 5 · Mai 2026</p>
+            <p style="margin:0;font-size:12px;color:#65466e">Saison 2</p>
+          </a>
+          <a class="issue-link" href="https://heyzine.com/flip-book/5edd108961.html" target="_blank" rel="noopener" style="text-decoration:none;color:#65466e;display:block;flex:1 0 110px;min-width:110px;scroll-snap-align:start">
+            <img src="media/serotine4.webp" alt="Couverture du numéro 4" loading="lazy" style="display:block;width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:4px;border:1px solid #65466e">
+            <p style="margin:8px 0 0;font-weight:700;font-size:13px">N° 4 · Mars 2026</p>
+            <p style="margin:0;font-size:12px;color:#65466e">Saison 1</p>
+          </a>
+          <a class="issue-link" href="https://heyzine.com/flip-book/d5c17bee9a.html" target="_blank" rel="noopener" style="text-decoration:none;color:#65466e;display:block;flex:1 0 110px;min-width:110px;scroll-snap-align:start">
+            <img src="media/serotine3.webp" alt="Couverture du numéro 3" loading="lazy" style="display:block;width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:4px;border:1px solid #65466e">
+            <p style="margin:8px 0 0;font-weight:700;font-size:13px">N° 3 · Févr. 2026</p>
+            <p style="margin:0;font-size:12px;color:#65466e">Saison 1</p>
+          </a>
+          <a class="issue-link" href="https://heyzine.com/flip-book/5f6791f646.html" target="_blank" rel="noopener" style="text-decoration:none;color:#65466e;display:block;flex:1 0 110px;min-width:110px;scroll-snap-align:start">
+            <img src="media/serotine2.webp" alt="Couverture du numéro 2" loading="lazy" style="display:block;width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:4px;border:1px solid #65466e">
+            <p style="margin:8px 0 0;font-weight:700;font-size:13px">N° 2 · Déc. 2025</p>
+            <p style="margin:0;font-size:12px;color:#65466e">Saison 1</p>
+          </a>
+          <a class="issue-link" href="https://heyzine.com/flip-book/78d38fd9ec.html" target="_blank" rel="noopener" style="text-decoration:none;color:#65466e;display:block;flex:1 0 110px;min-width:110px;scroll-snap-align:start">
+            <img src="media/serotine1.webp" alt="Couverture du numéro 1" loading="lazy" style="display:block;width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:4px;border:1px solid #65466e">
+            <p style="margin:8px 0 0;font-weight:700;font-size:13px">N° 1 · Nov. 2025</p>
+            <p style="margin:0;font-size:12px;color:#65466e">Saison 1</p>
+          </a>
+        <!-- ARCHIVES_END -->
         </div>
       </div>
     </section>
 
-    <!-- PODCAST -->
-    <section id="podcast">
-      <div class="podcast-inner">
-        <h2 class="section-title">Podcast <small>sur toutes les plateformes</small></h2>
-        <div class="podcast-coming">
-          <h3>Sérotine est aussi disponible en format Podcast
-            !</h3>
-          <div class="media-social">
-            <a href="https://podcasts.apple.com/us/podcast/s%C3%A9rotine-un-souffle-de-science/id1895565023"
-              target="_blank"><img src="media/apple_icon.svg" alt="Apple Podcast" class="logo-social"></a>
-            <a href="https://open.spotify.com/show/6OZqwozSlnA20dJIpdqlPr" target="_blank"><img
-                src="media/spotify_icon.svg" alt="Spotify" class="logo-social"></a>
-            <a href="https://www.deezer.com/us/show/1002990991" target="_blank"><img src="media/deezer_icon.svg"
-                alt="Deezer" class="logo-social"></a>
-            <a href="https://media.rss.com/serotine-un-souffle-de-science/feed.xml" target="_blank"><img
-                src="media/rss_icon.svg" alt="RSS" class="logo-social"></a>
-          </div>
+    
+
+    <section id="soutenir" aria-labelledby="soutenir-titre" style="background:#302135;color:#fff;scroll-margin-top:70px;overflow:hidden">
+      <div  class="g-cta" style="max-width:1240px;margin:0 auto;padding:clamp(40px,5vw,72px) 20px;display:grid;gap:32px 56px;align-items:center">
+        <div>
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px"><span aria-hidden="true" style="flex:none;display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:4px;background:#715479;border:1px solid #b1ed4e66"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#b1ed4e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 14h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 16"/><path d="m7 20 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9"/><path d="m2 15 6 6"/><path d="M19.5 8.5c.7-.7 1.5-1.6 1.5-2.7A2.73 2.73 0 0 0 16 4a2.78 2.78 0 0 0-5 1.8c0 1.2.8 2 1.5 2.8L16 12Z"/></svg></span><p style="margin:0;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#b1ed4e">Nous soutenir</p></div>
+          <h2 id="soutenir-titre" style="margin:0 0 16px;font-family:Verdana,Geneva,Tahoma,sans-serif;font-weight:700;font-size:clamp(24px,3.4vw,38px);line-height:1.15;letter-spacing:-.01em">Même 1 euro compte.</h2>
+          <p style="margin:0 0 24px;font-size:15px;line-height:1.7;max-width:500px;color:#fff">Sérotine est un média indépendant, en accès libre et réalisé de manière bénévole. Les dons à AurorAlpes financent l'hébergement de la plateforme.</p>
+          
+          <ul aria-label="Montants suggérés" style="list-style:none;margin:0 0 20px;padding:0;display:flex;flex-wrap:wrap;gap:8px">
+            <li><a class="h13 f5" href="https://www.helloasso.com/associations/auroralpes/formulaires/3" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;min-width:64px;min-height:44px;padding:0 16px;border:2px solid #b1ed4e;border-radius:4px;color:#fff;font-weight:700;font-size:15px;text-decoration:none;transition:background .2s,color .2s">1 €</a></li><li><a class="h13 f5" href="https://www.helloasso.com/associations/auroralpes/formulaires/3" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;min-width:64px;min-height:44px;padding:0 16px;border:2px solid #b1ed4e;border-radius:4px;color:#fff;font-weight:700;font-size:15px;text-decoration:none;transition:background .2s,color .2s">5 €</a></li><li><a class="h13 f5" href="https://www.helloasso.com/associations/auroralpes/formulaires/3" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;min-width:64px;min-height:44px;padding:0 16px;border:2px solid #b1ed4e;border-radius:4px;color:#fff;font-weight:700;font-size:15px;text-decoration:none;transition:background .2s,color .2s">10 €</a></li><li><a class="h13 f5" href="https://www.helloasso.com/associations/auroralpes/formulaires/3" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;min-width:64px;min-height:44px;padding:0 16px;border:2px solid #b1ed4e;border-radius:4px;color:#fff;font-weight:700;font-size:15px;text-decoration:none;transition:background .2s,color .2s">Autre</a></li>
+          </ul>
+          <a class="h14 f5" href="https://www.helloasso.com/associations/auroralpes/formulaires/3" target="_blank" rel="noopener" style="display:inline-flex;gap:10px;align-items:center;background:#b1ed4e;color:#374620;padding:15px 24px;border-radius:4px;font-weight:700;font-size:15px;text-decoration:none;transition:transform .2s,box-shadow .2s">Faire un don <span aria-hidden="true">→</span></a>
         </div>
+        
       </div>
     </section>
-
   </main>
 
-  <!-- FOOTER -->
+  
   <footer id="footer-placeholder"></footer>
 
   <script>
-    // ── Article data ─────────────────────────────────────────────────────────
-    const ARTICLES = [
-      { id: "astrologie", title: "Des messages (ésotériques) dans les étoiles ?", author: "Gay Charley", topic: "astrophysique", type: "article", issue: 4, season: 1, issueLabel: "#4 · Mars 2026", href: "https://heyzine.com/flip-book/5edd108961.html#page/4", flip: "articles/astrologie/", image: "media/articles/serotine4_1.webp" },
-      { id: "voie_lactee", title: "7 merveilles du ciel nocturne : La Voie Lactée", author: "Duchêne Léo", topic: "astrophysique", type: "merveilles", issue: 4, season: 1, issueLabel: "#4 · Mars 2026", href: "https://heyzine.com/flip-book/5edd108961.html#page/16", flip: "articles/voie_lactee/", image: "media/articles/serotine4_2.webp" },
-      { id: "betelgeuse", title: "Bételgeuse, l'étoile au sommet de la hype", author: "Daveau Quentin", topic: "astrophysique", type: "article", issue: 4, season: 1, issueLabel: "#4 · Mars 2026", href: "https://heyzine.com/flip-book/5edd108961.html#page/20", flip: "articles/betelgeuse/", image: "media/articles/serotine4_3.webp" },
-      { id: "crush", title: "Les secrets insoupçonnés du « crush »", author: "Daveau Quentin", topic: "sociologie", type: "article", issue: 3, season: 1, issueLabel: "#3 · Fév. 2026", href: "https://heyzine.com/flip-book/d5c17bee9a.html#page/4", flip: "articles/crush/", image: "media/articles/serotine3_1.webp" },
-      { id: "ode_celeste", title: "Ode céleste", author: "Amaëline", topic: "astrophysique", type: "poesie", issue: 3, season: 1, issueLabel: "#3 · Fév. 2026", href: "https://heyzine.com/flip-book/d5c17bee9a.html#page/12", flip: "articles/ode_celeste/", image: "media/articles/serotine3_2.webp" },
-      { id: "tca", title: "Red flags et nourriture, quand les TCA s'invitent à table", author: "Bacquet Isaora", topic: "psychologie", type: "article", issue: 3, season: 1, issueLabel: "#3 · Fév. 2026", href: "https://heyzine.com/flip-book/d5c17bee9a.html#page/15", flip: "articles/tca/", image: "media/articles/serotine3_3.webp" },
-      { id: "hydrocerame", title: "Les hydrocérames, ces vases qui suent", author: "Pillot Hector", topic: "physique", type: "article", issue: 2, season: 1, issueLabel: "#2 · Déc. 2025", href: "https://heyzine.com/flip-book/5f6791f646.html#page/4", flip: "articles/hydrocerame/", image: "media/articles/serotine2_1.webp" },
-      { id: "aphantasie_sudoku_2", title: "Ceci n'est pas un bouquet de fleurs (Sudoku) — Solution", author: "Bosse Léo", topic: "", type: "jeu", issue: 2, season: 1, issueLabel: "#2 · Déc. 2025", href: "https://heyzine.com/flip-book/5f6791f646.html#page/16", flip: "articles/aphantasie_sudoku_2/", image: "media/articles/serotine1_2.webp" },
-      { id: "planete_neuf", title: "Une neuvième planète dans notre système solaire", author: "Gay Charley", topic: "astrophysique", type: "article", issue: 2, season: 1, issueLabel: "#2 · Déc. 2025", href: "https://heyzine.com/flip-book/5f6791f646.html#page/18", flip: "articles/planete_neuf/", image: "media/articles/serotine2_2.webp" },
-      { id: "aphantasie", title: "L'aphantasie", author: "Bacquet Isaora", topic: "psychologie", type: "article", issue: 1, season: 1, issueLabel: "#1 · Nov. 2025", href: "https://heyzine.com/flip-book/78d38fd9ec.html#page/4", flip: "articles/aphantasie/", image: "media/articles/serotine1_1.webp" },
-      { id: "aphantasie_sudoku", title: "Ceci n'est pas un bouquet de fleurs (Sudoku)", author: "Bosse Léo", topic: "", type: "jeu", issue: 1, season: 1, issueLabel: "#1 · Nov. 2025", href: "https://heyzine.com/flip-book/78d38fd9ec.html#page/16", flip: "articles/aphantasie_sudoku/", image: "media/articles/serotine1_2.webp" },
-      { id: "respirer_par_anus", title: "Peut-on respirer par l'anus ?", author: "Gachod Pierre", topic: "biologie", type: "article", issue: 1, season: 1, issueLabel: "#1 · Nov. 2025", href: "https://heyzine.com/flip-book/78d38fd9ec.html#page/18", flip: "articles/respirer_par_anus/", image: "media/articles/serotine1_3.webp" },
-      { id: "nuages_noctulescents", title: "7 Merveilles du ciel nocturne : les nuages noctulescents", author: "Duchêne Léo", topic: "astrophysique", type: "merveilles", issue: 5, season: 2, issueLabel: "#5 · Mai 2026", href: "https://heyzine.com/flip-book/c5bd9067c1.html#page/6", flip: "articles/nuages_noctulescents/", image: "media/articles/serotine5_1.webp" },
-      { id: "Sue_doku", title: "Sue-doku", author: "Bosse Léo", topic: "", type: "jeu", issue: 5, season: 2, issueLabel: "#5 · Mai 2026", href: "https://heyzine.com/flip-book/c5bd9067c1.html#page/16", flip: "articles/Sue_doku/", image: "media/articles/serotine5_2.webp" },
-      { id: "flore_polaire", title: "De la flore dans les régions polaires ?", author: "Strohmeyer Ninon", topic: "biologie", type: "article", issue: 5, season: 2, issueLabel: "#5 · Mai 2026", href: "https://heyzine.com/flip-book/c5bd9067c1.html#page/18", flip: "articles/flore_polaire/", image: "media/articles/serotine5_3.webp" },
-      { id: "geodynamo", title: "D'où vient le champ magnétique de la Terre primitive ?", author: "Pillot Hector", topic: "physique", type: "article", issue: 6, season: 2, issueLabel: "#6 · Juillet 2026", href: "https://serotine-webzine.aflip.in/907e4e9b03.html#page/6", flip: "articles/geodynamo/", image: "media/articles/serotine6_1.webp" },
-      { id: "sudonova", title: "SudoNova", author: "Bosse Léo", topic: "", type: "jeu", issue: 6, season: 2, issueLabel: "#6 · Juillet 2026", href: "https://serotine-webzine.aflip.in/907e4e9b03.html#page/18", flip: "articles/sudonova/", image: "media/articles/serotine6_2.webp" },
-      { id: "fusees_paralleles", title: "Fusées parallèles", author: "Emy crayonne", topic: "", type: "poesie", issue: 6, season: 2, issueLabel: "#6 · Juillet 2026", href: "https://serotine-webzine.aflip.in/907e4e9b03.html#page/20", flip: "articles/fusees_paralleles/", image: "media/articles/serotine6_3.webp" },
-      { id: "lune_influenceuse", title: "La Lune, la plus grande influenceuse", author: "Gay Charley", topic: "astrophysique", type: "article", issue: 7, season: 2, issueLabel: "#7 · Septembre 2026", href: "https://serotine-webzine.aflip.in/ddd744c837.html#page/6", flip: "articles/lune_influenceuse/", image: "media/articles/serotine7_1.webp" },
-      { id: "sudoku_physique_interne", title: "Sudoku Physique Interne", author: "Bosse Léo", topic: "", type: "jeu", issue: 7, season: 2, issueLabel: "#7 · Septembre 2026", href: "https://serotine-webzine.aflip.in/ddd744c837.html#page/20", flip: "articles/sudoku_physique_interne/", image: "media/articles/serotine7_2.webp" },
-      { id: "vielle_tortue", title: "Vieille Tortue", author: "Emy crayonne", topic: "", type: "poesie", issue: 7, season: 2, issueLabel: "#7 · Septembre 2026", href: "https://serotine-webzine.aflip.in/ddd744c837.html#page/22", flip: "articles/vielle_tortue/", image: "media/articles/serotine7_3.webp" },
-      { id: "vielle_tortue_age_inconnu", title: "Vieille Tortue à l'âge inconnu", author: "Emy crayonne", topic: "biologie", type: "article", issue: 7, season: 2, issueLabel: "#7 · Septembre 2026", href: "https://serotine-webzine.aflip.in/ddd744c837.html#page/24", flip: "articles/vielle_tortue_age_inconnu/", image: "media/articles/serotine7_4.webp" },
-    ];
-
-    const TOPIC_LABELS = {
-      astrophysique: 'Astrophysique', biologie: 'Biologie', physique: 'Physique',
-      psychologie: 'Psychologie', sociologie: 'Sociologie'
-    };
-    const TYPE_LABELS = {
-      article: 'Article', jeu: 'Jeu', poesie: 'Poésie'
-    };
-
-    let activeTopic = 'all', activeType = 'all', activeAuthor = 'all', activeSort = 'issue';
-    let sortDir = { issue: -1, title: 1, author: 1, topic: 1 };
-    let showAll = false;
-
-    // ── Filter panel toggle ───────────────────────────────────────────────────
-    const filterToggle = document.getElementById('filterToggle');
-    const filterPanel = document.getElementById('filterPanel');
-    filterToggle.addEventListener('click', () => {
-      const open = filterPanel.classList.toggle('open');
-      filterToggle.classList.toggle('active', open);
-      filterToggle.setAttribute('aria-expanded', open);
-      filterPanel.setAttribute('aria-hidden', !open);
-    });
-
-    // ── Populate author dropdown ──────────────────────────────────────────────
-    const authorSel = document.getElementById('authorFilter');
-    [...new Set(ARTICLES.map(a => a.author))].sort((a, b) => a.localeCompare(b, 'fr')).forEach(au => {
-      const o = document.createElement('option'); o.value = au; o.textContent = au; authorSel.appendChild(o);
-    });
-
-    // ── Tag click on cards → set filter ──────────────────────────────────────
-    function setTopicFilter(value) {
-      activeTopic = value; showAll = false;
-      document.querySelectorAll('.topic-btn').forEach(b => b.classList.toggle('active', b.dataset.value === value));
-      render();
-    }
-    function setTypeFilter(value) {
-      activeType = value; showAll = false;
-      document.querySelectorAll('.type-btn').forEach(b => b.classList.toggle('active', b.dataset.value === value));
-      render();
-    }
-
-    // ── Render cards ──────────────────────────────────────────────────────────
-    function render() {
-      const grid = document.getElementById('articlesGrid');
-      grid.innerHTML = '';
-      let list = ARTICLES.filter(a =>
-        (activeTopic === 'all' || a.topic === activeTopic) &&
-        (activeType === 'all' || a.type === activeType) &&
-        (activeAuthor === 'all' || a.author === activeAuthor)
-      );
-      const d = sortDir[activeSort];
-      list.sort((a, b) => {
-        if (activeSort === 'issue') return d * (a.issue - b.issue);
-        if (activeSort === 'title') return d * a.title.localeCompare(b.title, 'fr');
-        if (activeSort === 'author') return d * a.author.localeCompare(b.author, 'fr');
-        if (activeSort === 'topic') return d * a.topic.localeCompare(b.topic, 'fr');
-        return 0;
-      });
-      document.getElementById('noResults').classList.toggle('visible', list.length === 0);
-      const toShow = showAll ? list : list.slice(0, 6);
-      toShow.forEach(a => {
-        const c = document.createElement('a');
-        c.className = 'art-card';
-        c.href = a.href;
-        c.target = '_blank';
-        c.rel = 'noopener';
-        const topicLabel = TOPIC_LABELS[a.topic] || a.topic;
-        const typeLabel = TYPE_LABELS[a.type] || a.type;
-        const topicTag = a.topic
-          ? `<span class="tag tag-${a.topic} tag-clickable" data-filter="topic" data-value="${a.topic}" title="Filtrer par thème">${topicLabel}</span>`
-          : '';
-        c.innerHTML = `
-      <img src="${a.image}" alt="" loading="lazy" class="art-card-img">
-      <div class="art-card-overlay">
-        <div class="art-card-title">${a.title}</div>
-        <div class="tags">
-          ${topicTag}
-          <span class="tag tag-${a.type} tag-clickable" data-filter="type" data-value="${a.type}" title="Filtrer par type">${typeLabel}</span>
-        </div>
-        <div class="art-card-author"><img src="media/user-pen.svg" alt="" class="logo-xxsmall"> ${a.author}</div>
-      </div>
-    `;
-        c.querySelectorAll('.tag-clickable').forEach(tag => {
-          tag.addEventListener('click', (e) => {
-            e.stopPropagation();
-            if (tag.dataset.filter === 'topic') setTopicFilter(tag.dataset.value);
-            else setTypeFilter(tag.dataset.value);
-            document.getElementById('explorer').scrollIntoView({ behavior: 'smooth', block: 'start' });
-          });
-        });
-        grid.appendChild(c);
-      });
-      // ── Featured card layout: |11|2| / |11|3| / |4|5|6|
-      const cards = grid.querySelectorAll('.art-card');
-      if (cards.length >= 3) {
-        cards[0].style.gridColumn = 'span 2';
-        cards[0].style.gridRow = 'span 2';
-        const t = cards[0].querySelector('.art-card-title');
-        if (t) t.style.fontSize = '1.15rem';
-        const tail = cards.length - 3;
-        if (tail % 3 === 1) cards[cards.length - 1].style.gridColumn = 'span 3';
-        else if (tail % 3 === 2) cards[cards.length - 1].style.gridColumn = 'span 2';
-      } else if (cards.length === 2) {
-        cards[0].style.gridColumn = 'span 2';
-      }
-      // ── "Plus d'articles" button
-      const moreBtn = document.getElementById('moreArticlesBtn');
-      if (moreBtn) {
-        if (!showAll && list.length > 6) {
-          moreBtn.style.display = '';
-          moreBtn.textContent = `Plus d'articles · ${list.length - 6} de plus →`;
-        } else {
-          moreBtn.style.display = 'none';
-        }
-      }
-    }
-
-    // ── Helloasso buttons
-
-    document.addEventListener('DOMContentLoaded', () => {
-      const openBtn = document.getElementById('openHaOverlay');
-      const modal = document.getElementById('haWidgetModal');
-      const closeBtn = document.getElementById('closeHaWidgetBtn');
-      const body = document.body;
-
-      closeBtn.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-        <line x1="6" y1="6" x2="18" y2="18" stroke="#333" stroke-width="2" stroke-linecap="round" />
-        <line x1="18" y1="6" x2="6" y2="18" stroke="#333" stroke-width="2" stroke-linecap="round" />
-      </svg>`;
-
-      openBtn.addEventListener('click', () => {
-        modal.classList.add('open');
-        modal.style.display = 'flex';
-        body.style.overflow = 'hidden';
-        body.style.overscrollBehaviorY = 'none';
-      });
-
-      closeBtn.addEventListener('click', () => {
-        modal.classList.remove('open');
-        modal.style.display = 'none';
-        body.style.overflow = '';
-        body.style.overscrollBehaviorY = '';
-      });
-
-      closeBtn.addEventListener('mouseenter', () => closeBtn.style.background = '#E0E0E8');
-      closeBtn.addEventListener('mouseleave', () => closeBtn.style.background = '#EFEFF4');
-    })
-
-    // ── Topic filter buttons ──────────────────────────────────────────────────
-    document.querySelectorAll('.topic-btn').forEach(btn => {
-      btn.addEventListener('click', () => setTopicFilter(btn.dataset.value));
-    });
-
-    // ── Type filter buttons ───────────────────────────────────────────────────
-    document.querySelectorAll('.type-btn').forEach(btn => {
-      btn.addEventListener('click', () => setTypeFilter(btn.dataset.value));
-    });
-
-    // ── Author dropdown ───────────────────────────────────────────────────────
-    authorSel.addEventListener('change', () => { activeAuthor = authorSel.value; showAll = false; render(); });
-
-    // ── Sort buttons ──────────────────────────────────────────────────────────
-    document.querySelectorAll('.sort-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const key = btn.dataset.sort;
-        if (activeSort === key) sortDir[key] *= -1;
-        else activeSort = key;
-        document.querySelectorAll('.sort-btn').forEach(b => {
-          b.classList.remove('active');
-          b.querySelector('.arrow').textContent = '↕';
-        });
-        btn.classList.add('active');
-        btn.querySelector('.arrow').textContent = sortDir[activeSort] === 1 ? '↑' : '↓';
-        showAll = false;
-        render();
-      });
-    });
-
-    render();
-
-    document.getElementById('moreArticlesBtn').addEventListener('click', () => { showAll = true; render(); });
-
-    // ── Couverture aléatoire dans la section "Nous soutenir" ─────────────────
+    // ── Filtre par thème + "Plus d'articles" ─────────────────────────────────
     (function () {
-      const covers = document.querySelectorAll('#archives .issue-cover a');
-      const aboutLink = document.querySelector('#about .issue-cover a');
-      if (!covers.length || !aboutLink) return;
-      const pick = covers[Math.floor(Math.random() * covers.length)];
-      const pickImg = pick.querySelector('img');
-      const aboutImg = aboutLink.querySelector('img');
-      aboutLink.href = pick.href;
-      aboutImg.src = pickImg.src;
-      aboutImg.alt = pickImg.alt;
+      const cards = [...document.querySelectorAll('#cardsGrid .art-card')];
+      const buttons = [...document.querySelectorAll('.topic-btn')];
+      const more = document.getElementById('moreArticlesBtn');
+      const LIMIT = 6;
+      let topic = 'all', showAll = false;
+
+      function render() {
+        const matching = cards.filter(c => topic === 'all' || c.dataset.topic === topic);
+        cards.forEach(c => { c.hidden = true; });
+        matching.forEach((c, i) => { c.hidden = !(showAll || i < LIMIT); });
+        const rest = matching.length - LIMIT;
+        more.hidden = showAll || rest <= 0;
+        more.textContent = 'Plus d’articles · ' + rest + ' de plus';
+      }
+
+      buttons.forEach(b => b.addEventListener('click', () => {
+        topic = b.dataset.value; showAll = false;
+        buttons.forEach(x => x.setAttribute('aria-pressed', x === b));
+        render();
+      }));
+      more.addEventListener('click', () => { showAll = true; render(); });
+      render();
     })();
 
-    // ── Titres du dernier numéro dans le hero ────────────────────────────────
+    // ── Archives : défilement horizontal à la souris ─────────────────────────
     (function () {
-      const latestIssue = Math.max(...ARTICLES.map(a => a.issue));
-      const issueArts = ARTICLES.filter(a => a.issue === latestIssue);
-      const tocEl = document.getElementById('heroToc');
-      if (tocEl) issueArts.forEach(a => {
-        const li = document.createElement('li');
-        li.textContent = a.title;
-        tocEl.appendChild(li);
+      const el = document.getElementById('issuesRow');
+      if (!el) return;
+      let down = false, sx = 0, sl = 0, moved = false;
+      el.addEventListener('pointerdown', e => { if (e.pointerType === 'touch') return; down = true; moved = false; sx = e.clientX; sl = el.scrollLeft; el.style.cursor = 'grabbing'; el.style.scrollSnapType = 'none'; });
+      window.addEventListener('pointermove', e => { if (!down) return; const dx = e.clientX - sx; if (Math.abs(dx) > 4) moved = true; el.scrollLeft = sl - dx; });
+      window.addEventListener('pointerup', () => { if (!down) return; down = false; el.style.cursor = 'grab'; el.style.scrollSnapType = 'x proximity'; });
+      el.addEventListener('click', e => { if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; } }, true);
+      el.addEventListener('dragstart', e => e.preventDefault());
+    })();
+
+    // ── Slogan ajusté à la largeur du logotype ───────────────────────────────
+    (function () {
+      const h = document.getElementById('wordmark'), p = document.getElementById('tagline');
+      if (!h || !p) return;
+      const fit = () => {
+        p.style.fontSize = '100px';
+        const pw = p.scrollWidth, hw = h.getBoundingClientRect().width;
+        if (pw && hw) p.style.fontSize = (100 * hw / pw) + 'px';
+      };
+      fit();
+      window.addEventListener('resize', fit);
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+    })();
+
+    // ── Apparition progressive des blocs [data-reveal] ───────────────────────
+    (function () {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const els = [...document.querySelectorAll('[data-reveal]')];
+      els.forEach((el, i) => {
+        el.style.opacity = 0; el.style.transform = 'translateY(18px)';
+        el.style.transition = 'opacity .6s ' + (i % 3) * 0.1 + 's, transform .6s ' + (i % 3) * 0.1 + 's';
       });
+      const reveal = () => els.forEach(el => {
+        if (el.style.opacity !== '1' && el.getBoundingClientRect().top < window.innerHeight * 0.92) { el.style.opacity = 1; el.style.transform = 'none'; }
+      });
+      reveal();
+      window.addEventListener('scroll', reveal, { passive: true });
+      window.addEventListener('resize', reveal);
+      setTimeout(() => els.forEach(el => { el.style.opacity = 1; el.style.transform = 'none'; }), 2500);
     })();
   </script>
   <script src="components.js"></script>
+  <script src="grain.js"></script>
 </body>
 
 </html>
