@@ -81,6 +81,9 @@
       <a href="${BASE_PATH}/comite/">À propos</a>
     </nav>
   </div>
+  <div class="site-footer-credit">
+    <p>Site web conçu et généré avec <a href="https://claude.ai" target="_blank" rel="noopener">Claude.ai</a>.</p>
+  </div>
 </footer>`;
 
   /* ── Injection ───────────────────────────────────────────────────────── */

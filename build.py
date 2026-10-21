@@ -22,9 +22,11 @@ import csv
 import os
 import re
 import sys
+import unicodedata
 from collections import defaultdict
 from datetime import date
 from html import escape
+from urllib.parse import quote
 
 # ══════════════════════════════════════════════
 #  CONFIG
@@ -222,7 +224,7 @@ def generate_cards_html(articles: list[dict]) -> str:
             f'{escape(TOPIC_LABELS.get(a["topic"], a["topic"]))}</span>'
         ) if a["topic"] else ""
         cards.append(f"""\
-        <a class="art-card" data-topic="{escape(a["topic"])}" href="{escape(a["href"])}" target="_blank" rel="noopener" style="position:relative;display:block;aspect-ratio:16/10;overflow:hidden;border-radius:4px;background:#65466e;color:#fff;text-decoration:none;border:1px solid #65466e33;transition:transform .25s,box-shadow .25s">
+        <a class="art-card" data-topic="{escape(a["topic"])}" data-author="{escape(a["author"])}" href="{escape(a["href"])}" target="_blank" rel="noopener" style="position:relative;display:block;aspect-ratio:16/10;overflow:hidden;border-radius:4px;background:#65466e;color:#fff;text-decoration:none;border:1px solid #65466e33;transition:transform .25s,box-shadow .25s">
           <img src="{escape(img)}" alt="" loading="lazy" style="position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover">
           <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:14px 16px;text-shadow:0 1px 3px #000c,0 2px 12px #000a">
             <div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">
@@ -528,8 +530,20 @@ def initials(nom: str) -> str:
     return "".join(w[0] for w in nom.split()[:2]).upper()
 
 
+def author_key(name: str) -> str:
+    """Nom normalisé (sans accents, ordre des mots ignoré) : « Gay Charley » = « Charley GAY »."""
+    base = unicodedata.normalize("NFD", name)
+    base = "".join(c for c in base if not unicodedata.combining(c))
+    return " ".join(sorted(base.lower().split()))
+
+
+AUTHOR_KEYS: set[str] = set()   # rempli dans main() à partir de articles.csv
+
+
 def render_card(membre: dict, show_badge: bool = False) -> str:
     nom = escape(membre["nom"])
+    has_articles = author_key(membre["nom"]) in AUTHOR_KEYS
+    href = f'../?author={quote(membre["nom"])}#explorer'
     if membre["image"]:
         avatar = (f'<img src="{escape(membre["image"])}" alt="" loading="lazy" width="88" height="88" '
                   'style="display:block;width:88px;height:88px;object-fit:cover;border-radius:4px;border:3px solid #b1ed4e">')
@@ -537,27 +551,23 @@ def render_card(membre: dict, show_badge: bool = False) -> str:
         avatar = ('<div aria-hidden="true" style="width:88px;height:88px;border-radius:4px;border:3px solid #b1ed4e;'
                   'background:#65466e;color:#b1ed4e;font-weight:700;font-size:28px;display:flex;align-items:center;'
                   f'justify-content:center">{escape(initials(membre["nom"]))}</div>')
+    if has_articles:
+        avatar = (f'<a class="avatar-link" href="{href}" aria-label="Voir les articles de {nom}" '
+                  f'style="display:block;border-radius:4px;transition:transform .25s">{avatar}</a>')
     badge = (
         '<span style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;'
         'background:#b1ed4e;color:#374620;padding:3px 8px;border-radius:2px">Comité de rédaction</span>'
     ) if show_badge else ""
-    parts = [p.strip() for p in membre.get("speciality", "").split(",") if p.strip()]
-    spec = (
-        '<p style="margin:auto 0 0;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;'
-        'background:#f1e3f6;padding:4px 8px;border-radius:2px;color:#65466e">'
-        f'{escape(" · ".join(parts))}</p>'
-    ) if parts else ""
     link = (
-        f'<a class="f-ring" href="{escape(membre["url"])}" target="_blank" rel="noopener" '
-        f'aria-label="Profil de {nom}" style="font-size:13px;font-weight:700">Profil →</a>'
-    ) if membre["url"] else ""
+        f'<a class="f-ring" href="{href}" style="margin-top:auto;padding-top:6px;font-size:13px;font-weight:700">'
+        'Voir ses articles →</a>'
+    ) if has_articles else ""
     return f"""\
         <li class="member-card" style="background:#fff;border:1px solid #65466e33;border-radius:4px;padding:22px 18px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;transition:transform .25s,border-color .25s,box-shadow .25s">
           {avatar}
           <h3 style="margin:6px 0 0;font-size:16px">{nom}</h3>
           {badge}
           <p style="margin:0;font-size:13px;line-height:1.5">{escape(membre["role"])}</p>
-          {spec}
           {link}
         </li>"""
 
@@ -678,6 +688,7 @@ def main():
     print(f"\n📂  Chargement de {csv_articles}…")
     articles = load_articles(csv_articles)
     print(f"✓  {len(articles)} articles chargés.\n")
+    AUTHOR_KEYS.update(author_key(a["author"]) for a in articles)
 
     print("📄  Mise à jour de index.html…")
     inject_index(articles)
