@@ -553,7 +553,7 @@ def render_card(membre: dict, show_badge: bool = False) -> str:
                   f'justify-content:center">{escape(initials(membre["nom"]))}</div>')
     if membre["url"]:
         avatar = (f'<a class="avatar-link" href="{escape(membre["url"])}" target="_blank" rel="noopener" aria-label="Profil de {nom}" '
-                  f'style="display:block;border-radius:4px;transition:transform .25s">{avatar}</a>')
+                  f'style="display:block;border-radius:4px;text-decoration:none;line-height:0;transition:transform .25s">{avatar}</a>')
     badge = (
         '<span style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;'
         'background:#b1ed4e;color:#374620;padding:3px 8px;border-radius:2px">Comité de rédaction</span>'

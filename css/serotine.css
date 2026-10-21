@@ -125,3 +125,5 @@ body::after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;o
 .site-footer-credit p{max-width:1240px;margin:0 auto;padding:14px 20px;font-size:12px;line-height:1.5}
 .avatar-link:hover{transform:scale(1.04)}
 .avatar-link:focus-visible{outline:3px solid #b1ed4e;outline-offset:3px}
+.btn-ia:hover{transform:translate(-2px,-2px);box-shadow:3px 3px 0 #b1ed4e;color:#fff}
+.btn-ia:focus-visible{outline:3px solid #b1ed4e;outline-offset:3px}
