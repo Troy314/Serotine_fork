@@ -551,8 +551,8 @@ def render_card(membre: dict, show_badge: bool = False) -> str:
         avatar = ('<div aria-hidden="true" style="width:88px;height:88px;border-radius:4px;border:3px solid #b1ed4e;'
                   'background:#65466e;color:#b1ed4e;font-weight:700;font-size:28px;display:flex;align-items:center;'
                   f'justify-content:center">{escape(initials(membre["nom"]))}</div>')
-    if has_articles:
-        avatar = (f'<a class="avatar-link" href="{href}" aria-label="Voir les articles de {nom}" '
+    if membre["url"]:
+        avatar = (f'<a class="avatar-link" href="{escape(membre["url"])}" target="_blank" rel="noopener" aria-label="Profil de {nom}" '
                   f'style="display:block;border-radius:4px;transition:transform .25s">{avatar}</a>')
     badge = (
         '<span style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;'

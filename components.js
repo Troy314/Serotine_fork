@@ -30,7 +30,6 @@
   const links = [
     { href: '/#explorer', label: 'Articles' },
     { href: '/#podcast', label: 'Podcast' },
-    { href: '/#archives', label: 'Archives' },
     { href: '/#soutenir', label: 'Nous soutenir' },
     { href: '/comite/', label: 'À propos' },
   ];
